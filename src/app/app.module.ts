@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { MovieListComponent } from './components/movies/movie-list/movie-list.component';
 import { provideHttpClient } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     NgbModule
   ],
-  providers: [provideHttpClient()],
+  providers: [provideHttpClient(), provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

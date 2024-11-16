@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Pelicula } from '../../../models/lista-peliculas-response.interface';
 import { MoviesService } from '../../../services/movies.service';
+import { Pelicula } from '../../../models/lista-peliculas-response.interface';
 
 @Component({
   selector: 'app-movie-list',
@@ -12,11 +12,17 @@ export class MovieListComponent implements OnInit{
   listaPeliculasPopulares :Pelicula[] =[];
 
   constructor(private movieService:MoviesService){}
-  
+
   ngOnInit(): void {
-    this.movieService.obtenerPeliculasPopulares().subscribe((data) => {
-      this.listaPeliculasPopulares = data.results;
+    this.movieService.obtenerPeliculasPopulares().subscribe((data:any) => {
+      this.listaPeliculasPopulares = data.results.map((peli:any)=>{
+        return {
+          ...peli,
+          posterUrl:this.movieService.getImageUrl(peli.poster_path),
+        }
+      });
     })
+
   }
 
 

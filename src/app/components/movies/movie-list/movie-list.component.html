@@ -1,17 +1,17 @@
-<h1>Lista peliculas</h1>
-<div>
+<div class="container">
+  <div class="row">
     @for(peli of listaPeliculasPopulares; track peli.id){
-        <div class="card" style="width: 18rem;">
-            <div class="card-header">
-                <img src="{{peli.backdrop_path}}" alt="{{peli.title}}">
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">{{peli.title}}</h5>
-                <p class="card-text">Some quick example text to build on the card title
-                    and make up the bulk of the card's content.</p>
-            </div>
-            <p>{{peli.release_date}}</p>
+    <div class="col-12 col-sm-6 col-md-2 col-lg-2 mb-4">
+      <div class="card">
+        <img [src]="peli.posterUrl" width="100%" alt="{{peli.title}}"
+          class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{peli.title}}</h5>
+          <p class="card-text">{{peli.release_date}}</p>
+          <p>{{peli.vote_average}}</p>
         </div>
-        
-        }
+      </div>
+    </div>
+    }
+  </div>
 </div>
