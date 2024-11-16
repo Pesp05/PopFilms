@@ -1,18 +1,19 @@
 <div class="container">
   <div class="row">
     @for(peli of listaPeliculasPopulares; track peli.id) {
-      <div class="col-12 col-sm-6 col-md-2 col-lg-2 mb-4">
-        <div class="card">
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-4">
+        <div class="card shadow-sm border-0 rounded">
           <a routerLink>
-            <img [src]="peli.posterUrl" width="100%" alt="{{peli.title}}" class="card-img-top">
+            <img [src]="peli.posterUrl" class="card-img-top rounded" alt="{{peli.title}}">
           </a>
           <div class="card-body">
-            <h5 class="card-title">{{peli.title}}</h5>
-            <p class="card-text">{{peli.release_date | date:'dd/MM/yyyy'}}</p>
-            <p>
-              <i class="fa fa-star" style="color: gold;"></i> {{peli.vote_average}}
-              <span>({{peli.vote_count}} votos)</span>
-            </p>
+            <h5 class="card-title text-center">{{peli.title}}</h5>
+            <p class="card-text text-center">{{peli.release_date | date:'dd/MM/yyyy'}}</p>
+            <div class="d-flex justify-content-center align-items-center">
+              <i class="fa fa-star" style="color: gold;"></i>
+              <span class="ms-2">{{peli.vote_average}}</span>
+              <span class="text-muted ms-1">({{peli.vote_count}} votos)</span>
+            </div>
           </div>
         </div>
       </div>
