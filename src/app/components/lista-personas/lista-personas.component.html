@@ -1,0 +1,15 @@
+<body>
+<div class="row mt-5 fondo">
+    @for(persona of listaPersonas; track listaPersonas.indexOf(persona)) {
+    <div class="col-sm-6 col-md-4 col-lg-2 mb-4">
+        <div class="card h-100 text-center colorFondo">
+            <img class="card-img-top"
+                [src]="getposterPath(persona.profile_path)" alt="Foto de la persona">
+            <div class="card-body">
+                <h5 class="card-title fw-bold text-start fw-bolder">{{persona.name}}</h5>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+</body>
