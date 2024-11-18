@@ -21,7 +21,7 @@ export interface Pelicula {
   video: boolean
   vote_average: number
   vote_count: number
-  
+
 }
 
 export interface DetallePelicula {
@@ -39,6 +39,7 @@ export interface DetallePelicula {
   overview: string
   popularity: number
   poster_path: string
+  posterUrl?: string;
   production_companies: ProductionCompany[]
   production_countries: ProductionCountry[]
   release_date: string

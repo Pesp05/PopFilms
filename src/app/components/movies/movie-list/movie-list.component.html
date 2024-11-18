@@ -2,15 +2,18 @@
   <div class="first-box-film">
     <div class="col-6 top1">
       <div class="top1Child">
-        <h1>{{listaPeliculasPopulares[0].original_title}}
+        <h1 class="fw-bold">{{listaPeliculasPopulares[0].original_title}}
           (<span>{{listaPeliculasPopulares[0].release_date |
             date:'yyyy'}}</span>)</h1>
-            <a class="mb-3" (click)="verTrailer(listaPeliculasPopulares[0].id)">
-              <button mat-fab class="ms-3 bg-light w-100 ms-5">Ver Tráiler
-              </button>
-          </a>
+        <a class="mb-3" (click)="verTrailer(listaPeliculasPopulares[0].id)">
+          <button mat-fab class="ms-3 w-100 ms-5">Ver Tráiler
+          </button>
+        </a>
       </div>
       <p>{{listaPeliculasPopulares[0].overview}} </p>
+      <a class="w-100 m-0" (click)="verFichaPelicula(listaPeliculasPopulares[0].id)">
+        <button id="ficha" mat-fab class="w-100">Ver Ficha</button>
+      </a>
     </div>
     <div class="col-6 top1">
       <img src="{{listaPeliculasPopulares[0].posterUrl}}"
@@ -21,9 +24,8 @@
     @for(peli of listaPeliculasPopulares; track peli.id) {
     <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-4">
       <div class="card shadow-sm border-0 rounded">
-        <a routerLink>
-          <img [src]="peli.posterUrl" class="card-img-top rounded"
-            alt="{{peli.title}}">
+        <a [routerLink]="['/movie', peli.id]">
+          <img [src]="peli.posterUrl" class="card-img-top rounded" alt="{{peli.title}}" />
         </a>
         <div class="card-body">
           <h5 class="card-title text-center">{{peli.original_title}}</h5>

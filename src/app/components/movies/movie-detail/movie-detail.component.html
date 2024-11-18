@@ -1,1 +1,83 @@
-<p>movie-detail works!</p>
+<div class="movie-details-container">
+  <!-- Imagen y título principal -->
+  <div class="movie-header">
+    <img
+      src="{{peli?.posterUrl}}"
+      alt="{{peli?.title}}"
+      class="movie-backdrop"
+    />
+    <div class="movie-header-content">
+      <h1>{{peli?.title}}</h1>
+      <p class="tagline">{{peli?.tagline}}</p>
+      <div class="rating">
+        <i class="fa fa-star" style="color: gold;"></i>
+        <span>{{peli?.vote_average}}</span>
+        <span class="text-muted">({{peli?.vote_count}} votos)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Información principal -->
+  <div class="movie-info">
+    <div class="info">
+      <h2>Sinopsis</h2>
+      <p>{{peli?.overview}}</p>
+
+      <button (click)="verTrailer()">Ver Tráiler</button>
+
+      <!-- Modal para el tráiler -->
+      <div *ngIf="showTrailer" class="trailer-modal">
+        <div class="trailer-content">
+          <iframe [src]="trailerUrl" frameborder="0" allowfullscreen></iframe>
+          <button (click)="cerrarTrailer()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #loading>
+      <p>Cargando detalles de la película...</p>
+    </ng-template>
+
+      <h2>Detalles</h2>
+      <ul>
+        <li><strong>Duración:</strong> {{peli?.runtime}} min</li>
+        <li><strong>Idioma original:</strong> {{peli?.original_language}}</li>
+        <li><strong>Fecha de estreno:</strong> {{peli?.release_date| date: 'dd/MM/yyyy'}}</li>
+        <li><strong>Presupuesto:</strong> {{peli?.budget| currency}}</li>
+        <li><strong>Ingresos:</strong> {{peli?.revenue| currency}}</li>
+        <li><strong>Estado:</strong> {{peli?.status}}</li>
+      </ul>
+
+      <h2>Géneros</h2>
+      <ul class="genres">
+        @for (genero of peli?.genres; track peli?.id) {
+          <li>{{genero.name}}</li>
+        }
+      </ul>
+
+      <h2>Producción</h2>
+      <ul>
+        @for (company of peli?.production_companies; track peli?.id) {
+          <li>
+            {{company.name}}
+            <span>({{company.origin_country}})</span>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+
+
+<div *ngIf="showTrailer" class="trailer-modal">
+  <div class="trailer-content">
+    <span class="close" (click)="cerrarTrailer()">&times;</span>
+    <iframe
+      [src]="trailerUrl"
+      title="Tráiler de {{peli?.title}}"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+

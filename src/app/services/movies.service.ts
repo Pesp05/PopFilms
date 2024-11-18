@@ -31,11 +31,15 @@ export class MoviesService {
   }
 
 
-  public obtenerDetallePeliPorId():Observable<Pelicula>{
+  public obtenerDetallePeliPorId(id:number):Observable<Pelicula>{
     return this.http.get<Pelicula>(``, HEADERS);
   }
 
   public obtenerTrailerPorId(idPeli:number):Observable<PeliculasVideosResponse>{
     return this.http.get<PeliculasVideosResponse>(`${API_BASE_URL}/movie/${idPeli}/videos`,HEADERS)
+  }
+
+  getDetallePeli(idPeli: number): Observable<DetallePelicula> {
+    return this.http.get<DetallePelicula>(`https://api.themoviedb.org/3/tv/${idPeli}`, HEADERS);
   }
 }

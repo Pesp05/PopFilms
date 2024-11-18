@@ -9,7 +9,7 @@
     margin: 3% 0;
     color: #000000;
     box-shadow: 1px 1px 47px -12px rgba(0, 0, 0, 1);
-    
+
 }
 
 .top1{
@@ -18,6 +18,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 5%;
 }
 
 .top1Child{
@@ -27,6 +28,19 @@
     justify-content: space-between;
     width: 100%;
     gap: 5px;
+
+}
+
+.top1Child > p{
+  font-size: 20 pt;
+}
+
+.top1Child > h1{
+  font-size: 30pt;
+}
+
+#ficha{
+  font-size: 18pt;
 }
 
 .top1> img{
@@ -37,16 +51,13 @@
     object-fit: cover;
 }
 
-.card{
-    box-shadow: 1px 1px 47px -12px rgba(0,0,0,1);
-}
 
-button {
+button { /*No sale bien con su color*/
     background-color: #FF7F30;
     color: #fff;
     border: none;
     padding: 10px 20px;
-    border-radius: 50px;
+    border-radius: 30px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -54,13 +65,13 @@ button {
 
 
 button:hover {
-    background-color: #e06b25; /* Color más oscuro al pasar el mouse */
+    background-color: #e06b25; /* Color más oscuro al pasar el ratón */
 }
 
 /* Tarjetas de películas */
 .card {
     background-color: #fff;
-    border-radius: 20px;
+    border-radius: 30px;
     box-shadow: 1px 1px 47px -12px rgba(0, 0, 0, 1); /* Sombra elegante */
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -73,45 +84,27 @@ button:hover {
 
 .card-img-top {
     width: 100%;
-    height: 300px; /* Altura fija para uniformidad */
+    height: 420px; /* Altura fija para uniformidad */
     object-fit: cover; /* Asegurar proporción sin deformar */
 }
 
 .card-title {
-    font-size: 1rem;
-    color: #333;
+    font-size: 1.5rem;
+    color: #000000;
     margin: 10px 0;
 }
 
 .card-text {
     font-size: 0.875rem;
-    color: #666;
+    color: #535353;
 }
 
 .fa-star {
     font-size: 1rem;
 }
 
-/* Contenedor general */
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
-}
-
-/* Ajuste para dispositivos pequeños */
-@media (max-width: 768px) {
-    .first-box-film {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .top1Child {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .top1 > img {
-        margin-top: 15px;
-    }
+    padding: 10px;
 }
