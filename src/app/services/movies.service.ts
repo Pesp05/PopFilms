@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DetallePelicula, ListaPeliculasResponse, Pelicula } from '../models/lista-peliculas-response.interface';
+import { PeliculasVideosResponse } from '../models/peliculas-videos-response.interface';
 
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
@@ -34,8 +35,7 @@ export class MoviesService {
     return this.http.get<Pelicula>(``, HEADERS);
   }
 
-  public obtenerTrailerPorId(idPeli:number):Observable<Pelicula>{
-    return this.http.get<Pelicula>(`${API_BASE_URL}/movie/${idPeli}/videos`)
+  public obtenerTrailerPorId(idPeli:number):Observable<PeliculasVideosResponse>{
+    return this.http.get<PeliculasVideosResponse>(`${API_BASE_URL}/movie/${idPeli}/videos`,HEADERS)
   }
-
 }
