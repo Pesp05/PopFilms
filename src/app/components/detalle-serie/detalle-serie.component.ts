@@ -24,4 +24,8 @@ export class DetalleSerieComponent implements OnInit {
       this.serie = response;
     });
   }
+  
+  getPosterUrl(posterPath: string): string {
+    return `https://image.tmdb.org/t/p/original${posterPath}`;
+  }
 }

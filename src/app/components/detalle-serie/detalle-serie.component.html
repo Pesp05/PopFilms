@@ -1,1 +1,23 @@
-<p>{{serie!.name}}</p>
+<div class="container-fluid">
+    <div class="container mt-4 p-4 rounded bg-light rounded-3">
+        <!-- Serie más popular -->
+        <div class="card w-100 border-0 bg-light rounded-2">
+            <div class="row g-0">
+                <!-- Información de la serie -->
+                <div class="col-6 d-flex flex-column justify-content-center p-4">
+                    <div class="d-flex mx-auto mb-3">
+                        <h1 class="fw-bold">{{serie?.name}}</h1>
+                    </div>
+                    <p class="fs-4">{{serie?.overview}}</p>
+                    <a [href]="'detalle-serie/'+ serie?.id" class="btn btn-warning px-4 py-2 fw-bold rounded-1">Ver ficha</a>
+                </div>
+
+                <!-- Imagen de la serie -->
+                <div class="col-6 d-flex justify-content-center align-items-center">
+                    <img class="imagenMasPopular w-100"
+                        [src]="serie?.poster_path ? (serie!.poster_path | poster) : 'assets/img/ImagenNoEncontrada.jpg'">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,12 +10,14 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import {MatButtonModule} from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { DetalleSerieComponent } from './components/detalle-serie/detalle-serie.component';
+import { PosterPipe } from './pipes/poster.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaSeriesComponent,
-    DetalleSerieComponent
+    DetalleSerieComponent,
+    PosterPipe
   ],
   imports: [
     BrowserModule,

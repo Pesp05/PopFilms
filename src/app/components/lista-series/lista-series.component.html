@@ -23,13 +23,13 @@
                                 </a>
                             </div>
                             <p class="fs-4">{{serieMasPopular?.overview}}</p>
-                            <a class="btn btn-warning px-4 py-2 fw-bold rounded-1">Ver ficha</a>
+                            <a [href]="'detalle-serie/'+serieMasPopular?.id" class="btn btn-warning px-4 py-2 fw-bold rounded-1">Ver ficha</a>
                         </div>
 
                         <!-- Imagen de la serie -->
                         <div class="col-6 d-flex justify-content-center align-items-center">
                             <img class="imagenMasPopular w-100"
-                                [src]="getPosterUrl(serieMasPopular?.poster_path || 'assets/img/ImagenNoEncontrada.jpg')">
+                            [src]="serieMasPopular?.poster_path ? (serieMasPopular!.poster_path! | poster) : 'assets/img/ImagenNoEncontrada.jpg'">
                         </div>
                     </div>
                 </div>
@@ -40,10 +40,10 @@
                 @for(serie of listaSeries; track listaSeries.indexOf(serie)) {
                 <div class="col-sm-6 col-md-4 col-lg-2 mb-4 shadow">
                     <div class="card h-100 text-center colorFondo">
-                    <a [href]="'detalle-serie/'+ serie.id">
+                    <a [href]="'detalle-serie/'+serie.id">
                         <img class="card-img-top"
-                        [src]="serie.poster_path ? getPosterUrl(serie.poster_path) : 'assets/img/ImagenNoEncontrada.jpg'"
-                        alt="Poster de la serie">
+                        [src]="serie?.poster_path ? (serie!.poster_path! | poster) : 'assets/img/ImagenNoEncontrada.jpg'"
+                            alt="Poster de la serie">
                     </a>
                         <div class="card-body">
                             <h5 class="card-title fw-bold text-start fw-bolder">{{serie.name}}</h5>
