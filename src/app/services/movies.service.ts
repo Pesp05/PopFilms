@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ListaPeliculasResponse, Pelicula } from '../models/lista-peliculas-response.interface';
+import { DetallePelicula, ListaPeliculasResponse, Pelicula } from '../models/lista-peliculas-response.interface';
 
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
@@ -20,10 +20,10 @@ export class MoviesService {
   constructor(private http:HttpClient) {}
 
   public obtenerPeliculasPopulares():Observable<ListaPeliculasResponse>{
-    return this.http.get<ListaPeliculasResponse>(`${API_BASE_URL}/movie/popular`, HEADERS);
+    return this.http.get<ListaPeliculasResponse>(`${API_BASE_URL}/movie/popular?&language=es-ES`, HEADERS);
   }
 
-  getImageUrl(posterPath: string): string {
+  public getImageUrl(posterPath: string): string {
     const baseUrl = 'https://image.tmdb.org/t/p/';
     const fileSize = 'w500';
     return `${baseUrl}${fileSize}${posterPath}`;
@@ -33,4 +33,9 @@ export class MoviesService {
   public obtenerDetallePeliPorId():Observable<Pelicula>{
     return this.http.get<Pelicula>(``, HEADERS);
   }
+
+  public obtenerTrailerPorId(idPeli:number):Observable<Pelicula>{
+    return this.http.get<Pelicula>(`${API_BASE_URL}/movie/${idPeli}/videos`)
+  }
+
 }

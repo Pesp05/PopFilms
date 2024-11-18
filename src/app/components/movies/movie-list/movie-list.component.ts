@@ -25,5 +25,19 @@ export class MovieListComponent implements OnInit{
 
   }
 
+  /*
+  verTrailer(peli: any) {
+    this.movieService.obtenerTrailerPorId(peli.id).subscribe((data) => {
+      const key = data.results[0].key;
+      const videoUrl = this.getVideoUrl(key);
+      window.open(videoUrl, '_blank');
+    });
+  }
+  */
+
+  getVideoUrl(keyPeli: string): string {
+    return `https://www.youtube.com/watch?v=${keyPeli}`;
+  }
+
 
 }
