@@ -3,7 +3,7 @@
     @for(persona of listaPersonas; track listaPersonas.indexOf(persona)) {
     <div class="col-2 m-1 ms-5">
         <div class=" tamCard card h-100 text-center colorFondo">
-            <a href="#">
+            <a [href]="'detalle-persona/' + persona.id ">
                 <img class="card-img-top"
                 [src]="getposterPath(persona.profile_path)" alt="Foto de la persona">
             </a>
