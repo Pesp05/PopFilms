@@ -31,6 +31,14 @@ export class ListaSeriesComponent implements OnInit {
       return 'text-danger';
     }
   }
+  verTrailer(serie: any) {
+    this.servicioListaSeries.getSerieVideo(serie.id).subscribe((data) => {
+      const key = data.results[0].key;
+      const videoUrl = this.getVideoUrl(key);
+      window.open(videoUrl, '_blank');
+    });
+  }
+
   getKeySerie(idSerie: number): string {
     let key = '';
     this.servicioListaSeries.getSerieVideo(idSerie).subscribe((data) => {
@@ -38,6 +46,7 @@ export class ListaSeriesComponent implements OnInit {
     });
     return key;
   }
+
   getVideoUrl(keySerie: string): string {
     return `https://www.youtube.com/watch?v=${keySerie}`;
   }
