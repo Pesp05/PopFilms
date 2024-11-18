@@ -9,11 +9,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatButtonModule} from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import { DetalleSerieComponent } from './components/detalle-serie/detalle-serie.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListaSeriesComponent
+    ListaSeriesComponent,
+    DetalleSerieComponent
   ],
   imports: [
     BrowserModule,
