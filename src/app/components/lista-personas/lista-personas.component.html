@@ -1,12 +1,21 @@
 <body>
-<div class="row mt-5 fondo">
+<div class="row mt-5 fondo mx-auto">
     @for(persona of listaPersonas; track listaPersonas.indexOf(persona)) {
-    <div class="col-sm-6 col-md-4 col-lg-2 mb-4">
-        <div class="card h-100 text-center colorFondo">
-            <img class="card-img-top"
+    <div class="col-2 m-1 ms-5">
+        <div class=" tamCard card h-100 text-center colorFondo">
+            <a href="#">
+                <img class="card-img-top"
                 [src]="getposterPath(persona.profile_path)" alt="Foto de la persona">
+            </a>
             <div class="card-body">
-                <h5 class="card-title fw-bold text-start fw-bolder">{{persona.name}}</h5>
+                <h4 class="card-title fw-bold text-start fw-bolder">{{persona.name}}</h4> 
+                <p>
+                    @for (detalle of persona.known_for.slice(0, 3); track $index) {
+                        <br>
+                        <span class="colorListado">{{detalle.original_title || detalle.original_name}}</span>
+                    }
+                </p>
+               
             </div>
         </div>
     </div>

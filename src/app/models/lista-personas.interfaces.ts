@@ -14,10 +14,10 @@ export interface ListaPersonas {
     original_name: string
     popularity: number
     profile_path: string
-    known_for: KnownFor[]
+    known_for: detalle[]
   }
   
-  export interface KnownFor {
+  export interface detalle {
     backdrop_path?: string
     id: number
     title?: string
