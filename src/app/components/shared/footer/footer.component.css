@@ -60,6 +60,7 @@ input{
 #subs{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     margin: 10px 0;
+    width: 100%;
 }
