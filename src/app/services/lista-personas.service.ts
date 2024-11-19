@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {ListaPersonas} from '../models/lista-personas.interfaces';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of, switchMap } from 'rxjs';
 import { DetallePersonaResponse } from '../models/details-personas.interfaces';
 import { CreditosPersonasResponse } from '../models/creditos-personas.interfaces';
 
@@ -21,11 +21,12 @@ export class ListaPersonasService {
   }
 
   getpersonasId(id: number): Observable<DetallePersonaResponse> {
-    return this.http.get<DetallePersonaResponse>(`https://api.themoviedb.org/3/person/${id}?&language=es-ES`, {
+    return this.http.get<DetallePersonaResponse>(`https://api.themoviedb.org/3/person/${id}`, {
       headers: {
         Authorization: `Bearer ${'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZDA1NzdlOGNkMmUyYjU0OWY5NDYxOTU0NTBmZDQ5YiIsIm5iZiI6MTczMTg2NTU0OS45MDU4MzA0LCJzdWIiOiI2NzMxYmYzNjdlZjJjMzFkNzhlZGFjNGEiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.EDrGv4SuXDqQRkvgTCjqk3GVvAA0zIMTf7CRDK5863w'}`,},
     });
   }
+
 
   getCreditosId(id: number): Observable<CreditosPersonasResponse> {
     return this.http.get<CreditosPersonasResponse>(`https://api.themoviedb.org/3/person/${id}/combined_credits?&language=es-ES`, {
@@ -33,4 +34,6 @@ export class ListaPersonasService {
         Authorization: `Bearer ${'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZDA1NzdlOGNkMmUyYjU0OWY5NDYxOTU0NTBmZDQ5YiIsIm5iZiI6MTczMTg2NTU0OS45MDU4MzA0LCJzdWIiOiI2NzMxYmYzNjdlZjJjMzFkNzhlZGFjNGEiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.EDrGv4SuXDqQRkvgTCjqk3GVvAA0zIMTf7CRDK5863w'}`,},
     });
   }
+
+
 }
