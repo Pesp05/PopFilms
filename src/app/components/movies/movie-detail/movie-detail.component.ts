@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../../../services/movies.service';
 import { DetallePelicula, Pelicula } from '../../../models/lista-peliculas-response.interface';
 import { ActivatedRoute } from '@angular/router';
+import { Cast } from '../../../models/creditos-peliculas.interface';
 
 @Component({
   selector: 'app-movie-detail',
@@ -14,26 +15,22 @@ export class MovieDetailComponent implements OnInit {
   peli: DetallePelicula | undefined;
   trailerUrl: string | null = null;
   showTrailer: boolean = false;
+  creditoPeli: Cast[] = [];
 
   constructor(private route: ActivatedRoute, private movieService: MoviesService) { }
 
+
   ngOnInit(): void {
     this.peliId = this.route.snapshot.paramMap.get('id');
-    console.log('ID de película:', this.peliId);
-  
-    if (this.peliId) {
-      this.movieService.getDetallePeli(parseInt(this.peliId)).subscribe({
-        next: (response) => {
-          console.log('Respuesta de la API:', response);
-          this.peli = response;
-        },
-        error: (error) => {
-          console.error('Error al obtener los detalles de la película:', error);
-        }
-      });
-    }
+
+    this.movieService.getDetallePeli(parseInt(this.peliId!)).subscribe((response) => {
+      this.peli = response;
+    });
+    this.movieService.getCreditosPeli(parseInt(this.peliId!)).subscribe((response) => {
+      this.creditoPeli = response.cast;
+    });
   }
-  
+
 
   verTrailer(): void {
     if (!this.peli) return;
@@ -67,7 +64,4 @@ export class MovieDetailComponent implements OnInit {
     }
   }
 
-  getActoresPorPeli(){
-    
-  }
 }

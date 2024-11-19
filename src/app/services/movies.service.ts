@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DetallePelicula, ListaPeliculasResponse, Pelicula } from '../models/lista-peliculas-response.interface';
 import { PeliculasVideosResponse } from '../models/peliculas-videos-response.interface';
+import { CreditosPeliResponse } from '../models/creditos-peliculas.interface';
 
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
@@ -30,16 +31,19 @@ export class MoviesService {
     return `${baseUrl}${fileSize}${posterPath}`;
   }
 
-
-  public obtenerDetallePeliPorId(id:number):Observable<Pelicula>{
-    return this.http.get<Pelicula>(``, HEADERS);
-  }
-
   public obtenerTrailerPorId(idPeli:number):Observable<PeliculasVideosResponse>{
     return this.http.get<PeliculasVideosResponse>(`${API_BASE_URL}/movie/${idPeli}/videos`,HEADERS)
   }
 
   getDetallePeli(idPeli: number): Observable<DetallePelicula> {
     return this.http.get<DetallePelicula>(`https://api.themoviedb.org/3/movie/${idPeli}?language=es-ES`, HEADERS);
+  }
+
+  getCreditosPeli(idMovie: number): Observable<CreditosPeliResponse> {
+    return this.http.get<CreditosPeliResponse>(`https://api.themoviedb.org/3/movie/${idMovie}/credits`, {
+      headers: {
+        Authorization: `Bearer ${'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NDY5Mjg1OTczM2FmM2E4MjMwMzQxYjM1MGE1OTVmZCIsIm5iZiI6MTczMTc1MjA2MC44MTk0MjU2LCJzdWIiOiI2NzMxYmQ5NjYxNjI2YWMxMDZiZTY3ZGMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.59a-DzPdbcfNJ8mWyRnkG_yFZ5DkQQCL4IsR3q_X30M'}`,
+      },
+    });
   }
 }
