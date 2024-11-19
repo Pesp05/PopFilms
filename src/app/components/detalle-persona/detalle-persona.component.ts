@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ListaPersonasService } from '../../services/lista-personas.service';
 import { ActivatedRoute } from '@angular/router';
 import { DetallePersonaResponse } from '../../models/details-personas.interfaces';
-import { CreditosPersonasResponse } from '../../models/creditos-personas.interfaces';
+import { Cast, CreditosPersonasResponse } from '../../models/creditos-personas.interfaces';
 import { Personas } from '../../models/lista-personas.interfaces';
 
 @Component({
@@ -17,6 +17,7 @@ export class DetallePersonaComponent implements OnInit {
    actorId: string | null = '';
    personaDetalle: DetallePersonaResponse | undefined;
    creditos: CreditosPersonasResponse | undefined;
+   ListaPeliculas: Cast[] = [];
    totalCreditos: number = 0;
    listaPersonas: Personas[] = [];  
   
@@ -31,6 +32,11 @@ export class DetallePersonaComponent implements OnInit {
     this.listaPersonasService.getCreditosId(Number(this.actorId)).subscribe((resp) => {
       this.creditos = resp;
       this.totalCreditos = resp.cast.length + resp.crew.length;
+    });
+
+    this.listaPersonasService.getCreditosId(Number(this.actorId)).subscribe((resp) => {
+      this.creditos = resp;
+      this.ListaPeliculas = resp.cast;
     });
   }
 
