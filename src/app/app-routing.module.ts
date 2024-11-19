@@ -6,7 +6,7 @@ import { DetalleSerieComponent } from './components/detalle-serie/detalle-serie.
 const routes: Routes = [
   {path: 'seriesPopulares', component: ListaSeriesComponent},
   {path: 'detalle-serie/:id', component: DetalleSerieComponent},
-  {path: '', redirectTo: '/seriesPopulares', pathMatch: 'full'}
+ /* {path: '', redirectTo: '/seriesPopulares', pathMatch: 'full'}*/
 ];
 
 @NgModule({
