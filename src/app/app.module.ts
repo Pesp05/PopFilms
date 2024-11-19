@@ -3,20 +3,40 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { ListaPersonasComponent } from './components/lista-personas/lista-personas.component';
+import { provideHttpClient } from '@angular/common/http';
+import { DetallePersonaComponent } from './components/detalle-persona/detalle-persona.component';
+import { EdadActorPipe } from './pipes/edad-actor.pipe';
+
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+
+    ListaPersonasComponent,
+    DetallePersonaComponent,
+    EdadActorPipe
+
     FooterComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule
+
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync(),
+    provideHttpClient()
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
