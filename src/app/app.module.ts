@@ -13,10 +13,8 @@ import { DetallePersonaComponent } from './components/detalle-persona/detalle-pe
 import { EdadActorPipe } from './pipes/edad-actor.pipe';
 import { PosterPipe } from './pipes/poster.pipe';
 import { FooterComponent } from './components/shared/footer/footer.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatIcon } from '@angular/material/icon';
 import { DetalleSerieComponent } from './components/detalle-serie/detalle-serie.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatButtonModule} from '@angular/material/button';
 import { ListaSeriesComponent } from './components/lista-series/lista-series.component';
 
@@ -42,7 +40,6 @@ import { ListaSeriesComponent } from './components/lista-series/lista-series.com
     MatIcon
   ],
   providers: [provideHttpClient(), provideAnimationsAsync()],
-  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

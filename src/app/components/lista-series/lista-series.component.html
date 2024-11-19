@@ -12,7 +12,7 @@
                         <div class="col-6 d-flex flex-column justify-content-center p-4">
                             <div class="d-flex mx-auto mb-3">
                                 <h1 class="fw-bold">{{serieMasPopular?.name}}</h1>
-                                
+
                                 <a class="mb-3" (click)="verTrailer(serieMasPopular)">
                                     <button mat-fab class="ms-3 bg-light w-100 ms-5">Ver Tráiler
                                         <span>
@@ -41,7 +41,7 @@
                 @for(serie of listaSeries; track listaSeries.indexOf(serie)) {
                 <div class="col-sm-6 col-md-4 col-lg-2 mb-4 shadow">
                     <div class="card h-100 text-center colorFondo">
-                    <a [href]="'detalle-serie/'+serie.id">
+                    <a [href]="'serie/'+serie.id">
                         <img class="card-img-top"
                         [src]="serie?.poster_path ? (serie!.poster_path! | poster) : 'assets/img/ImagenNoEncontrada.jpg'"
                         alt="{{serieMasPopular?.name}}">
