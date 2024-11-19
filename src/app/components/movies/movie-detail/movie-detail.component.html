@@ -1,11 +1,58 @@
+<div>
+  <div>
+    <div>
+      <img
+        src="{{peli?.posterUrl}}"
+        alt="{{peli?.title}}"
+        class="movie-backdrop" />
+    </div>
+    <div>
+      <div><h1>{{peli?.title}}(<span>{{peli?.release_date |
+            date:'yyyy'}}</span>)</h1></div>
+      <div>
+        <p>{{peli?.release_date |
+          date:'dd/MM/yyyy'}}
+        </p>
+        <ul class="genres">
+          @for (genero of peli?.genres; track peli?.id) {
+          <li>{{genero.name}}</li>
+          }
+        </ul>
+        <p>{{peli?.runtime}} min</p>
+      </div>
+
+      <div>
+        <div>
+          <p>Aqui van las estrellas</p>
+        </div>
+        <div>
+          <p>boton trailer</p>
+        </div>
+      </div>
+      <div>
+        <p>{{peli?.tagline}}</p>
+      </div>
+      <div>
+        <h4>Vista general</h4>
+        <p>{{peli?.overview}}</p>
+      </div>
+      <div></div>
+    </div>
+  </div>
+  <div></div>
+</div>
+
+
+
+
+
 <div class="movie-details-container">
   <!-- Imagen y título principal -->
   <div class="movie-header">
     <img
       src="{{peli?.posterUrl}}"
       alt="{{peli?.title}}"
-      class="movie-backdrop"
-    />
+      class="movie-backdrop" />
     <div class="movie-header-content">
       <h1>{{peli?.title}}</h1>
       <p class="tagline">{{peli?.tagline}}</p>
@@ -38,32 +85,32 @@
       <p>Cargando detalles de la película...</p>
     </ng-template>
 
-      <h2>Detalles</h2>
-      <ul class="details">
-        <li><strong>Duración:</strong> {{peli?.runtime}} min</li>
-        <li><strong>Idioma original:</strong> {{peli?.original_language}}</li>
-        <li><strong>Fecha de estreno:</strong> {{peli?.release_date| date: 'dd/MM/yyyy'}}</li>
-        <li><strong>Presupuesto:</strong> {{peli?.budget| currency}}</li>
-        <li><strong>Ingresos:</strong> {{peli?.revenue| currency}}</li>
-        <li><strong>Estado:</strong> {{peli?.status}}</li>
-      </ul>
+    <h2>Detalles</h2>
+    <ul class="details">
+      <li><strong>Duración:</strong> {{peli?.runtime}} min</li>
+      <li><strong>Idioma original:</strong> {{peli?.original_language}}</li>
+      <li><strong>Fecha de estreno:</strong> {{peli?.release_date| date:
+        'dd/MM/yyyy'}}</li>
+      <li><strong>Presupuesto:</strong> {{peli?.budget| currency}}</li>
+      <li><strong>Ingresos:</strong> {{peli?.revenue| currency}}</li>
+      <li><strong>Estado:</strong> {{peli?.status}}</li>
+    </ul>
 
-      <h2>Géneros</h2>
-      <ul class="genres">
-        @for (genero of peli?.genres; track peli?.id) {
-          <li>{{genero.name}}</li>
-        }
-      </ul>
+    <h2>Géneros</h2>
+    <ul class="genres">
+      @for (genero of peli?.genres; track peli?.id) {
+      <li>{{genero.name}}</li>
+      }
+    </ul>
 
-      <h2>Producción</h2>
-      <ul>
-        @for (company of peli?.production_companies; track company.id) {
-          <li>
-            {{company.name}}
-            <span>({{company.origin_country}})</span>
-          </li>
-        }
-      </ul>
-    </div>
+    <h2>Producción</h2>
+    <ul>
+      @for (company of peli?.production_companies; track company.id) {
+      <li>
+        {{company.name}}
+        <span>({{company.origin_country}})</span>
+      </li>
+      }
+    </ul>
   </div>
-
+</div>

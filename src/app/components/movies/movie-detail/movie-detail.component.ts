@@ -56,4 +56,18 @@ export class MovieDetailComponent implements OnInit {
     this.trailerUrl = null;
     this.showTrailer = false;
   }
+
+  getColorEstrellas(voteAverage: number): string {
+    if (voteAverage >= 7) {
+      return 'text-success';
+    } else if (voteAverage >= 4) {
+      return 'text-warning';
+    } else {
+      return 'text-danger';
+    }
+  }
+
+  getActoresPorPeli(){
+    
+  }
 }
