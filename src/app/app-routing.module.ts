@@ -4,9 +4,11 @@ import { ListaSeriesComponent } from './components/lista-series/lista-series.com
 import { DetalleSerieComponent } from './components/detalle-serie/detalle-serie.component';
 
 const routes: Routes = [
+  {path: '', redirectTo: '/listaPersonas', pathMatch: 'full'},
+  {path: 'listaPersonas', component: ListaPersonasComponent},
+  {path: 'detallePersona/:id', component: DetallePersonaComponent},
   {path: 'seriesPopulares', component: ListaSeriesComponent},
   {path: 'detalle-serie/:id', component: DetalleSerieComponent},
- /* {path: '', redirectTo: '/seriesPopulares', pathMatch: 'full'}*/
 ];
 
 @NgModule({
