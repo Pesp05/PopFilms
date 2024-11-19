@@ -1,0 +1,21 @@
+<div class="row continer">
+    @for(peli of listaPeliculasTop; track peli.id) {
+    <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-4 movieCard">
+      <div class="card shadow-sm border-0 rounded">
+        <a [routerLink]="['/movie', peli.id]">
+          <img [src]="peli.posterUrl" class="card-img-top rounded" alt="{{peli.title}}" />
+        </a>
+        <div class="card-body">
+          <h5 class="card-title text-center">{{peli.original_title}}</h5>
+          <p class="card-text text-center">{{peli.release_date |
+            date:'dd/MM/yyyy'}}</p>
+          <div class="d-flex justify-content-center flex-column align-items-center">
+            <span class="ms-2">{{peli.vote_average.toFixed(2)}}</span>
+            <ngb-rating class="fs-5" [readonly]="true" [(rate)]="peli.vote_average" [ngClass]="getColorEstrellas(peli.vote_average)"/>
+            <span class="text-muted ms-1">({{peli.vote_count}} votos)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
