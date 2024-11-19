@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ListaPersonasService } from '../../services/lista-personas.service';
-import { detalle, Personas } from '../../models/lista-personas.interfaces';
 import { ActivatedRoute } from '@angular/router';
+import { DetallePersonaResponse } from '../../models/details-personas.interfaces';
+import { CreditosPersonasResponse } from '../../models/creditos-personas.interfaces';
+import { Personas } from '../../models/lista-personas.interfaces';
 
 @Component({
   selector: 'app-detalle-persona',
@@ -13,21 +15,29 @@ export class DetallePersonaComponent implements OnInit {
     private route: ActivatedRoute) {}
  
    actorId: string | null = '';
-   personaDetalle: detalle | undefined;
-   persona: Personas | undefined;
+   personaDetalle: DetallePersonaResponse | undefined;
+   creditos: CreditosPersonasResponse | undefined;
+   totalCreditos: number = 0;
+   listaPersonas: Personas[] = [];  
+  
  
   ngOnInit(): void {
     this.actorId = this.route.snapshot.paramMap.get('id');
 
-    this.listaPersonasService.getDetalleId(Number(this.actorId)).subscribe((data) => {
-      this.personaDetalle = data;
+    this.listaPersonasService.getpersonasId(Number(this.actorId)).subscribe((resp) => {
+      this.personaDetalle = resp;
     });
 
-    
+    this.listaPersonasService.getCreditosId(Number(this.actorId)).subscribe((resp) => {
+      this.creditos = resp;
+      this.totalCreditos = resp.cast.length + resp.crew.length;
+    });
   }
 
   getposterPath(posterPath: string): string {
     return `https://image.tmdb.org/t/p/w500` + posterPath;
   }
+
+  
   
 }

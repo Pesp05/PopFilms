@@ -1,13 +1,31 @@
 
 <div class="d-flex">
     <div>
-        <img class="card-img-top"
-        [src]="getposterPath(persona!.profile_path)" alt="Foto de la persona">
-        <h2>{{persona?.name}}</h2>
+        <img class="card-img-top tamImagen"
+        [src]="getposterPath(personaDetalle?.profile_path || '')" alt="Foto de la persona">
+        <h4>Informacion Personal:</h4>
+        <p>{{personaDetalle?.known_for_department}}</p>
+        <h4>Creditos conocidos</h4>
+        <p>{{totalCreditos}}</p>        
+        <h4>Fecha de nacimiento</h4>
+        <p>{{personaDetalle?.birthday}} ({{personaDetalle!.birthday | edadActor}} Años)</p>
+        <h4>Lugar de nacimiento</h4>
+        <p>{{personaDetalle?.place_of_birth}}</p>
+        <h3>Informacion Personal:</h3>
+        <p>{{personaDetalle?.also_known_as?.slice(0, 1)}}</p>
     </div> <!-- div izquierda -->
-    <div> <!-- div derecha -->
-        <div></div>
-        <div></div>
+    <div class="mx-auto"> <!-- div derecha -->
+        <div class="w-50">
+            <h2>{{personaDetalle?.name}}</h2>
+            <h5>Biografía</h5>
+            <p>{{personaDetalle?.biography}}</p>
+        </div>
+        <div>
+            <h5>Conocido por</h5>
+            @for (peliculas of listaPersonas; track $index) {
+                
+            }
+        </div>
         <div></div>
     </div>
 </div>

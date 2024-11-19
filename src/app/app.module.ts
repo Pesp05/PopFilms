@@ -8,12 +8,14 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { ListaPersonasComponent } from './components/lista-personas/lista-personas.component';
 import { provideHttpClient } from '@angular/common/http';
 import { DetallePersonaComponent } from './components/detalle-persona/detalle-persona.component';
+import { EdadActorPipe } from './pipes/edad-actor.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaPersonasComponent,
-    DetallePersonaComponent
+    DetallePersonaComponent,
+    EdadActorPipe
   ],
   imports: [
     BrowserModule,
