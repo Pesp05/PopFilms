@@ -1,0 +1,110 @@
+.first-box-film {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #ffffff;
+    margin: 3% 0;
+    color: #000000;
+    box-shadow: 1px 1px 47px -12px rgba(0, 0, 0, 1);
+
+}
+
+.top1{
+    padding: 60px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5%;
+}
+
+.top1Child{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 5px;
+
+}
+
+.top1Child > p{
+  font-size: 20 pt;
+}
+
+.top1Child > h1{
+  font-size: 30pt;
+}
+
+#ficha{
+  font-size: 18pt;
+}
+
+.top1> img{
+    border-radius: 20px;
+    box-shadow: 1px 1px 47px -12px rgba(0, 0, 0, 1);
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+
+button { /*No sale bien con su color*/
+    background-color: #FF7F30;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+button:hover {
+    background-color: #e06b25; /* Color más oscuro al pasar el ratón */
+}
+
+/* Tarjetas de películas */
+.card {
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: 1px 1px 47px -12px rgba(0, 0, 0, 1); /* Sombra elegante */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Efecto de elevación */
+    box-shadow: 1px 1px 47px -8px rgba(0, 0, 0, 1); /* Sombra más intensa */
+}
+
+.card-img-top {
+    width: 100%;
+    height: 420px; /* Altura fija para uniformidad */
+    object-fit: cover; /* Asegurar proporción sin deformar */
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #000000;
+    margin: 10px 0;
+}
+
+.card-text {
+    font-size: 0.875rem;
+    color: #535353;
+}
+
+.fa-star {
+    font-size: 1rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+}

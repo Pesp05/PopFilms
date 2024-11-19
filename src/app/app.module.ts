@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { MovieListComponent } from './components/movies/movie-list/movie-list.component';
+import { MovieDetailComponent } from './components/movies/movie-detail/movie-detail.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ListaPersonasComponent } from './components/lista-personas/lista-personas.component';
@@ -20,6 +23,8 @@ import { ListaSeriesComponent } from './components/lista-series/lista-series.com
 @NgModule({
   declarations: [
     AppComponent,
+    MovieListComponent,
+    MovieDetailComponent,
     ListaPersonasComponent,
     DetallePersonaComponent,
     ListaSeriesComponent,
@@ -27,6 +32,7 @@ import { ListaSeriesComponent } from './components/lista-series/lista-series.com
     EdadActorPipe,
     PosterPipe,
     FooterComponent
+
   ],
   imports: [
     BrowserModule,
