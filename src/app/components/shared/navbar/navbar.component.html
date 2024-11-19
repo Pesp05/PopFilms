@@ -1,0 +1,25 @@
+<div id="container">
+    <div id="navbar" class="d-flex">
+        <div class="col-4">
+            <a [routerLink]="['/home']">
+                <img src="assets/img/pop-films-light.png" alt="Popfilms logo" width="25%">
+            </a>
+        </div>
+
+        <div class="col-4">
+            <div class="col-12 d-flex justify-content-between">
+                <a class="enlace" [routerLink]="['/movies']">Peliculas</a>
+                <a class="enlace" [routerLink]="['/series']">Series</a>
+                <a class="enlace" [routerLink]="['/people']">Personas</a>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div id="subs">
+                <input type="text" placeholder="Busqueda">
+                <button id="boton">Buscar</button>
+            </div>
+        </div>
+    </div>
+</div>
+

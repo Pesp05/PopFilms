@@ -1,0 +1,60 @@
+<aside class="filters-container">
+    <h2>Filtros</h2>
+
+    <!-- Buscar por fecha de estreno -->
+    <div class="filter-group">
+      <label for="release-date-start">Fecha de Estreno</label>
+      <input type="date" id="release-date-start" placeholder="Desde">
+      <input type="date" id="release-date-end" placeholder="Hasta">
+    </div>
+
+    <!-- Filtros por Géneros -->
+    <div class="filter-group">
+      <label>Géneros</label>
+      <ul class="genre-list">
+        <li data-value="accion">Acción</li>
+        <li data-value="comedia">Comedia</li>
+        <li data-value="drama">Drama</li>
+        <li data-value="fantasia">Fantasía</li>
+        <li data-value="ciencia-ficcion">Ciencia Ficción</li>
+      </ul>
+    </div>
+
+    <!-- Número de temporadas -->
+    <div class="filter-group">
+      <label for="seasons-range">Número de Temporadas</label>
+      <div class="slider-container">
+        <input type="range" id="seasons-range" min="1" max="20" step="1" value="1" oninput="this.nextElementSibling.value = this.value">
+        <output>1</output>
+      </div>
+    </div>
+
+    <!-- Número de episodios -->
+    <div class="filter-group">
+      <label for="episodes-min">Número de Episodios</label>
+      <input type="number" id="episodes-min" placeholder="Mínimo">
+      <input type="number" id="episodes-max" placeholder="Máximo">
+    </div>
+
+    <!-- Idioma original -->
+    <div class="filter-group">
+      <label for="original-language">Idioma Original</label>
+      <select id="original-language">
+        <option value="es">Español</option>
+        <option value="en">Inglés</option>
+        <option value="fr">Francés</option>
+      </select>
+    </div>
+
+    <!-- Ordenar por -->
+    <div class="filter-group">
+      <label for="sort-by">Ordenar por</label>
+      <select id="sort-by">
+        <option value="popularity">Popularidad</option>
+        <option value="release_date">Fecha de Estreno</option>
+        <option value="vote_average">Puntuación</option>
+      </select>
+    </div>
+
+    <button class="apply-filters">Aplicar Filtros</button>
+  </aside>

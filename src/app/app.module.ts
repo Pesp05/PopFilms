@@ -17,6 +17,11 @@ import { MatIcon } from '@angular/material/icon';
 import { DetalleSerieComponent } from './components/detalle-serie/detalle-serie.component';
 import {MatButtonModule} from '@angular/material/button';
 import { ListaSeriesComponent } from './components/lista-series/lista-series.component';
+import { HomeComponent } from './components/home/home.component';
+import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { FiltroPeliComponent } from './components/filtros/filtro-peli/filtro-peli.component';
+import { FiltroSerieComponent } from './components/filtros/filtro-serie/filtro-serie.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +34,12 @@ import { ListaSeriesComponent } from './components/lista-series/lista-series.com
     DetalleSerieComponent,
     EdadActorPipe,
     PosterPipe,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    NavbarComponent,
+    FiltroPeliComponent,
+    FiltroSerieComponent,
+    SearchComponent
 
   ],
   imports: [
