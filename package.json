@@ -25,6 +25,8 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "pop-films": "file:",
+    "bootstrap-icons": "^1.11.3",
+
     "rxjs": "~7.8.0",
     "tslib": "^2.8.1",
     "zone.js": "^0.14.10"

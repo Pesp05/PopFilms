@@ -1,0 +1,56 @@
+<div class="container-fluid  shadow rounded my-5 fondo">
+    <div class="row">
+        <!-- Lado izquierdo (expandido) -->
+        <div class="col-md-4 p-4 left-side">
+            <div class="p-3 border rounded bg-white shadow-sm">
+                <div class="d-flex justify-content-center">
+                    <img class="card-img-top tamImagenSola img-fluid rounded mb-3"
+                    [src]="getposterPath(personaDetalle?.profile_path || '')" alt="Foto de la persona">
+                </div>
+                <h4>Informacion Personal</h4>
+                <p>{{personaDetalle?.known_for_department}}</p>
+                <h4>Creditos conocidos</h4>
+                <p>{{totalCreditos}}</p>        
+                <h4>Fecha de nacimiento</h4>
+                <p>{{personaDetalle?.birthday}} ({{personaDetalle!.birthday | edadActor}} Años)</p>
+                <h4>Lugar de nacimiento</h4>
+                <p>{{personaDetalle?.place_of_birth}}</p>
+                <h3>Tambien conocido como</h3>
+                <p>{{personaDetalle?.also_known_as?.slice(0, 1)}}</p>
+            </div>
+        </div>
+
+        <!-- Lado derecho -->
+        <div class="col-md-8 p-4">
+            <div class="mb-4 p-3 border rounded bg-white shadow-sm">
+                <h2>{{personaDetalle?.name}}</h2>
+                <h5>Biografía</h5>
+                <p>{{personaDetalle?.biography}}</p>
+            </div>
+
+            <div class="mb-4 p-3 border rounded bg-white shadow-sm">
+                <h5>Conocido por</h5>
+                <div class="d-flex flex-wrap">
+                    @for (peliculas of ListaPeliculas.slice(2, 6); track $index) {
+                        <div class="card tamCard rounded-5 m-3 mx-auto shadow">
+                            <img class="card-img-top rounded-top-5" [src]="getposterPath(peliculas.poster_path || '')" 
+                                alt="Foto de la película">
+                            <div class="card-body text-center">
+                                <p>{{peliculas.title}}</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="mb-4 p-3 border rounded bg-white shadow-sm">
+                <h5>Interpretación</h5>
+                <ul>
+                    @for (peliculas of ListaPeliculas.slice(0, 4); track $index) {
+                        <li class="">{{peliculas.title}}  ({{peliculas.release_date | date:'YYYY'}})</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

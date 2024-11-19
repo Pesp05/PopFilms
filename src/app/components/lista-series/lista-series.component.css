@@ -1,0 +1,15 @@
+.imagenMasPopular{
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+    border-radius: 15px;
+}
+.tamanioBoton{
+    width: 100px;
+}
+.fondoPagina{
+    background-color: #398874;
+}
+.divImagenMasPopular{
+    justify-items: center;
+}
