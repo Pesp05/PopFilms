@@ -1,8 +1,7 @@
-#footer{
+#navbar{
     background-color: #0D7685;
     padding: 20px 40px;
     text-align: center;
-    bottom: 15px;
     width: 97%;
     z-index: 1000;
     color: #ffffff;
@@ -29,7 +28,7 @@
 }
 
 .enlace{
-    color: #FF7F30;
+    color: #ffffff;
     font-size: 14pt;
     text-decoration: none;
     font-weight: bold;
