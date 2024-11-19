@@ -8,13 +8,15 @@ import { MovieListComponent } from './components/movies/movie-list/movie-list.co
 
 import { ListaSeriesComponent } from './components/lista-series/lista-series.component';
 import { DetalleSerieComponent } from './components/detalle-serie/detalle-serie.component';
+import { DetallePersonaComponent } from './components/detalle-persona/detalle-persona.component';
+import { ListaPersonasComponent } from './components/lista-personas/lista-personas.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/listaPersonas', pathMatch: 'full'},
-  {path: 'listaPersonas', component: ListaPersonasComponent},
-  {path: 'detallePersona/:id', component: DetallePersonaComponent},
-  {path: 'seriesPopulares', component: ListaSeriesComponent},
-  {path: 'detalle-serie/:id', component: DetalleSerieComponent},
+  {path: 'people', component: ListaPersonasComponent},
+  {path: 'person/:id', component: DetallePersonaComponent},
+  {path: 'series', component: ListaSeriesComponent},
+  {path: 'serie/:id', component: DetalleSerieComponent},
   {path: 'movies', component: MovieListComponent },
   {path: 'movie/:id', component: MovieDetailComponent },
 ];
