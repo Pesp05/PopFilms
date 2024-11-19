@@ -40,6 +40,6 @@ export class MoviesService {
   }
 
   getDetallePeli(idPeli: number): Observable<DetallePelicula> {
-    return this.http.get<DetallePelicula>(`https://api.themoviedb.org/3/tv/${idPeli}`, HEADERS);
+    return this.http.get<DetallePelicula>(`https://api.themoviedb.org/3/movie/${idPeli}`, HEADERS);
   }
 }

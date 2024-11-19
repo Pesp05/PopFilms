@@ -39,7 +39,7 @@
     </ng-template>
 
       <h2>Detalles</h2>
-      <ul>
+      <ul class="details">
         <li><strong>Duración:</strong> {{peli?.runtime}} min</li>
         <li><strong>Idioma original:</strong> {{peli?.original_language}}</li>
         <li><strong>Fecha de estreno:</strong> {{peli?.release_date| date: 'dd/MM/yyyy'}}</li>
@@ -57,7 +57,7 @@
 
       <h2>Producción</h2>
       <ul>
-        @for (company of peli?.production_companies; track peli?.id) {
+        @for (company of peli?.production_companies; track company.id) {
           <li>
             {{company.name}}
             <span>({{company.origin_country}})</span>
@@ -66,18 +66,4 @@
       </ul>
     </div>
   </div>
-
-
-<div *ngIf="showTrailer" class="trailer-modal">
-  <div class="trailer-content">
-    <span class="close" (click)="cerrarTrailer()">&times;</span>
-    <iframe
-      [src]="trailerUrl"
-      title="Tráiler de {{peli?.title}}"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-  </div>
-</div>
 

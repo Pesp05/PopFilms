@@ -18,14 +18,22 @@ export class MovieDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private movieService: MoviesService) { }
 
   ngOnInit(): void {
-    debugger;
     this.peliId = this.route.snapshot.paramMap.get('id');
-    debugger;
-
-    this.movieService.getDetallePeli(parseInt(this.peliId!)).subscribe((response) => {
-      this.peli = response;
-    });
+    console.log('ID de película:', this.peliId);
+  
+    if (this.peliId) {
+      this.movieService.getDetallePeli(parseInt(this.peliId)).subscribe({
+        next: (response) => {
+          console.log('Respuesta de la API:', response);
+          this.peli = response;
+        },
+        error: (error) => {
+          console.error('Error al obtener los detalles de la película:', error);
+        }
+      });
+    }
   }
+  
 
   verTrailer(): void {
     if (!this.peli) return;

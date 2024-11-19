@@ -44,5 +44,15 @@ export class MovieListComponent implements OnInit{
     this.router.navigate(['/movie', id]);
   }
 
+  getColorEstrellas(voteAverage: number): string {
+    if (voteAverage >= 7) {
+      return 'text-success';
+    } else if (voteAverage >= 4) {
+      return 'text-warning';
+    } else {
+      return 'text-danger';
+    }
+  }
+
 
 }
