@@ -62,14 +62,13 @@
   color: #555;
 }
 
-.genres, .info ul {
+.genres, .details, .info ul {
   list-style: none;
   padding: 0;
 }
 
 .genres li, .info li {
   margin: 5px 0;
-  list-style: none;
 }
 
 .movie-links {

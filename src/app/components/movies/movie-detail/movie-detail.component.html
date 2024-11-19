@@ -36,7 +36,13 @@
         <h4>Vista general</h4>
         <p>{{peli?.overview}}</p>
       </div>
-      <div></div>
+      <div>
+        @for (actor of actores; track $index) {
+          <div>
+            <h5></h5>
+          </div>
+        }
+      </div>
     </div>
   </div>
   <div></div>
