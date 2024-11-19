@@ -1,0 +1,9 @@
+.imagenMasPopular{
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+    border-radius: 15px;
+}
+.fondoPagina{
+    background-color: #398874;
+}

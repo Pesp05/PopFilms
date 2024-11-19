@@ -16,9 +16,7 @@ export class DetalleSerieComponent implements OnInit {
   constructor(private route: ActivatedRoute, private servicioListaSeries: ListaSeriesService) { }
 
   ngOnInit(): void {
-    debugger;
     this.serieId = this.route.snapshot.paramMap.get('id');
-    debugger;
     
     this.servicioListaSeries.getDetalleSerie(parseInt(this.serieId!)).subscribe((response) => {
       this.serie = response;
