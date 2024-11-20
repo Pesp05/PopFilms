@@ -1,6 +1,4 @@
-.movieCard{
-    width: 255px;
-}
+
 
 .card {
     background-color: #fff;
@@ -38,6 +36,7 @@
 
 .container {
     margin: 0 auto;
+    width: 100%;
 }
 
 .title{

@@ -1,12 +1,16 @@
 .imagenMasPopular{
   width: 400px;
-  height: 400px;
+  height: 420px;
   object-fit: contain;
-  border-radius: 15px;
+  border-radius: 30px;
 }
 .fondoPagina{
   background-color: #398874;
 }
 .fondoDatos{
   background-color: #200B0B;
+}
+.container{
+  width: 100%;
+  margin: 2% 5%;
 }

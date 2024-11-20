@@ -19,7 +19,7 @@ export class HomeComponent {
 
   ngOnInit() {
     this.homeService.getTopMoviesList().subscribe((resp) => {
-      this.listaPeliculasTop = resp.results.slice(0, 5).map((peli:any)=>{
+      this.listaPeliculasTop = resp.results.slice(0, 4).map((peli:any)=>{
         return {
           ...peli,
           posterUrl:this.homeService.getMovieImageUrl(peli.poster_path),
@@ -28,7 +28,7 @@ export class HomeComponent {
     });
 
     this.homeService.getTopSeriesList().subscribe((resp) => {
-      this.listaSeriesTop = resp.results.slice(0, 5).map((serie:any)=>{
+      this.listaSeriesTop = resp.results.slice(0, 4).map((serie:any)=>{
         return {
           ...serie,
           posterUrl:this.homeService.getMovieImageUrl(serie.poster_path),
@@ -37,7 +37,7 @@ export class HomeComponent {
     });
 
     this.homeService.getPeopleList().subscribe((resp) => {
-      this.listaPersonasTop = resp.results.slice(0, 5);
+      this.listaPersonasTop = resp.results.slice(0, 4);
     });
   }
 
