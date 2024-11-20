@@ -2,7 +2,7 @@
   <div class="d-flex">
       <div class="d-flex fondoDatos justify-content-center align-items-center">
           <img class="imagenMasPopular"
-              [src]="peli?.poster_path">
+              [src]="getposterPath(peli?.poster_path || '')">
       </div>
       <div>
           <div class="g-0 text-start">
@@ -46,7 +46,7 @@
               @for (actor of creditoPeli.slice(0,5); track $index) {
               <div class="card text-center w-25 me-2">
                   <img class="card-img-top"
-                      [src]="actor.profile_path">
+                  [src]="getposterPath(actor.profile_path || '')">
                   <div class="card-body">
                       <h5 class="card-title fw-bold text-start fw-bolder">{{actor.name}}</h5>
                       <h6 class="card-title fw-bold text-start fw-bolder">{{actor.character}}</h6>
