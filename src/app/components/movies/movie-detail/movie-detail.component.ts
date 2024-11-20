@@ -55,13 +55,19 @@ export class MovieDetailComponent implements OnInit {
   }
 
   getColorEstrellas(voteAverage: number): string {
-    if (voteAverage >= 7) {
+    if (voteAverage >= 3.5) {
       return 'text-success';
-    } else if (voteAverage >= 4) {
+    } else if (voteAverage >= 2.5) {
       return 'text-warning';
     } else {
       return 'text-danger';
     }
   }
+
+  getposterPath(posterPath: string): string {
+    return `https://image.tmdb.org/t/p/w500` + posterPath;
+  }
+
+
 
 }
