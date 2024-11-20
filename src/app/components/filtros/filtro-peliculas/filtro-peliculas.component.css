@@ -1,0 +1,111 @@
+.filters-container {
+  width: 100%;
+  max-width: 300px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+  margin: 2% 0;
+}
+
+.filters-container h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.filter-group {
+  margin-bottom: 20px;
+}
+
+.filter-group label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.filter-group input[type="date"],
+.filter-group input[type="number"],
+.filter-group input[type="range"],
+.filter-group select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 15px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+}
+
+.filter-group input[type="range"] {
+  width: 100%;
+}
+
+.filter-group output {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  display: block;
+  margin-top: 8px;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkbox-group label {
+  font-size: 16px;
+  color: #333;
+}
+
+.apply-filters {
+  background-color: #FF7F30;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 16px;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.apply-filters:hover {
+  background-color: #e06b25;
+}
+
+
+.genre-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.genre-list li {
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.genre-list li:hover {
+  background-color: #FF7F30;
+  color: #fff;
+}
+
+.genre-list li.active {
+  background-color: #FF7F30;
+  color: #fff;
+}

@@ -1,0 +1,59 @@
+<aside class="filters-container m-2 mt-5">
+  <h2>Filtros</h2>
+
+  <!-- Buscar por fecha -->
+  <div class="filter-group">
+    <label for="release-date-start">Fecha de Estreno</label>
+    <input type="date" id="release-date-start" placeholder="Desde">
+    <input type="date" id="release-date-end" placeholder="Hasta">
+  </div>
+
+  <!-- Filtros por Géneros -->
+  <div class="filter-group">
+    <label>Géneros</label>
+    <ul class="genre-list">
+      <li data-value="accion">Acción</li>
+      <li data-value="comedia">Comedia</li>
+      <li data-value="drama">Drama</li>
+      <li data-value="terror">Terror</li>
+    </ul>
+  </div>
+
+  <!-- Puntuación de usuario -->
+  <div class="filter-group">
+    <label for="rating-slider">Puntuación de Usuario</label>
+    <div class="slider-container">
+      <input type="range" id="rating-slider" min="0" max="10" step="1" value="3" oninput="this.nextElementSibling.value = this.value">
+      <output>3</output>
+    </div>
+  </div>
+
+  <!-- Idioma original -->
+  <div class="filter-group">
+    <label for="original-language">Idioma Original</label>
+    <select id="original-language">
+      <option value="es">Español</option>
+      <option value="en">Inglés</option>
+      <option value="fr">Francés</option>
+    </select>
+  </div>
+
+  <!-- Duración en minutos -->
+  <div class="filter-group">
+    <label for="runtime">Duración (min)</label>
+    <input type="number" id="runtime-min" placeholder="Mínimo">
+    <input type="number" id="runtime-max" placeholder="Máximo">
+  </div>
+
+  <!-- Ordenar por -->
+  <div class="filter-group">
+    <label for="sort-by">Ordenar por</label>
+    <select id="sort-by">
+      <option value="popularity">Popularidad</option>
+      <option value="release_date">Fecha de Estreno</option>
+      <option value="vote_average">Puntuación</option>
+    </select>
+  </div>
+
+  <button class="apply-filters">Aplicar Filtros</button>
+</aside>
