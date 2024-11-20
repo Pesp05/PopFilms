@@ -1,3 +1,6 @@
+html{
+    background-color: #398874;
+}
 .movieCard{
     width: 255px;
 }
@@ -43,6 +46,6 @@
 .title{
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 300px;
+    margin-left: 20px;
     font-size: 2rem;
 }
