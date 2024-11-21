@@ -11,10 +11,12 @@ import { DetalleSerieComponent } from './components/detalle-serie/detalle-serie.
 import { DetallePersonaComponent } from './components/detalle-persona/detalle-persona.component';
 import { ListaPersonasComponent } from './components/lista-personas/lista-personas.component';
 import { HomeComponent } from './components/home/home.component';
+import { ApprovedComponent } from './components/approved/approved.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
+  {path: 'approved', component: ApprovedComponent},
   {path: 'people', component: ListaPersonasComponent},
   {path: 'person/:id', component: DetallePersonaComponent},
   {path: 'series', component: ListaSeriesComponent},
