@@ -1,12 +1,12 @@
 <div id="container">
     <div id="navbar" class="d-flex justify-content-around">
-        <div class="col-4">
+        <div class="col-3">
             <a [routerLink]="['/home']">
                 <img src="assets/img/pop-films-light.png" alt="Popfilms logo" width="15%">
             </a>
         </div>
 
-        <div class="col-4">
+        <div class="col-3">
             <div class="col-12 d-flex justify-content-between">
                 <a class="enlace" [routerLink]="['/movies']">Peliculas</a>
                 <a class="enlace" [routerLink]="['/series']">Series</a>
@@ -14,11 +14,22 @@
             </div>
         </div>
 
-        <div class="col-4">
-            <div id="subs">
+        <div class="col-3">
+            <div class="subs">
                 <input type="text" placeholder="Busqueda">
                 <button id="boton">Buscar</button>
             </div>
+        </div>
+
+        <div class="col-3">
+            <div class="subs">
+                @if (isLoggedIn()) {
+                    <button id="boton" class="me-3" (click)="logout()">Cerrar Sesion</button>
+                } @else {
+                <button id="boton" class="me-3" (click)="createRequestToken()">Iniciar Sesion</button>
+                <button id="boton">Registrarse</button>
+                }
+            </div>         
         </div>
     </div>
 </div>

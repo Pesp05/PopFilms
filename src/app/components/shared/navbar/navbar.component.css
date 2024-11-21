@@ -53,7 +53,7 @@ input{
     background-color: #ffffff75;
 }
 
-#subs{
+.subs{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
