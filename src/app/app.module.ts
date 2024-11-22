@@ -22,6 +22,7 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { FiltroPeliComponent } from './components/filtros/filtro-peli/filtro-peli.component';
 import { FiltroSerieComponent } from './components/filtros/filtro-serie/filtro-serie.component';
 import { SearchComponent } from './components/search/search.component';
+import { ApprovedComponent } from './components/shared/approved/approved.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SearchComponent } from './components/search/search.component';
     NavbarComponent,
     FiltroPeliComponent,
     FiltroSerieComponent,
-    SearchComponent
+    SearchComponent,
+    ApprovedComponent
 
   ],
   imports: [

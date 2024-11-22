@@ -56,7 +56,28 @@ input{
 #subs{
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    margin: 10px 0;
-    width: 100%;
+    justify-content: center;
+    width: 70%;
+}
+
+#profile{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 30%;
+    gap: 5px;
+}
+
+#botonLogOut{
+    background-color: #ff5930;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
 }
