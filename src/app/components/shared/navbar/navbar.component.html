@@ -1,8 +1,9 @@
 <div id="container">
     <div id="navbar" class="d-flex justify-content-around">
-        <div class="col-4">
+        <div class="col-2">
             <a [routerLink]="['/home']">
-                <img src="assets/img/pop-films-light.png" alt="Popfilms logo" width="15%">
+                <img src="assets/img/pop-films-light.png" alt="Popfilms logo"
+                    height="80px">
             </a>
         </div>
 
@@ -14,12 +15,30 @@
             </div>
         </div>
 
-        <div class="col-4">
-            <div id="subs">
+        <div
+            class="col-6 d-flex align-items-center justify-content-between flex-nowrap row">
+            <div id="subs" class="col-3">
                 <input type="text" placeholder="Busqueda">
                 <button id="boton">Buscar</button>
             </div>
+            <div id="profile"  class="col-3">
+                @if (isLoggedIn()) {
+                <img id="userPhoto" [src]="userPhoto" alt="Avatar"
+                    class="avatar w-100" />
+                <!-- <p id="userName">{{ userName }}</p>-->
+                <button id="botonLogOut"
+                    (click)="logout()">
+                    Cerrar sesión
+                </button>
+                } @else{
+                <button id="boton" class="btn btn-sm"
+                    (click)="createRequestToken()">
+                    Iniciar sesión
+                </button>
+                }
+            </div>
         </div>
+
     </div>
 </div>
 
