@@ -86,3 +86,19 @@ input{
     font-weight: bold;
     text-decoration: none;
 }
+
+.botonPerfil{
+    width:60px;
+    height:60px;
+    background-color:#FF7F30;
+    margin: 5px;
+    padding:10px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    line-height:32px;
+    float:left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
