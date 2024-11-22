@@ -68,6 +68,11 @@ input{
     align-items: center;
     width: 30%;
     gap: 5px;
+    height:100px ;
+}
+#profile > img{
+    max-height: 80px;
+    object-fit: contain;
 }
 
 #botonLogOut{
