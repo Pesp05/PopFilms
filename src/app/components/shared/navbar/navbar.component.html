@@ -1,91 +1,93 @@
 <div id="container">
-    <div id="navbar" class="d-flex justify-content-around">
-        <div class="col-2">
-            <a [routerLink]="['/home']">
-                <img src="assets/img/pop-films-light.png" alt="Popfilms logo"
-                    height="80px">
-            </a>
-        </div>
-
-        <div class="col-4">
-            <div class="col-12 d-flex justify-content-between">
-                <a class="enlace" [routerLink]="['/movies']">Peliculas</a>
-                <a class="enlace" [routerLink]="['/series']">Series</a>
-                <a class="enlace" [routerLink]="['/people']">Personas</a>
-            </div>
-        </div>
-
-        <div
-            class="col-6 d-flex align-items-center justify-content-between flex-nowrap row">
-            <div id="subs" class="col-3">
-                <input type="text" placeholder="Busqueda">
-                <button id="boton">Buscar</button>
-            </div>
-            <div id="profile" class="col-3">
-                @if (isLoggedIn()) {
-
-                <!-- <p id="userName">{{ userName }}</p>-->
-                <button class="btn btn-lg btn-outline-primary mb-2 me-2" (click)="openEnd(content)">Right position</button>
-
-                <ng-template #content let-offcanvas>
-                    <div class="offcanvas-header">
-                        <h4 class="offcanvas-title">Offcanvas title</h4>
-                        <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <p>One fine body&hellip;</p>
-                        <div class="text-end">
-                            <button type="button" class="btn btn-outline-secondary" (click)="offcanvas.close('Close click')">Close</button>
-                        </div>
-                    </div>
-                </ng-template>
-                
-                <button class="botonPerfil" type="button"
-                    data-bs-toggle="Profile"
-                    data-bs-target="#offcanvasProfile"
-                    aria-controls="offcanvasProfile">
-                    <img id="userPhoto" [src]="userPhoto" alt="Avatar"
-                        class="avatar" />
-                </button>
-
-                <div class="offcanvas offcanvas-start" tabindex="-1"
-                    id="offcanvasProfile"
-                    aria-labelledby="offcanvasProfileLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title"
-                            id="offcanvasProfileLabel">Offcanvas</h5>
-                        <button type="button" class="btn-close"
-                            data-bs-dismiss="offcanvasProfile"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <div>
-                            <ul>
-                               <li><span></span> Perfil</li>
-                               <li><span></span> Favoritos</li>
-                               <li><span></span> Listas</li>
-                            </ul>
-                        </div>
-                        <div class="divider"></div>
-                        <button id="botonLogOut"
-                            (click)="logout()">
-                            Cerrar sesión
-                        </button>
-                    </div>
-                </div>
-                <button id="botonLogOut"
-                            (click)="logout()">
-                            Cerrar sesión
-                        </button>
-
-                } @else{
-                <button id="boton" class="btn btn-sm"
-                    (click)="createRequestToken()">
-                    Iniciar sesión
-                </button>
-                }
-            </div>
-        </div>
-
+  <div id="navbar" class="d-flex justify-content-around">
+    <div class="col-2">
+      <a [routerLink]="['/home']">
+        <img src="assets/img/pop-films-light.png" alt="Popfilms logo"
+          height="80px">
+      </a>
     </div>
+
+    <div class="col-4">
+      <div class="col-12 d-flex justify-content-between">
+        <a class="enlace" [routerLink]="['/movies']">Peliculas</a>
+        <a class="enlace" [routerLink]="['/series']">Series</a>
+        <a class="enlace" [routerLink]="['/people']">Personas</a>
+      </div>
+    </div>
+
+    <div
+      class="col-6 d-flex align-items-center justify-content-between flex-nowrap row">
+      <div id="subs" class="col-3">
+        <input type="text" placeholder="Busqueda">
+        <button id="boton">Buscar</button>
+      </div>
+      <div id="profile" class="col-3">
+        @if (isLoggedIn()) {
+
+        <!-- <p id="userName">{{ userName }}</p>-->
+
+
+        <ng-template #offcanvasProfile let-offcanvas>
+          <div class="offcanvas-header">
+            <img id="userPhoto" [src]="userPhoto" width="100%" alt="Avatar"
+            class="avatar" />
+            <h4 class="offcanvas-title" id="userName">{{ userName }}</h4>
+            <button type="button" class="btn-close" aria-label="Close"
+              (click)="offcanvas.dismiss('Cross click')"></button>
+          </div>
+          <div class="offcanvas-body">
+            <p>One fine body&hellip;</p>
+            <div class="text-end">
+              <button type="button" class="btn btn-outline-secondary"
+                (click)="offcanvas.close('Close click')">Close</button>
+            </div>
+          </div>
+        </ng-template>
+        <button class="btn btn-lg btn-outline-primary mb-2 me-2"
+                  (click)="openEnd(offcanvasProfile)">Right position</button>
+        <button class="botonPerfil btn btn-lg btn-outline-primary mb-2 me-2" (click)="openEnd(offcanvasProfile)">
+          <img id="userPhoto" [src]="userPhoto" width="100%" alt="Avatar"
+            class="avatar" />
+        </button>
+
+        <div class="offcanvas offcanvas-start" tabindex="-1"
+          id="offcanvasProfile"
+          aria-labelledby="offcanvasProfileLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title"
+              id="offcanvasProfileLabel">Offcanvas</h5>
+            <button type="button" class="btn-close"
+              data-bs-dismiss="offcanvasProfile"
+              aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <div>
+              <ul>
+                <li><span></span> Perfil</li>
+                <li><span></span> Favoritos</li>
+                <li><span></span> Listas</li>
+              </ul>
+            </div>
+            <div class="divider"></div>
+            <button id="botonLogOut"
+              (click)="logout()">
+              Cerrar sesión
+            </button>
+          </div>
+        </div>
+        <button id="botonLogOut"
+          (click)="logout()">
+          Cerrar sesión
+        </button>
+
+        } @else{
+        <button id="boton" class="btn btn-sm"
+          (click)="createRequestToken()">
+          Iniciar sesión
+        </button>
+        }
+      </div>
+    </div>
+
+  </div>
 </div>
