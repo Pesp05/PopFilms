@@ -41,7 +41,8 @@ import { ApprovedComponent } from './components/shared/approved/approved.compone
     FiltroPeliComponent,
     FiltroSerieComponent,
     SearchComponent,
-    ApprovedComponent
+    ApprovedComponent,
+    
 
   ],
   imports: [
