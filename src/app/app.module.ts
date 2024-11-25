@@ -23,6 +23,7 @@ import { FiltroPeliComponent } from './components/filtros/filtro-peli/filtro-pel
 import { FiltroSerieComponent } from './components/filtros/filtro-serie/filtro-serie.component';
 import { SearchComponent } from './components/search/search.component';
 import { ApprovedComponent } from './components/shared/approved/approved.component';
+import { WatchListComponent } from './components/perfil/watch-list/watch-list.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ApprovedComponent } from './components/shared/approved/approved.compone
     FiltroSerieComponent,
     SearchComponent,
     ApprovedComponent,
+    WatchListComponent,
     
 
   ],

@@ -9,7 +9,7 @@ import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  
+
   userName = '';
   userPhoto = '';
 
@@ -22,13 +22,14 @@ export class NavbarComponent {
       this.userName = response.username ? response.username : "User";
       this.userPhoto = response.avatar.tmdb.avatar_path
       ? `https://image.tmdb.org/t/p/original${response.avatar.tmdb.avatar_path}`
-      : 'https://cdn3.iconfinder.com/data/icons/basic-ui-element-s94-3/64/Basic_UI_Icon_Pack_-_Glyph_user-512.png';  
+      : 'https://cdn3.iconfinder.com/data/icons/basic-ui-element-s94-3/64/Basic_UI_Icon_Pack_-_Glyph_user-512.png';
     })
-    
+
 }
 
-  takeOneLetter(){
-    
+  takeOneLetter(userName:string):string{
+    let primeraLetra = this.userName.charAt(0);
+    return primeraLetra;
   }
 
   createRequestToken() {
