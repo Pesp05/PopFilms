@@ -19,7 +19,7 @@ export class HomeComponent {
 
   ngOnInit() {
     this.homeService.getTopMoviesList().subscribe((resp) => {
-      this.listaPeliculasTop = resp.results.slice(0, 5).map((peli:any)=>{
+      this.listaPeliculasTop = resp.results.slice(0, 5).map(peli => {
         return {
           ...peli,
           posterUrl:this.homeService.getMovieImageUrl(peli.poster_path),

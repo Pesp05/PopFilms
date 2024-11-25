@@ -29,52 +29,29 @@
 
         <ng-template #offcanvasProfile let-offcanvas>
           <div class="offcanvas-header">
-            <img id="userPhoto" [src]="userPhoto" width="100%" alt="Avatar"
+            <img id="userPhoto" [src]="userPhoto" width="20%" alt=""
             class="avatar" />
             <h4 class="offcanvas-title" id="userName">{{ userName }}</h4>
-            <button type="button" class="btn-close" aria-label="Close"
+            <button type="button" class="btn-close btn-close-white" aria-label="Close"
               (click)="offcanvas.dismiss('Cross click')"></button>
-          </div>
-          <div class="offcanvas-body">
-            <p>One fine body&hellip;</p>
-            <div class="text-end">
-              <button type="button" class="btn btn-outline-secondary"
-                (click)="offcanvas.close('Close click')">Close</button>
-            </div>
-          </div>
-        </ng-template>
-        <button class="btn btn-lg btn-outline-primary mb-2 me-2"
-                  (click)="openEnd(offcanvasProfile)">Right position</button>
-        <button class="botonPerfil btn btn-lg btn-outline-primary mb-2 me-2" (click)="openEnd(offcanvasProfile)">
-          <img id="userPhoto" [src]="userPhoto" width="100%" alt="Avatar"
-            class="avatar" />
-        </button>
-
-        <div class="offcanvas offcanvas-start" tabindex="-1"
-          id="offcanvasProfile"
-          aria-labelledby="offcanvasProfileLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title"
-              id="offcanvasProfileLabel">Offcanvas</h5>
-            <button type="button" class="btn-close"
-              data-bs-dismiss="offcanvasProfile"
-              aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
             <div>
               <ul>
-                <li><span></span> Perfil</li>
-                <li><span></span> Favoritos</li>
-                <li><span></span> Listas</li>
+                <li><a href=""><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person"></mat-icon> Perfil</a></li>
+                <li><a href=""><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="star"></mat-icon> Favoritos</a></li>
+                <li><a href=""><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="library_books"></mat-icon> Listas</a></li>
+                <li><a href=""><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="movie"></mat-icon> Watchlist</a></li>
               </ul>
             </div>
-            <div class="divider"></div>
-            <button id="botonLogOut"
-              (click)="logout()">
-              Cerrar sesión
-            </button>
           </div>
-        </div>
+        </ng-template>
+
+        <button class="botonPerfil btn btn-lg btn-outline-primary mb-2 me-2" (click)="openEnd(offcanvasProfile)">
+          <img id="userPhoto" [src]="userPhoto" width="100%" alt="{{userName}}"
+            class="avatar" />
+        </button>
+
         <button id="botonLogOut"
           (click)="logout()">
           Cerrar sesión

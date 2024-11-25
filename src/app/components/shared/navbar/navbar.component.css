@@ -102,3 +102,43 @@ input{
     justify-content: center;
     align-items: center;
 }
+
+ul > li{
+    list-style: none;
+    align-items: center;
+    box-shadow: #ffffff;
+    font-size: large;
+    padding: 5px;
+    padding-left: 10px;
+    border-radius: 30px;
+}
+
+ul > li:hover{
+    background-color: #0a5e6b;
+}
+
+ul>li>a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 1%;
+}
+
+mat-icon{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.offcanvas-header{
+    border-bottom: solid 2px #ff5930;
+}
+
+.offcanvas-header, .offcanvas-body{
+    background-color: #0D7685;
+    color: #ffffff;
+}

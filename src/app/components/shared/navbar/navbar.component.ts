@@ -9,36 +9,34 @@ import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
+  
   userName = '';
   userPhoto = '';
+
   constructor(private authService: AuthService,
               private accountService: AccountService
   ) {}
 
   ngOnInit(): void {
-    this.authService.createSession().subscribe((response) => {
-      localStorage.setItem('session_id', response.session_id);
-      console.log('session_id', response.session_id);
-
-      this.accountService.getAccountDetails().subscribe((response) => {
-        localStorage.setItem('user_name', response.name);
-        localStorage.setItem('user_photo', response.avatar.tmdb.avatar_path);
-        localStorage.setItem('logged_in', 'true');
-  
-        this.userName = response.name;
-        this.userPhoto = response.avatar.tmdb.avatar_path
-          ? `https://image.tmdb.org/t/p/original${response.avatar.tmdb.avatar_path}`
-          : '';
-      });
-    });
+    this.accountService.getAccountDetails().subscribe((response) => {
+      this.userName = response.username ? response.username : "User";
+      this.userPhoto = response.avatar.tmdb.avatar_path
+      ? `https://image.tmdb.org/t/p/original${response.avatar.tmdb.avatar_path}`
+      : 'https://cdn3.iconfinder.com/data/icons/basic-ui-element-s94-3/64/Basic_UI_Icon_Pack_-_Glyph_user-512.png';  
+    })
+    
 }
+
+  takeOneLetter(){
+    
+  }
 
   createRequestToken() {
     this.authService.createRequestToken().subscribe((response) => {
       localStorage.setItem('token', response.request_token);
 
       // STEP 2 de la autenticación en TMDB (firma del token iniciando sesión en TMDB)
-      window.location.href = `https://www.themoviedb.org/authenticate/${response.request_token}?redirect_to=http://localhost:4200/home`;
+      window.location.href = `https://www.themoviedb.org/authenticate/${response.request_token}?redirect_to=http://localhost:4200/approved`;
     });
   }
 
