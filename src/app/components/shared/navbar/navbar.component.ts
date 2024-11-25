@@ -27,11 +27,6 @@ export class NavbarComponent {
 
 }
 
-  takeOneLetter(userName:string):string{
-    let primeraLetra = this.userName.charAt(0);
-    return primeraLetra;
-  }
-
   createRequestToken() {
     this.authService.createRequestToken().subscribe((response) => {
       localStorage.setItem('token', response.request_token);
