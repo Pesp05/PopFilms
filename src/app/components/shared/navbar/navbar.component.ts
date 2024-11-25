@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AuthService } from '../../../services/authentication/auth.service';
 import { AccountService } from '../../../services/authentication/account.service';
 
@@ -10,6 +10,7 @@ import { AccountService } from '../../../services/authentication/account.service
 export class NavbarComponent {
   userName = '';
   userPhoto = '';
+  busqueda = '';
   constructor(private authService: AuthService,
               private accountService: AccountService
   ) {}
@@ -36,7 +37,6 @@ export class NavbarComponent {
     this.authService.createRequestToken().subscribe((response) => {
       localStorage.setItem('token', response.request_token);
 
-      // STEP 2 de la autenticación en TMDB (firma del token iniciando sesión en TMDB)
       window.location.href = `https://www.themoviedb.org/authenticate/${response.request_token}?redirect_to=http://localhost:4200/home`;
     });
   }
@@ -49,4 +49,9 @@ export class NavbarComponent {
     localStorage.clear();
     window.location.href = 'http://localhost:4200/home';
   }
+
+  iniciarBusqueda() {
+    window.location.href = `http://localhost:4200/busqueda?busqueda=${this.busqueda}`;
+  }
+
 }

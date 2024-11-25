@@ -23,6 +23,8 @@ import { FiltroPeliComponent } from './components/filtros/filtro-peli/filtro-pel
 import { FiltroSerieComponent } from './components/filtros/filtro-serie/filtro-serie.component';
 import { SearchComponent } from './components/search/search.component';
 import { ApprovedComponent } from './components/shared/approved/approved.component';
+import { BusquedaComponent } from './components/busqueda/busqueda.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { ApprovedComponent } from './components/shared/approved/approved.compone
     FiltroPeliComponent,
     FiltroSerieComponent,
     SearchComponent,
-    ApprovedComponent
+    ApprovedComponent,
+    BusquedaComponent
 
   ],
   imports: [
@@ -49,7 +52,8 @@ import { ApprovedComponent } from './components/shared/approved/approved.compone
     AppRoutingModule,
     NgbModule,
     MatButtonModule,
-    MatIcon
+    MatIcon,
+    FormsModule
   ],
   providers: [provideHttpClient(), provideAnimationsAsync()],
   bootstrap: [AppComponent]

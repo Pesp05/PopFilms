@@ -18,8 +18,10 @@
         <div
             class="col-6 d-flex align-items-center justify-content-between flex-nowrap row">
             <div id="subs" class="col-3">
-                <input type="text" placeholder="Busqueda">
-                <button id="boton">Buscar</button>
+                <form action="get">
+                    <input type="text" placeholder="Busqueda" [(ngModel)]="busqueda" name="busqueda">
+                    <button id="boton" type="button" (click)="iniciarBusqueda()">Buscar</button>
+                </form>
             </div>
             <div id="profile"  class="col-3">
                 @if (isLoggedIn()) {
