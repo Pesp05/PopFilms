@@ -138,7 +138,14 @@ mat-icon{
     border-bottom: solid 2px #ff5930;
 }
 
-.offcanvas-header, .offcanvas-body{
+.offcanvas-header, .offcanvas-body, .fondoBoton{
     background-color: #0D7685;
     color: #ffffff;
 }
+.fondoBoton{
+    color: #0a5e6b;
+}
+.no-border {
+    border: none !important;
+    box-shadow: none !important;
+  }

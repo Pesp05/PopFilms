@@ -12,6 +12,7 @@ export class NavbarComponent {
   
   userName = '';
   userPhoto = '';
+  isCollapsed = true;
 
   constructor(private authService: AuthService,
               private accountService: AccountService
