@@ -13,6 +13,7 @@ export interface BusquedaResponse {
     overview: string
     poster_path?: string
     posterUrl?: string
+    profileUrl?: string
     media_type: string
     adult: boolean
     original_language: string
