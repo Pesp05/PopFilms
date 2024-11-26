@@ -8,7 +8,7 @@
                     <img class="card-img-top small-img" [src]="serie.poster_path ? getPosterUrl(serie.poster_path) : 'default-image-url'" alt="Foto de la persona">
                     <div class="card-body">
                         <h5 class="card-title  text-start">{{serie.name}}</h5>
-                        <button (click)="eliminarSerieDeFavoritos(serie)" class="m-3 btn btn-danger"><i class="bi bi-x-circle">Eliminar</i></button>
+                        <button (click)="eliminarSerieDeFavoritos(serie)" class="m-3 btn btn-danger"><i class="bi bi-x-circle"></i></button>
                     </div>
                 </div>
             </div>
