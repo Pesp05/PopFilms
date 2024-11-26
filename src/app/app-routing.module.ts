@@ -12,6 +12,8 @@ import { DetallePersonaComponent } from './components/detalle-persona/detalle-pe
 import { ListaPersonasComponent } from './components/lista-personas/lista-personas.component';
 import { HomeComponent } from './components/home/home.component';
 import { ApprovedComponent } from './components/shared/approved/approved.component';
+import { SeriesValoradaComponent } from './components/valorados/series/series.component';
+import { PeliculasValoradasComponent } from './components/valorados/peliculas/peliculas.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -23,6 +25,8 @@ const routes: Routes = [
   {path: 'serie/:id', component: DetalleSerieComponent},
   {path: 'movies', component: MovieListComponent },
   {path: 'movie/:id', component: MovieDetailComponent },
+  {path: 'seriesRated', component: SeriesValoradaComponent},
+  {path: 'moviesRated', component: PeliculasValoradasComponent}
 ];
 
 @NgModule({

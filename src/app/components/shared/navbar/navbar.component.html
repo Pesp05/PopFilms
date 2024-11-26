@@ -47,8 +47,13 @@
                   </button>
                   <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
                     <div class="mt-3 ">
-                      <button mat-button class="ms-5">Series</button>
-                      <button mat-button class="ms-5">Peliculas</button>
+                      <a [routerLink]="['/seriesRated']" class="text-decoration-none text-white">
+                        <button mat-button class="ms-5">Series</button>
+                      </a>
+                      <a [routerLink]="['/moviesRated']" class="text-decoration-none text-white">
+                        <button mat-button class="ms-5">Peliculas</button>
+                      </a>
+                      
                     </div>
                   </div>
                 </li>

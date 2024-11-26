@@ -23,8 +23,9 @@ import { FiltroPeliComponent } from './components/filtros/filtro-peli/filtro-pel
 import { FiltroSerieComponent } from './components/filtros/filtro-serie/filtro-serie.component';
 import { SearchComponent } from './components/search/search.component';
 import { ApprovedComponent } from './components/shared/approved/approved.component';
-import { ValoradosComponent } from './components/valorados/valorados.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { SeriesValoradaComponent } from './components/valorados/series/series.component';
+import { PeliculasValoradasComponent } from './components/valorados/peliculas/peliculas.component';
 
 @NgModule({
   declarations: [
@@ -44,8 +45,8 @@ import { MatMenuModule } from '@angular/material/menu';
     FiltroSerieComponent,
     SearchComponent,
     ApprovedComponent,
-    ValoradosComponent,
-    
+    SeriesValoradaComponent,
+    PeliculasValoradasComponent
   ],
   imports: [
     BrowserModule,
