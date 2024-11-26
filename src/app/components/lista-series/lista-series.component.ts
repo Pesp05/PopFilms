@@ -43,8 +43,7 @@ export class ListaSeriesComponent implements OnInit {
   }
 
   marcarComoFavorita(serie: Serie) {
-    this.accountService.markAsFavorite(serie.id, 'tv', true);
-    
+      this.accountService.markAsFavorite(serie.id, 'tv', true);
   }
 
   getKeySerie(idSerie: number): string {
