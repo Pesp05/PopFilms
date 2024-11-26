@@ -23,6 +23,9 @@
                             </div>
                             <p class="fs-4">{{serieMasPopular?.overview}}</p>
                             <a [href]="'detalle-serie/'+serieMasPopular?.id" class="btn btn-warning px-4 py-2 fw-bold rounded-1">Ver ficha</a>
+                            @if (serieMasPopular) {
+                                <button (click)="marcarComoFavorita(serieMasPopular)" class="btn btn-primary mt-3">Agregar a Favoritos</button>
+                            }
                         </div>
 
                         <!-- Imagen de la serie -->
@@ -34,7 +37,8 @@
                     </div>
                 </div>
             </div>
-
+            
+            
             <!-- Lista de series -->
             <div class="row mt-5">
                 @for(serie of listaSeries; track listaSeries.indexOf(serie)) {
@@ -50,6 +54,9 @@
                             <p class="text-start">{{serie.first_air_date | date:'dd/MM/yyyy'}}</p>
                             <p>{{(serie.vote_average/2).toFixed(2)}}</p>
                             <ngb-rating class="fs-5" [readonly]="true" [rate]="serie.vote_average / 2" [max]="5" [ngClass]="getColorEstrellas(serie.vote_average / 2)"></ngb-rating>
+                             @if (serieMasPopular) {
+                                <button (click)="marcarComoFavorita(serieMasPopular)" class="btn btn-primary mt-3">Agregar a Favoritos</button>
+                            }
                         </div>
                     </div>
                 </div>

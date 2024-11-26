@@ -1,0 +1,12 @@
+<div class="container mt-4 mb-4 p-4 rounded bg-light rounded-3">
+    <h2>Favoritos</h2>
+    <ul class="list-group">
+    @for (serie of seriesFavoritas; track serie.id) {
+        <div class="row">
+            <div class="col">
+                <h4>{{serie.name}}</h4>
+            </div>
+        </div>
+    }
+    </ul>
+  </div>
