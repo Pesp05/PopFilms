@@ -12,6 +12,7 @@ import { DetallePersonaComponent } from './components/detalle-persona/detalle-pe
 import { ListaPersonasComponent } from './components/lista-personas/lista-personas.component';
 import { HomeComponent } from './components/home/home.component';
 import { ApprovedComponent } from './components/shared/approved/approved.component';
+import { WatchListComponent } from './components/perfil/watch-list/watch-list.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'serie/:id', component: DetalleSerieComponent},
   {path: 'movies', component: MovieListComponent },
   {path: 'movie/:id', component: MovieDetailComponent },
+  {path: 'watchlist', component:WatchListComponent}
 ];
 
 @NgModule({

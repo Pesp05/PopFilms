@@ -1,1 +1,39 @@
-<p>watch-list works!</p>
+<h1 class="w-100 align-content-center">Watchlist</h1>
+<div>
+  <h3 class="title">Peliculas</h3>
+<div class="row container">
+    @for(peli of moviesWatchlist; track peli.id) {
+    <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-4 movieCard">
+      <div class="card shadow-sm border-0 rounded">
+        <a [routerLink]="['/movie', peli.id]">
+          <img [src]="peli.poster_path ? getPosterUrl(peli.poster_path) : 'default-image-url'" alt="Foto de la persona" class="card-img-top rounded" alt="{{peli.title}}" />
+        </a>
+        <div class="card-body">
+          <h5 class="card-title text-center">{{peli.original_title}}</h5>
+          <button>Eliminar</button>
+
+        </div>
+      </div>
+    </div>
+    }
+</div>
+
+<h3 class="title">Series</h3>
+<div class="row container">
+    @for(serie of tvsWatchlist; track serie.id) {
+    <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-4 movieCard">
+      <div class="card shadow-sm border-0 rounded">
+        <a [routerLink]="['/serie', serie.id]">
+          <img class="card-img-top small-img" [src]="serie.poster_path ? getPosterUrl(serie.poster_path) : 'default-image-url'" alt="Foto de la persona" class="card-img-top rounded" alt="{{serie.name}}" />
+        </a>
+        <div class="card-body">
+          <h5 class="card-title text-center">{{serie.original_name}}</h5>
+          <button>Eliminar</button>
+        </div>
+      </div>
+    </div>
+    }
+</div>
+
+
+</div>
