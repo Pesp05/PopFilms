@@ -51,8 +51,14 @@
     object-fit: cover;
 }
 
+mat-icon{
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 2px;
+    margin-bottom: -3px;
+}
 
-button { /*No sale bien con su color*/
+button { 
     background-color: #FF7F30;
     color: #fff;
     border: none;
@@ -66,6 +72,7 @@ button { /*No sale bien con su color*/
 
 button:hover {
     background-color: #e06b25; /* Color más oscuro al pasar el ratón */
+    scale: 1.2;
 }
 
 /* Tarjetas de películas */
@@ -108,3 +115,14 @@ button:hover {
     margin: 0 auto;
     padding: 10px;
 }
+
+.botonLista{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-top: 10px;
+    padding: 3px 8px;
+    justify-content: space-evenly;
+}
+
+
