@@ -13,3 +13,14 @@
 .divImagenMasPopular{
     justify-items: center;
 }
+
+.favoritos{ /*No sale bien con su color*/
+    background-color: #FF7F30;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}

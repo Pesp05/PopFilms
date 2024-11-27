@@ -13,7 +13,7 @@
                                 <h1 class="fw-bold">{{serieMasPopular?.name}}</h1>
 
                                 <a class="mb-3" (click)="verTrailer(serieMasPopular)">
-                                    <button mat-fab class="ms-3 bg-light w-100 ms-5">Ver Tráiler
+                                    <button mat-fab class="ms-3 favoritos w-100 ms-5">Ver Tráiler
                                         <span>
                                             <mat-icon style="line-height: 37px;" fontIcon="keyboard_arrow_right">
                                             </mat-icon>
@@ -22,9 +22,9 @@
                                 </a>
                             </div>
                             <p class="fs-4">{{serieMasPopular?.overview}}</p>
-                            <a [href]="'detalle-serie/'+serieMasPopular?.id" class="btn btn-warning px-4 py-2 fw-bold rounded-1">Ver ficha</a>
+                            <a [href]="'detalle-serie/'+serieMasPopular?.id" class="btn px-4 py-2 favoritos fw-bold rounded-1">Ver ficha</a>
                             @if (serieMasPopular) {
-                                <button (click)="marcarComoFavorita(serieMasPopular)" class="w-25 btn btn-warning mt-3"><i class="bi bi-heart text-dark"></i> Favoritos</button>
+                                <button (click)="marcarComoFavorita(serieMasPopular)" class="w-25 btn favoritos mt-3"><i class="bi bi-heart"></i> Favoritos</button>
                             }
                         </div>
 
@@ -56,7 +56,7 @@
                         <ngb-rating class="fs-5" [readonly]="true" [rate]="serie.vote_average / 2" [max]="5" [ngClass]="getColorEstrellas(serie.vote_average / 2)"></ngb-rating>
                         <div class="mt-3">
                             @if (serie) {
-                                <button (click)="marcarComoFavorita(serie)" class="btn bg-warning mt-3">
+                                <button (click)="marcarComoFavorita(serie)" class="btn favoritos mt-3">
                                     <i class="bi bi-heart text-dark"></i>
                                 </button>
                             }

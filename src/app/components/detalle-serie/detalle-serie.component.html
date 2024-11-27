@@ -27,15 +27,15 @@
                             <p class="ms-3">({{serie?.vote_count}} Votos)</p>
                             <div class="ms-5 d-flex align-items-center">
                                 <a class="mb-3 me-3" (click)="verTrailer(serie)">
-                                    <button mat-fab class="bg-light w-100">Ver Tráiler
+                                    <button mat-fab class="favoritos w-100">Ver Tráiler
                                         <span>
                                             <mat-icon style="line-height: 37px;" fontIcon="keyboard_arrow_right">
                                             </mat-icon>
                                         </span>
                                     </button>
                                 </a>
-                                <button (click)="marcarComoFavorita()" class="btn bg-warning">
-                                    <i class="bi bi-heart text-dark"></i> Favoritos
+                                <button (click)="marcarComoFavorita()" class="btn favoritos">
+                                    <i class="bi bi-heart"></i>
                                 </button>
                             </div>
                         </div>

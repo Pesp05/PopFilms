@@ -20,7 +20,7 @@
             <button id="ficha" mat-fab class="w-100">Ver Ficha</button>
           </a>
           @if (listaPeliculasPopulares[0]) {
-            <button (click)="marcarComoFavorita(listaPeliculasPopulares[0])" class="w-25 btn btn-warning mt-3"><i class="bi bi-heart text-dark"></i> Favoritos</button>
+            <button (click)="marcarComoFavorita(listaPeliculasPopulares[0])" class="w-25 btn  mt-3"><i class="bi bi-heart text-dark"></i> Favoritos</button>
         }
         </div>
         <div class="col-6 top1">
@@ -44,7 +44,7 @@
                 <ngb-rating class="fs-5" [readonly]="true" [(rate)]="peli.vote_average" [ngClass]="getColorEstrellas(peli.vote_average)"/>
                 <span class="text-muted ms-1">({{peli.vote_count}} votos)</span>
                 <div class="mt-3">
-                  <button (click)="marcarComoFavorita(peli)" class="btn bg-warning mt-3">
+                  <button (click)="marcarComoFavorita(peli)" class="btn  mt-3">
                     <i class="bi bi-heart text-dark"></i> Favoritos
                   </button>
                 </div>
