@@ -26,13 +26,20 @@
                                 [ngClass]="getColorEstrellas(serie!.vote_average / 2)"></ngb-rating>
                             <p class="ms-3">({{serie?.vote_count}} Votos)</p>
                             <a class="mb-3" (click)="verTrailer(serie)">
-                                <button mat-fab class="ms-3 bg-light w-100 ms-5">Ver Tráiler
+                                <button mat-fab class="ms-3 bg-light rounded-3 w-100 ms-5">Ver Tráiler
                                     <span>
                                         <mat-icon style="line-height: 37px;" fontIcon="keyboard_arrow_right">
                                         </mat-icon>
                                     </span>
                                 </button>
                             </a>
+                        </div>
+                        <div class="d-flex">
+                            <p class="text-center">Valorar Pelicula:</p>
+                            <ngb-rating class="fs-5 ms-3 text-light" [(rate)]="ratingSerie" [max]="5" (rateChange)="onRateChange($event)"></ngb-rating>
+                            @if (serieValorada) {
+                                <button mat-fab class="ms-3 bg-danger w-25 rounded-3 ms-5" (click)="deleteRating()">Eliminar Valoracion</button>
+                            }
                         </div>
                     </div>
                     <div class="mb-4">
