@@ -12,7 +12,7 @@ export class NavbarComponent {
   
   userName = '';
   userPhoto = '';
-
+  isFavoritesCollapsed = true;
   constructor(private authService: AuthService,
               private accountService: AccountService
   ) {}
@@ -47,6 +47,10 @@ export class NavbarComponent {
   logout() {
     localStorage.clear();
     window.location.href = 'http://localhost:4200/home';
+  }
+
+  toggleFavorites(): void {
+    this.isFavoritesCollapsed = !this.isFavoritesCollapsed;
   }
 
   //---------------------------------------------------------------------------------
