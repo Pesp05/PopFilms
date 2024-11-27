@@ -4,15 +4,15 @@
 
   <!-- Botones para alternar entre películas y series -->
   <div class="d-flex justify-content-center mb-4">
-    <button 
-      class="btn btn-warning me-2 px-4 py-2" 
-      [class.active]="showMovies" 
+    <button
+      class="btn btn-warning me-2 px-4 py-2"
+      [class.active]="showMovies"
       (click)="toggleView(true)">
       Películas
     </button>
-    <button 
-      class="btn btn-warning px-4 py-2" 
-      [class.active]="!showMovies" 
+    <button
+      class="btn btn-warning px-4 py-2"
+      [class.active]="!showMovies"
       (click)="toggleView(false)">
       Series
     </button>
@@ -20,7 +20,7 @@
 
   <!-- Sección de películas -->
   <div *ngIf="showMovies">
-    <h3 class="text-center fw-bold mb-4 text-primary">Películas</h3>
+    <h3 class="text-center fw-bold mb-4 text-light">Películas</h3>
 
     <div *ngIf="moviesWatchlist.length === 0" class="empty-message">
       <p class="text-center">No has añadido ninguna película a tu lista.</p>
@@ -47,7 +47,7 @@
 
   <!-- Sección de series -->
   <div *ngIf="!showMovies">
-    <h3 class="text-center fw-bold mb-4 text-primary">Series</h3>
+    <h3 class="text-center fw-bold mb-4 text-light">Series</h3>
 
     <div *ngIf="tvsWatchlist.length === 0" class="empty-message">
       <p class="text-center">No has añadido ninguna serie a tu lista.</p>

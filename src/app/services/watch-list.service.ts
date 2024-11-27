@@ -20,8 +20,6 @@ const ACCOUNT_ID = localStorage.getItem('account_id');
 })
 export class WatchListService {
 
-  
-
 
   constructor(private account: AccountService, private http:HttpClient) { }
 
@@ -35,20 +33,15 @@ export class WatchListService {
 
   }
 
-  addToWatchList(mediaId: number, mediaType: string, watchList: boolean): void{
+  addToWatchList(mediaId: number, mediaType: 'movie' | 'tv', watchList: boolean): Observable<any> {
     const body = {
       media_type: mediaType,
       media_id: mediaId,
-      watchList: watchList
+      watchlist: watchList
     };
-    
-   
-    this.http.post(`${API_BASE_URL}/account/${ACCOUNT_ID}/watchlist`, body).subscribe((response) =>{
-      console.log('Añadida a watchlist', response);
-    },
-  error => {
-      console.log('Error al añadir a watchlist', error)
-  })
+
+
+    return this.http.post(`${API_BASE_URL}/account/${ACCOUNT_ID}/watchlist`, body, HEADERS);
   }
 
   removeMovieToWatchList(peliculaId:number):Observable<any>{

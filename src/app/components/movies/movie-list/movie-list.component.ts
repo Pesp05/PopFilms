@@ -54,9 +54,9 @@ export class MovieListComponent implements OnInit{
       return 'text-danger';
     }
   }
-  
+
   addMovieToWatchList(peliculaId: number): void {
-  this.watchListService.addToWatchList(peliculaId, 'movie', true);  
+  this.watchListService.addToWatchList(peliculaId, 'movie', true);
 }
 
 }

@@ -43,5 +43,17 @@ export class WatchListComponent implements OnInit {
   toggleView(showMovies: boolean): void {
     this.showMovies = showMovies;
   }
+
+  addMovieToWatchList(peliculaId: number): void {
+    this.watchlistService.addToWatchList(peliculaId, 'movie', true).subscribe({
+      next: (response) => {
+        console.log('Película añadida a la watchlist:', response);
+      },
+      error: (err) => {
+        console.error('Error al añadir película a la watchlist:', err);
+      }
+    });
+  }
+
 }
 
