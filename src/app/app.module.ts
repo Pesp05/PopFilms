@@ -24,6 +24,8 @@ import { FiltroSerieComponent } from './components/filtros/filtro-serie/filtro-s
 import { SearchComponent } from './components/search/search.component';
 import { ApprovedComponent } from './components/shared/approved/approved.component';
 import { FavoritosComponent } from './components/favoritos/favoritos.component';
+import { SeriesFavoritasComponent } from './components/series-favoritas/series-favoritas.component';
+import { PeliculasFavoritasComponent } from './components/peliculas-favoritas/peliculas-favoritas.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { FavoritosComponent } from './components/favoritos/favoritos.component';
     SearchComponent,
     ApprovedComponent,
     FavoritosComponent,
+    SeriesFavoritasComponent,
+    PeliculasFavoritasComponent,
     
 
   ],

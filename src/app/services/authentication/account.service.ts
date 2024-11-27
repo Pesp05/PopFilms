@@ -56,13 +56,13 @@ const token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZDA1NzdlOGNkMmUyYjU0OWY5NDYxOTU0
     }
 
 
-    removeFavoriteSerie(serieId: number): Observable<any> {
+    removeFavoriteSerie(serieId: number): Observable<void> {
       const url = `${API_BASE_URL}/account/${ACCOUNT_ID}/favorite/tv/${serieId}?api_key=${API_KEY}&session_id=${SESSION_ID}`;
-      return this.http.delete(url);
+      return this.http.delete<void>(url);
     }
 
-    removeFavoritePelicula(peliculaId: number): Observable<any> {
+    removeFavoritePelicula(peliculaId: number): Observable<void> {
       const url = `${API_BASE_URL}/account/${ACCOUNT_ID}/favorite/movies/${peliculaId}?api_key=${API_KEY}&session_id=${SESSION_ID}`;
-      return this.http.delete(url);
+      return this.http.delete<void>(url);
     }
   }
