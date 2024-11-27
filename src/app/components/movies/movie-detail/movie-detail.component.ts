@@ -3,6 +3,7 @@ import { MoviesService } from '../../../services/movies.service';
 import { DetallePelicula, Pelicula } from '../../../models/lista-peliculas-response.interface';
 import { ActivatedRoute } from '@angular/router';
 import { Cast } from '../../../models/creditos-peliculas.interface';
+import { AccountService } from '../../../services/authentication/account.service';
 
 @Component({
   selector: 'app-movie-detail',
@@ -17,7 +18,7 @@ export class MovieDetailComponent implements OnInit {
   showTrailer: boolean = false;
   creditoPeli: Cast[] = [];
 
-  constructor(private route: ActivatedRoute, private movieService: MoviesService) { }
+  constructor(private route: ActivatedRoute, private movieService: MoviesService, private accountService: AccountService) { }
 
 
   ngOnInit(): void {
@@ -29,6 +30,13 @@ export class MovieDetailComponent implements OnInit {
     this.movieService.getCreditosPeli(parseInt(this.peliId!)).subscribe((response) => {
       this.creditoPeli = response.cast;
     });
+  }
+
+
+  marcarComoFavorita(): void {
+    if (this.peli) {
+      this.accountService.markAsFavorite(this.peli.id, 'movie', true);
+    }
   }
 
 

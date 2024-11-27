@@ -25,10 +25,16 @@
                           <ngb-rating class="fs-5 ms-3" [readonly]="true" [rate]="peli!.vote_average / 2" [max]="5"
                               [ngClass]="getColorEstrellas(peli!.vote_average / 2)"></ngb-rating>
                           <p class="ms-3">({{peli?.vote_count}} Votos)</p>
-                          <a class="mb-3" (click)="verTrailer()">
-                              <button mat-fab class="ms-3 bg-light w-100 ms-5">Ver Tráiler
-                              </button>
-                          </a>
+                          <div class="d-flex align-items-center mt-3">
+                            <a class="me-3" (click)="verTrailer()">
+                              <button mat-fab class="favoritos w-100">Ver Tráiler</button>
+                            </a>
+                            <button (click)="marcarComoFavorita()" class="btn favoritos me-3">
+                              <i class="bi bi-heart"></i>
+                            </button>
+                          </div>
+                          
+                          
                       </div>
                   </div>
                   <div class="mb-4">
