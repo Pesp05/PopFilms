@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ListaSeriesService } from '../../services/lista-series.service';
-import { DetalleSerieResponse } from '../../models/detalle-serie.interfaces';
-import { Cast } from '../../models/creditos-serie.interface';
+import { ListaSeriesService } from '../../../services/lista-series.service';
+import { DetalleSerieResponse } from '../../../models/detalle-serie.interfaces';
+import { Cast } from '../../../models/creditos-serie.interface';
 
 @Component({
   selector: 'app-detalle-serie',

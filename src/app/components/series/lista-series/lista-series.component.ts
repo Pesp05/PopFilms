@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Serie } from '../../models/lista-series.interface';
-import { ListaSeriesService } from '../../services/lista-series.service';
+import { Serie } from '../../../models/lista-series.interface';
+import { ListaSeriesService } from '../../../services/lista-series.service';
+
 
 @Component({
   selector: 'app-lista-series',
