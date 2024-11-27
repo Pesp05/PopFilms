@@ -1,0 +1,115 @@
+#watchlist-container {
+    padding: 20px;
+    margin: 20px;
+    background-color: #0D7685;
+    border-radius: 10px;
+    color: #ffffff;
+  }
+  
+  .toggle-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .toggle-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #FF7F30;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .toggle-btn.active {
+    background-color: #ff5930;
+  }
+  
+  .toggle-btn:hover {
+    background-color: #ff9050;
+  }
+  
+  .watchlist-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .item {
+    background-color: #ffffff10;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    width: 200px;
+  }
+  
+  .item img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .delete-btn {
+    background-color: #ff5930;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .delete-btn:hover {
+    background-color: #ff2b00;
+  }
+  
+  .title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: #333;
+  }
+  
+  .movieCard .card-title {
+    font-size: 1.1rem;
+    color: #444;
+  }
+  
+ 
+  
+  .btn-warning.active {
+    background-color: #ff8c00;
+    border-color: #ff8c00;
+  }
+  
+  .card-body {
+    background-color: #f8f9fa;
+  }
+  
+  .card-body button {
+    font-size: 0.9rem;
+  }
+
+  .empty-message {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .empty-message p {
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  

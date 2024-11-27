@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../../../services/movies.service';
 import { Pelicula } from '../../../models/lista-peliculas-response.interface';
 import { Router } from '@angular/router';
+import { WatchListService } from '../../../services/watch-list.service';
 
 @Component({
   selector: 'app-movie-list',
@@ -12,7 +13,7 @@ export class MovieListComponent implements OnInit{
 
   listaPeliculasPopulares :Pelicula[] =[];
 
-  constructor(private movieService:MoviesService,private router: Router){}
+  constructor(private movieService:MoviesService,private router: Router,private watchListService: WatchListService){}
 
   ngOnInit(): void {
     this.movieService.obtenerPeliculasPopulares().subscribe((data:any) => {
@@ -53,6 +54,10 @@ export class MovieListComponent implements OnInit{
       return 'text-danger';
     }
   }
-
+  
+  addMovieToWatchList(peliculaId: number): void {
+  this.watchListService.addToWatchList(peliculaId, 'movie', true);  
+}
 
 }
+
