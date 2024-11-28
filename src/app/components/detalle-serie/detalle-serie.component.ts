@@ -15,8 +15,9 @@ export class DetalleSerieComponent implements OnInit {
   serieId: string | null = '';
   serie: DetalleSerieResponse | undefined;
   creditoSerie: Cast[] = [];
+  ratingSerie: number = 0;
+  serieValorada: boolean = false;
   constructor(private route: ActivatedRoute, private servicioListaSeries: ListaSeriesService, private accountService: AccountService) { }
-
   ngOnInit(): void {
     this.serieId = this.route.snapshot.paramMap.get('id');
     
@@ -66,5 +67,22 @@ export class DetalleSerieComponent implements OnInit {
 
   getVideoUrl(keySerie: string): string {
     return `https://www.youtube.com/watch?v=${keySerie}`;
+  }
+
+  setSerieRating(rating: number): void {
+    this.servicioListaSeries.setRatingSerie(parseInt(this.serieId!), rating).subscribe();
+  }
+
+  onRateChange(newRating: number): void {
+    this.ratingSerie = newRating;
+    newRating = newRating * 2;
+    this.serieValorada = true;
+    this.setSerieRating(newRating);
+    
+  }
+  deleteRating(): void {
+    this.servicioListaSeries.deleteRatingSerie(parseInt(this.serieId!)).subscribe();
+    this.serieValorada = false;
+    this.ratingSerie = 0;
   }
 }
