@@ -91,6 +91,8 @@
   
   .card-body {
     background-color: #f8f9fa;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
   }
   
   .card-body button {

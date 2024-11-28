@@ -13,3 +13,39 @@
 .divImagenMasPopular{
     justify-items: center;
 }
+
+.botonLista{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-top: 10px;
+    padding: 3px 8px;
+    justify-content: space-evenly;
+}
+
+mat-icon{
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 2px;
+    margin-bottom: -3px;
+}
+
+button { 
+    background-color: #FF7F30;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e06b25; /* Color más oscuro al pasar el ratón */
+    scale: 1.2;
+}
+
+
+
+

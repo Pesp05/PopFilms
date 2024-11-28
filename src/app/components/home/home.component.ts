@@ -3,6 +3,7 @@ import { Pelicula } from '../../models/top-movie-list.interface';
 import { Serie } from '../../models/top-serie-list.interface';
 import { Personas } from '../../models/lista-personas.interfaces';
 import { HomeService } from '../../services/home.service';
+import { WatchListService } from '../../services/watch-list.service';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,7 @@ export class HomeComponent {
   listaPersonasTop: Personas[] = [];
   
 
-  constructor(private homeService: HomeService) { }
+  constructor(private homeService: HomeService, private watchListService: WatchListService) { }
 
   ngOnInit() {
     this.homeService.getTopMoviesList().subscribe((resp) => {
@@ -52,5 +53,13 @@ export class HomeComponent {
   }
   getposterPath(posterPath: string): string {
     return `https://image.tmdb.org/t/p/w500/${posterPath}`;
+  }
+
+  addMovieToWatchList(peliculaId: number): void {
+    this.watchListService.addToWatchList(peliculaId, 'movie', true);
+  }
+
+  addSerieToWatchList(serieId: number): void {
+    this.watchListService.addToWatchList(serieId, 'tv', true)
   }
 }

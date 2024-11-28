@@ -55,5 +55,4 @@ export class ListaSeriesComponent implements OnInit {
   addSerieToWatchList(serieId: number): void {
     this.watchListService.addToWatchList(serieId, 'tv', true)
   }
-
 }
