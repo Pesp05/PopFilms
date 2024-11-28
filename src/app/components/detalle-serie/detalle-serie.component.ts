@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ListaSeriesService } from '../../services/lista-series.service';
 import { DetalleSerieResponse } from '../../models/detalle-serie.interfaces';
 import { Cast } from '../../models/creditos-serie.interface';
+import { AccountService } from '../../services/authentication/account.service';
 
 @Component({
   selector: 'app-detalle-serie',
@@ -14,8 +15,9 @@ export class DetalleSerieComponent implements OnInit {
   serieId: string | null = '';
   serie: DetalleSerieResponse | undefined;
   creditoSerie: Cast[] = [];
-  constructor(private route: ActivatedRoute, private servicioListaSeries: ListaSeriesService) { }
-
+  ratingSerie: number = 0;
+  serieValorada: boolean = false;
+  constructor(private route: ActivatedRoute, private servicioListaSeries: ListaSeriesService, private accountService: AccountService) { }
   ngOnInit(): void {
     this.serieId = this.route.snapshot.paramMap.get('id');
     
@@ -39,6 +41,14 @@ export class DetalleSerieComponent implements OnInit {
       return 'text-danger';
     }
   }
+
+  marcarComoFavorita(): void {
+    if (this.serie) {
+      this.accountService.markAsFavorite(this.serie.id, 'tv', true);
+    }
+  }
+
+
   verTrailer(serie: any) {
     this.servicioListaSeries.getSerieVideo(serie.id).subscribe((data) => {
       const key = data.results[0].key;
@@ -57,5 +67,22 @@ export class DetalleSerieComponent implements OnInit {
 
   getVideoUrl(keySerie: string): string {
     return `https://www.youtube.com/watch?v=${keySerie}`;
+  }
+
+  setSerieRating(rating: number): void {
+    this.servicioListaSeries.setRatingSerie(parseInt(this.serieId!), rating).subscribe();
+  }
+
+  onRateChange(newRating: number): void {
+    this.ratingSerie = newRating;
+    newRating = newRating * 2;
+    this.serieValorada = true;
+    this.setSerieRating(newRating);
+    
+  }
+  deleteRating(): void {
+    this.servicioListaSeries.deleteRatingSerie(parseInt(this.serieId!)).subscribe();
+    this.serieValorada = false;
+    this.ratingSerie = 0;
   }
 }

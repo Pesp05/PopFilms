@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Serie } from '../../models/lista-series.interface';
 import { ListaSeriesService } from '../../services/lista-series.service';
 import { WatchListService } from '../../services/watch-list.service';
+import { AccountService } from '../../services/authentication/account.service';
 
 @Component({
   selector: 'app-lista-series',
@@ -12,7 +13,7 @@ export class ListaSeriesComponent implements OnInit {
   listaSeries: Serie[] = [];
   serieMasPopular: Serie | undefined;
 
-  constructor(private servicioListaSeries: ListaSeriesService, private watchListService: WatchListService) { }
+  constructor(private servicioListaSeries: ListaSeriesService, private accountService: AccountService, private watchListService: WatchListService) { }
 
   ngOnInit(): void {
     this.servicioListaSeries.getPopularWithHeader().subscribe((data) => {
@@ -38,6 +39,10 @@ export class ListaSeriesComponent implements OnInit {
       const videoUrl = this.getVideoUrl(key);
       window.open(videoUrl, '_blank');
     });
+  }
+
+  marcarComoFavorita(serie: Serie) {
+      this.accountService.markAsFavorite(serie.id, 'tv', true);
   }
 
   getKeySerie(idSerie: number): string {

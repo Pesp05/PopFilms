@@ -3,6 +3,7 @@ import { MoviesService } from '../../../services/movies.service';
 import { Pelicula } from '../../../models/lista-peliculas-response.interface';
 import { Router } from '@angular/router';
 import { WatchListService } from '../../../services/watch-list.service';
+import { AccountService } from '../../../services/authentication/account.service';
 
 @Component({
   selector: 'app-movie-list',
@@ -13,7 +14,7 @@ export class MovieListComponent implements OnInit{
 
   listaPeliculasPopulares :Pelicula[] =[];
 
-  constructor(private movieService:MoviesService,private router: Router,private watchListService: WatchListService){}
+  constructor(private movieService:MoviesService,private router: Router, private accountService: AccountService,private watchListService: WatchListService){}
 
   ngOnInit(): void {
     this.movieService.obtenerPeliculasPopulares().subscribe((data:any) => {
@@ -26,6 +27,11 @@ export class MovieListComponent implements OnInit{
     })
 
   }
+
+  marcarComoFavorita(pelicula: Pelicula) {
+    this.accountService.markAsFavorite(pelicula.id, 'movie', true);
+}
+
 
   verTrailer(peli: any) {
     this.movieService.obtenerTrailerPorId(peli.id).subscribe((data) => {

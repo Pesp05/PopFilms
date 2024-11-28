@@ -5,7 +5,7 @@ import { DetallePelicula, ListaPeliculasResponse, Pelicula } from '../models/lis
 import { PeliculasVideosResponse } from '../models/peliculas-videos-response.interface';
 import { CreditosPeliResponse } from '../models/creditos-peliculas.interface';
 
-
+const API_KEY = '4c92ea126ceabbca4fbdaa0e7e3696ca';
 const API_BASE_URL = 'https://api.themoviedb.org/3';
 const HEADERS = {
   headers: {
@@ -13,7 +13,11 @@ const HEADERS = {
     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0YzkyZWExMjZjZWFiYmNhNGZiZGFhMGU3ZTM2OTZjYSIsIm5iZiI6MTczMTY3MjY3MC4wMjY2OSwic3ViIjoiNjczMWJlMDY3ZWYyYzMxZDc4ZWRhYmY5Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.yu0Vz62aRfMDWK5FKDNiUKsrGrvvd_3zh0xhqp87BNI'
   }
 };
-
+const HEADERSANDPOST = {
+  headers: {
+    'Content-Type': 'application/json;charset=utf-8'
+  }
+};
 @Injectable({
   providedIn: 'root'
 })
@@ -41,5 +45,13 @@ export class MoviesService {
 
   getCreditosPeli(idMovie: number): Observable<CreditosPeliResponse> {
     return this.http.get<CreditosPeliResponse>(`https://api.themoviedb.org/3/movie/${idMovie}/credits?&language=es-ES`, HEADERS);
+  }
+  setRatingPeli(idMovie: number, rating: number): Observable<void> {
+    const SESSION_ID = localStorage.getItem('session_id');
+    return this.http.post<void>(`${API_BASE_URL}/movie/${idMovie}/rating?api_key=${API_KEY}&session_id=${SESSION_ID}`, { value: rating }, HEADERSANDPOST);
+  }
+  deleteRatingPeli(idMovie: number): Observable<void> {
+    const SESSION_ID = localStorage.getItem('session_id');
+    return this.http.delete<void>(`${API_BASE_URL}/movie/${idMovie}/rating?api_key=${API_KEY}&session_id=${SESSION_ID}`, HEADERSANDPOST);
   }
 }

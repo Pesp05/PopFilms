@@ -6,6 +6,13 @@ import { SerieVideosResponse } from '../models/serie-videos.interface';
 import { DetalleSerieResponse } from '../models/detalle-serie.interfaces';
 import { CreditosSerieResponse } from '../models/creditos-serie.interface';
 
+const API_BASE_URL = 'https://api.themoviedb.org/3';
+const API_KEY = '4c92ea126ceabbca4fbdaa0e7e3696ca';
+const HEADERSANDPOST = {
+  headers: {
+    'Content-Type': 'application/json;charset=utf-8'
+  }
+};
 @Injectable({
   providedIn: 'root'
 })
@@ -41,5 +48,14 @@ export class ListaSeriesService {
         Authorization: `Bearer ${'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NDY5Mjg1OTczM2FmM2E4MjMwMzQxYjM1MGE1OTVmZCIsIm5iZiI6MTczMTc1MjA2MC44MTk0MjU2LCJzdWIiOiI2NzMxYmQ5NjYxNjI2YWMxMDZiZTY3ZGMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.59a-DzPdbcfNJ8mWyRnkG_yFZ5DkQQCL4IsR3q_X30M'}`,
       },
     });
+  }
+  setRatingSerie(idSerie: number, rating: number): Observable<void> {
+
+    const SESSION_ID = localStorage.getItem('session_id');
+    return this.http.post<void>(`${API_BASE_URL}/tv/${idSerie}/rating?api_key=${API_KEY}&session_id=${SESSION_ID}`, { value: rating }, HEADERSANDPOST);
+  }
+  deleteRatingSerie(idSerie: number): Observable<void> {
+    const SESSION_ID = localStorage.getItem('session_id');
+    return this.http.delete<void>(`${API_BASE_URL}/tv/${idSerie}/rating?api_key=${API_KEY}&session_id=${SESSION_ID}`, HEADERSANDPOST);
   }
 }

@@ -30,7 +30,8 @@ mat-icon{
     margin-bottom: -3px;
 }
 
-button { 
+.favoritos{ 
+
     background-color: #FF7F30;
     color: #fff;
     border: none;
@@ -48,4 +49,7 @@ button:hover {
 
 
 
+
+
+}
 
