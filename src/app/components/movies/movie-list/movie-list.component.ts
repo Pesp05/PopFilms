@@ -56,8 +56,8 @@ export class MovieListComponent implements OnInit{
   }
 
   addMovieToWatchList(peliculaId: number): void {
-  this.watchListService.addToWatchList(peliculaId, 'movie', true);
-}
+    this.watchListService.addToWatchList(peliculaId, 'movie', true);
+  }
 
 }
 

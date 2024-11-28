@@ -43,23 +43,30 @@ export class WatchListService {
     const body = {
       media_type: mediaType,
       media_id: mediaId,
-      watchlist: watchList
+      watchlist: true
     };
-    this.http.post(url, body, { headers }).subscribe();  }
+    this.http.post(url, body, HEADERS).subscribe();  
+  }
 
-  removeMovieToWatchList(peliculaId:number):Observable<void>{
-    const url = `${API_BASE_URL}/account/{${ACCOUNT_ID}}/watchlist/movies/${peliculaId}`;
+  removeMovieToWatchList(peliculaId:number):Observable<any>{
+    const url = `${API_BASE_URL}/account/{${ACCOUNT_ID}}/watchlist`;
     const body = {
       media_type: 'movie',
       media_id: peliculaId,
       watchlist: false
-    };
-    return this.http.post<void>(url,body,HEADERS);
+    }
+    
+     return this.http.post<any>(url, body, HEADERS);
 
   }
 
-  removeSerieToWatchList(serieId:number):Observable<void>{
-    const url = `${API_BASE_URL}/account/{${ACCOUNT_ID}}/watchlist/tv/${serieId}`;
-    return this.http.delete<void>(url, HEADERS)
+  removeSerieToWatchList(serieId:number):Observable<any>{
+    const url = `${API_BASE_URL}/account/{${ACCOUNT_ID}}/watchlist`;
+    const body = {
+      media_type: 'tv',
+      media_id: serieId,
+      watchlist: false
+    }
+    return this.http.post<any>(url,body,HEADERS)
   }
 }
