@@ -26,6 +26,8 @@ import { ApprovedComponent } from './components/shared/approved/approved.compone
 import { MatMenuModule } from '@angular/material/menu';
 import { SeriesValoradaComponent } from './components/valorados/series/series.component';
 import { PeliculasValoradasComponent } from './components/valorados/peliculas/peliculas.component';
+import { SeriesFavoritasComponent } from './components/series-favoritas/series-favoritas.component';
+import { PeliculasFavoritasComponent } from './components/peliculas-favoritas/peliculas-favoritas.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,10 @@ import { PeliculasValoradasComponent } from './components/valorados/peliculas/pe
     ApprovedComponent,
     SeriesValoradaComponent,
     PeliculasValoradasComponent
+    SeriesFavoritasComponent,
+    PeliculasFavoritasComponent
+    
+
   ],
   imports: [
     BrowserModule,

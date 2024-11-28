@@ -20,6 +20,7 @@ export class ApprovedComponent implements OnInit{
         localStorage.setItem('user_name', response.username);
         localStorage.setItem('user_photo', response.avatar.tmdb.avatar_path);
         localStorage.setItem('logged_in', 'true');
+        localStorage.setItem('account_id', response.id.toString());
         //debugger;
 
         window.location.href = 'http://localhost:4200/home';

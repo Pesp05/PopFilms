@@ -11,6 +11,8 @@ import { ApprovedComponent } from './components/shared/approved/approved.compone
 import { SeriesValoradaComponent } from './components/valorados/series/series.component';
 import { PeliculasValoradasComponent } from './components/valorados/peliculas/peliculas.component';
 import { ListaSeriesComponent } from './components/series/lista-series/lista-series.component';
+import { SeriesFavoritasComponent } from './components/series-favoritas/series-favoritas.component';
+import { PeliculasFavoritasComponent } from './components/peliculas-favoritas/peliculas-favoritas.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -23,7 +25,10 @@ const routes: Routes = [
   {path: 'movies', component: MovieListComponent },
   {path: 'movie/:id', component: MovieDetailComponent },
   {path: 'seriesRated', component: SeriesValoradaComponent},
-  {path: 'moviesRated', component: PeliculasValoradasComponent}
+  {path: 'moviesRated', component: PeliculasValoradasComponent},
+  {path: 'seriesFavorites', component: SeriesFavoritasComponent},
+  {path: 'peliculasFavorites', component: PeliculasFavoritasComponent}
+
 ];
 
 @NgModule({

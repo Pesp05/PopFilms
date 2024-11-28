@@ -1,0 +1,32 @@
+<div class="container mt-4 mb-4 p-4 rounded bg-light rounded-3">
+    <h2>Favoritos</h2>
+    <hr>
+    <div class="row">
+        <h5 class="fw-bold">Series</h5>
+        @if (seriesFavoritas.length > 0;) {
+            
+            @for (serie of seriesFavoritas; track serie.id) {
+                <div class="col-2 mb-4">
+                    <div class="tamCard card h-100 text-center colorFondo">
+                        <a [href]="'/serie/' + serie.id ">
+                            <img class="card-img-top"
+                            [src]="serie.poster_path ? getPosterUrl(serie.poster_path) : 'default-image-path.jpg'" alt="Foto de la persona">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title  text-start">{{serie.name}}</h5>
+                            <button (click)="eliminarSerieDeFavoritos(serie)" class="m-3 btn btn-danger"><i class="bi bi-x-circle"></i></button>
+                        </div>
+                    </div>
+                </div>
+            }
+        }@else {
+            <h5 class="alert alert-danger">No hay series favoritas</h5>
+        }
+      
+    </div>
+</div>
+
+
+
+
+
