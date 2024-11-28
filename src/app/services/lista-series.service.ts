@@ -7,17 +7,10 @@ import { DetalleSerieResponse } from '../models/detalle-serie.interfaces';
 import { CreditosSerieResponse } from '../models/creditos-serie.interface';
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
-const HEADERS = {
-  headers: {
-    accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0YzkyZWExMjZjZWFiYmNhNGZiZGFhMGU3ZTM2OTZjYSIsIm5iZiI6MTczMTY3MjY3MC4wMjY2OSwic3ViIjoiNjczMWJlMDY3ZWYyYzMxZDc4ZWRhYmY5Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.yu0Vz62aRfMDWK5FKDNiUKsrGrvvd_3zh0xhqp87BNI'
-  }
-};
+const API_KEY = '4c92ea126ceabbca4fbdaa0e7e3696ca';
 const HEADERSANDPOST = {
   headers: {
-    Authorization: `Bearer ${'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NDY5Mjg1OTczM2FmM2E4MjMwMzQxYjM1MGE1OTVmZCIsIm5iZiI6MTczMTc1MjA2MC44MTk0MjU2LCJzdWIiOiI2NzMxYmQ5NjYxNjI2YWMxMDZiZTY3ZGMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.59a-DzPdbcfNJ8mWyRnkG_yFZ5DkQQCL4IsR3q_X30M'}`,
-    'Content-Type': 'application/json;charset=utf-8',
-    accept: 'application/json'
+    'Content-Type': 'application/json;charset=utf-8'
   }
 };
 @Injectable({
@@ -57,9 +50,12 @@ export class ListaSeriesService {
     });
   }
   setRatingSerie(idSerie: number, rating: number): Observable<void> {
-    return this.http.post<void>(`${API_BASE_URL}/tv/${idSerie}/rating`, { value: rating }, HEADERSANDPOST);
+
+    const SESSION_ID = localStorage.getItem('session_id');
+    return this.http.post<void>(`${API_BASE_URL}/tv/${idSerie}/rating?api_key=${API_KEY}&session_id=${SESSION_ID}`, { value: rating }, HEADERSANDPOST);
   }
   deleteRatingSerie(idSerie: number): Observable<void> {
-    return this.http.delete<void>(`${API_BASE_URL}/tv/${idSerie}/rating`, HEADERSANDPOST);
+    const SESSION_ID = localStorage.getItem('session_id');
+    return this.http.delete<void>(`${API_BASE_URL}/tv/${idSerie}/rating?api_key=${API_KEY}&session_id=${SESSION_ID}`, HEADERSANDPOST);
   }
 }
