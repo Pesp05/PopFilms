@@ -8,10 +8,8 @@ import { ListaSeries } from "../../models/lista-series.interface";
 
 const API_KEY = '4c92ea126ceabbca4fbdaa0e7e3696ca';
 const API_BASE_URL = 'https://api.themoviedb.org/3';
-const SESSION_ID = localStorage.getItem('session_id') ?? '';
+const SESSION_ID = localStorage.getItem('session_id');
 const ACCOUNT_ID = parseInt(localStorage.getItem('account_id') ?? '0', 10);
-const token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZDA1NzdlOGNkMmUyYjU0OWY5NDYxOTU0NTBmZDQ5YiIsIm5iZiI6MTczMjY0MzY0MS4yMDE5NTY1LCJzdWIiOiI2NzMxYmYzNjdlZjJjMzFkNzhlZGFjNGEiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.6c0Kvkq94C2j1iRNFqKrXY8l6qbpeBaTTUXmfR_72r0'; 
-
 @Injectable({
     providedIn: 'root',
   })
@@ -41,11 +39,9 @@ const token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZDA1NzdlOGNkMmUyYjU0OWY5NDYxOTU0
 
 
     markAsFavorite(mediaId: number, mediaType: string, favorite: boolean): void {
-      const url = `${API_BASE_URL}/account/${ACCOUNT_ID}/favorite`;
+      const url = `${API_BASE_URL}/account/${ACCOUNT_ID}/favorite?api_key=${API_KEY}&session_id=${SESSION_ID}`;
       const headers = {
-        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
       };
       const body = {
         media_type: mediaType,
@@ -54,7 +50,6 @@ const token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZDA1NzdlOGNkMmUyYjU0OWY5NDYxOTU0
       };
       this.http.post(url, body, { headers }).subscribe();
     }
-
 
     removeFavoriteSerie(serieId: number): Observable<void> {
       const url = `${API_BASE_URL}/account/${ACCOUNT_ID}/favorite/tv/${serieId}?api_key=${API_KEY}&session_id=${SESSION_ID}`;
