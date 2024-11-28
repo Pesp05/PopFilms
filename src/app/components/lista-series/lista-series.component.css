@@ -47,9 +47,17 @@ button:hover {
     scale: 1.2;
 }
 
-
-
-
-
+.botonLista{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-top: 10px;
+    padding: 3px 8px;
+    justify-content: space-evenly;
 }
+
+
+
+
+
 

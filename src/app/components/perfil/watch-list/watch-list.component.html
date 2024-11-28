@@ -19,56 +19,68 @@
   </div>
 
   <!-- Sección de películas -->
-  <div *ngIf="showMovies">
-    <h3 class="text-center fw-bold mb-4 text-light">Películas</h3>
+  @if (showMovies) {
+    <div>
+      <h3 class="text-center fw-bold mb-4 text-light">Películas</h3>
 
-    <div *ngIf="moviesWatchlist.length === 0" class="empty-message">
-      <p class="text-center">No has añadido ninguna película a tu lista.</p>
-    </div>
-
-    <div class="row justify-content-center" *ngIf="moviesWatchlist.length > 0">
-      @for(peli of moviesWatchlist; track peli.id) {
-      <div class="col-10 col-sm-6 col-md-4 col-lg-3 mb-4 movieCard">
-        <div class="card shadow-sm border-0 rounded">
-          <a [routerLink]="['/movie', peli.id]">
-            <img [src]="peli.poster_path ? getPosterUrl(peli.poster_path) : 'default-image-url'" alt="Poster de la película" class="card-img-top rounded" />
-          </a>
-          <div class="card-body text-center">
-            <h5 class="card-title">{{peli.original_title}}</h5>
-            <button (click)="deleteMovieToWatchlist(peli)" class="btn btn-danger">
-              <i class="bi bi-x-circle"></i> Eliminar
-            </button>
-          </div>
+      @if (moviesWatchlist.length === 0) {
+        <div class="empty-message">
+          <p class="text-center">No has añadido ninguna película a tu lista.</p>
         </div>
-      </div>
+      }
+
+      @if (moviesWatchlist.length > 0) {
+        <div class="row justify-content-center">
+          @for (peli of moviesWatchlist; track moviesWatchlist.indexOf(peli)) {
+            <div class="col-10 col-sm-6 col-md-4 col-lg-3 mb-4 movieCard">
+              <div class="card shadow-sm border-0 rounded">
+                <a [routerLink]="['/movie', peli.id]">
+                  <img [src]="peli.poster_path ? getPosterUrl(peli.poster_path) : 'default-image-url'" alt="Poster de la película" class="card-img-top rounded" />
+                </a>
+                <div class="card-body text-center">
+                  <h5 class="card-title">{{peli.original_title}}</h5>
+                  <button (click)="deleteMovieToWatchlist(peli)" class="btn btn-danger">
+                    <i class="bi bi-x-circle"></i> Eliminar
+                  </button>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
       }
     </div>
-  </div>
+  }
 
   <!-- Sección de series -->
-  <div *ngIf="!showMovies">
-    <h3 class="text-center fw-bold mb-4 text-light">Series</h3>
+  @if (!showMovies) {
+    <div>
+      <h3 class="text-center fw-bold mb-4 text-light">Series</h3>
 
-    <div *ngIf="tvsWatchlist.length === 0" class="empty-message">
-      <p class="text-center">No has añadido ninguna serie a tu lista.</p>
-    </div>
-
-    <div class="row justify-content-center" *ngIf="tvsWatchlist.length > 0">
-      @for(serie of tvsWatchlist; track serie.id) {
-      <div class="col-10 col-sm-6 col-md-4 col-lg-3 mb-4 movieCard">
-        <div class="card shadow-sm border-0 rounded">
-          <a [routerLink]="['/serie', serie.id]">
-            <img [src]="serie.poster_path ? getPosterUrl(serie.poster_path) : 'default-image-url'" alt="Poster de la serie" class="card-img-top rounded" />
-          </a>
-          <div class="card-body text-center">
-            <h5 class="card-title">{{serie.original_name}}</h5>
-            <button (click)="deleteSerieToWatchlist(serie)" class="btn btn-danger">
-              <i class="bi bi-x-circle"></i> Eliminar
-            </button>
-          </div>
+      @if (tvsWatchlist.length === 0) {
+        <div class="empty-message">
+          <p class="text-center">No has añadido ninguna serie a tu lista.</p>
         </div>
-      </div>
+      }
+
+      @if (tvsWatchlist.length > 0) {
+        <div class="row justify-content-center">
+          @for (serie of tvsWatchlist; track tvsWatchlist.indexOf(serie)) {
+            <div class="col-10 col-sm-6 col-md-4 col-lg-3 mb-4 movieCard">
+              <div class="card shadow-sm border-0 rounded">
+                <a [routerLink]="['/serie', serie.id]">
+                  <img [src]="serie.poster_path ? getPosterUrl(serie.poster_path) : 'default-image-url'" alt="Poster de la serie" class="card-img-top rounded" />
+                </a>
+                <div class="card-body text-center">
+                  <h5 class="card-title">{{serie.original_name}}</h5>
+                  <button (click)="deleteSerieToWatchlist(serie)" class="btn btn-danger">
+                    <i class="bi bi-x-circle"></i> Eliminar
+                  </button>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
       }
     </div>
-  </div>
+  }
 </div>

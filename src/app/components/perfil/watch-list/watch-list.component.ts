@@ -31,13 +31,15 @@ export class WatchListComponent implements OnInit {
   }
 
   deleteMovieToWatchlist(pelicula: Pelicula): void {
-    this.watchlistService.removeMovieToWatchList(pelicula.id).subscribe((data)=>{})
-    this.moviesWatchlist = this.moviesWatchlist.filter(({ id }) => id !== pelicula.id);
+    this.watchlistService.removeMovieToWatchList(pelicula.id).subscribe(() => {
+      this.moviesWatchlist = this.moviesWatchlist.filter(({ id }) => id !== pelicula.id);
+    });
   }
 
   deleteSerieToWatchlist(serie: Serie): void {
-    this.watchlistService.removeSerieToWatchList(serie.id).subscribe((data)=>{});
-    this.tvsWatchlist = this.tvsWatchlist.filter(({ id }) => id !== serie.id);
+    this.watchlistService.removeSerieToWatchList(serie.id).subscribe(() => {
+      this.tvsWatchlist = this.tvsWatchlist.filter(({ id }) => id !== serie.id);
+    });
   }
 
   toggleView(showMovies: boolean): void {
