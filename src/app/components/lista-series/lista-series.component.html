@@ -51,6 +51,17 @@
                             <p>{{(serie.vote_average/2).toFixed(2)}}</p>
                             <ngb-rating class="fs-5" [readonly]="true" [rate]="serie.vote_average / 2" [max]="5" [ngClass]="getColorEstrellas(serie.vote_average / 2)"></ngb-rating>
                         </div>
+                        <div class="botonLista">
+                            <button class="p-1 botonIcon">
+                              <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="favorite"></mat-icon>
+                            </button>
+                            <button class="p-1">
+                              <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="visibility"></mat-icon>
+                            </button>
+                            <button class="p-1" (click)="addSerieToWatchList(serie.id)">
+                              <mat-icon aria-hidden="false" aria-label="Bookmark icon" fontIcon="bookmark"></mat-icon>
+                            </button>
+                          </div>
                     </div>
                 </div>
                 }
