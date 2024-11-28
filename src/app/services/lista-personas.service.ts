@@ -20,18 +20,18 @@ export class ListaPersonasService {
   constructor(private http: HttpClient) { }
 
   getPersonas(): Observable<ListaPersonas> {
-    return this.http.get<ListaPersonas>(`https://api.themoviedb.org/3/person/popular?&language=es-ES`, HEADERS);{     
+    return this.http.get<ListaPersonas>(`https://api.themoviedb.org/3/person/popular?&language=es-ES`, HEADERS);{
   }
 }
 
   getpersonasId(id: number): Observable<DetallePersonaResponse> {
-    return this.http.get<DetallePersonaResponse>(`https://api.themoviedb.org/3/person/${id}`, HEADERS); {
+    return this.http.get<DetallePersonaResponse>(`https://api.themoviedb.org/3/person/${id}?&language=es-ES`, HEADERS); {
   }
 }
 
 
   getCreditosId(id: number): Observable<CreditosPersonasResponse> {
-    return this.http.get<CreditosPersonasResponse>(`https://api.themoviedb.org/3/person/${id}/combined_credits?&language=es-ES`, HEADERS); {  
+    return this.http.get<CreditosPersonasResponse>(`https://api.themoviedb.org/3/person/${id}/combined_credits?&language=es-ES`, HEADERS); {
   }
 }
 

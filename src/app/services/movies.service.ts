@@ -44,11 +44,7 @@ export class MoviesService {
   }
 
   getCreditosPeli(idMovie: number): Observable<CreditosPeliResponse> {
-    return this.http.get<CreditosPeliResponse>(`https://api.themoviedb.org/3/movie/${idMovie}/credits`, {
-      headers: {
-        Authorization: `Bearer ${'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NDY5Mjg1OTczM2FmM2E4MjMwMzQxYjM1MGE1OTVmZCIsIm5iZiI6MTczMTc1MjA2MC44MTk0MjU2LCJzdWIiOiI2NzMxYmQ5NjYxNjI2YWMxMDZiZTY3ZGMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.59a-DzPdbcfNJ8mWyRnkG_yFZ5DkQQCL4IsR3q_X30M'}`,
-      },
-    });
+    return this.http.get<CreditosPeliResponse>(`https://api.themoviedb.org/3/movie/${idMovie}/credits?&language=es-ES`, HEADERS);
   }
   setRatingPeli(idMovie: number, rating: number): Observable<void> {
     const SESSION_ID = localStorage.getItem('session_id');

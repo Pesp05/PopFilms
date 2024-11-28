@@ -24,51 +24,52 @@
 
         <!-- <p id="userName">{{ userName }}</p>-->
 
-
         <ng-template #offcanvasProfile let-offcanvas>
           <div class="offcanvas-header">
             <img id="userPhoto" [src]="userPhoto" width="20%" alt="" class="avatar" />
             <h4 class="offcanvas-title" id="userName">{{ userName }}</h4>
-            <button type="button" class="btn-close btn-close-white" aria-label="Close"
+            <button type="button" class="btn-close btn-close-white"
+              aria-label="Close"
               (click)="offcanvas.dismiss('Cross click')"></button>
           </div>
           <div class="offcanvas-body">
             <div>
               <ul>
-                <li><a href=""><mat-icon aria-hidden="false" aria-label="Example home icon"
-                      fontIcon="person">person</mat-icon> Perfil</a></li>
-                      <li>
-                        <mat-icon aria-hidden="false" aria-label="Example home icon">favorite</mat-icon>
-                        <button mat-button (click)="collapse.toggle()" [attr.aria-expanded]="isFavoritesCollapsed"
-                          aria-controls="collapseExample">
-                          Favoritos
-                        </button>
-                        <div #collapse="ngbCollapse" [(ngbCollapse)]="isFavoritesCollapsed">
-                          <div class="mt-3 row">
-                            <a [routerLink]="['/seriesFavorites']" class="text-decoration-none text-white col-12">
-                              <button mat-button class="ms-5 mt-2">Series</button>
-                            </a>
-                            <a [routerLink]="['/peliculasFavorites']" class="text-decoration-none text-white col-12">
-                              <button mat-button class="ms-5 mt-2">Peliculas</button>
-                            </a>
-                          </div>
-                        </div>
-                      </li>
+                <li><a href><mat-icon aria-hidden="false"
+                      fontIcon="person"></mat-icon> Perfil</a>
+                </li>
+                <li>
+                  <mat-icon aria-hidden="false" fontIcon="favorite" aria-label="Example home icon"></mat-icon>
+                  <button mat-button (click)="collapse.toggle()" [attr.aria-expanded]="isFavoritesCollapsed"
+                    aria-controls="collapseExample">
+                    Favoritos
+                  </button>
+                  <div #collapse="ngbCollapse" [(ngbCollapse)]="isFavoritesCollapsed">
+                    <div class="mt-3 row">
+                      <a [routerLink]="['/seriesFavorites']" class="text-decoration-none text-white col-12">
+                        <button mat-button class="ms-5 mt-2">Series</button>
+                      </a>
+                      <a [routerLink]="['/peliculasFavorites']" class="text-decoration-none text-white col-12">
+                        <button mat-button class="ms-5 mt-2">Peliculas</button>
+                      </a>
+                    </div>
+                  </div>
+                </li>
                 <li><a href=""><mat-icon aria-hidden="false" aria-label="Example home icon"
                       fontIcon="library_books">library_books</mat-icon> Listas</a></li>
-                <li><a href=""><mat-icon aria-hidden="false" aria-label="Example home icon"
-                      fontIcon="movie">movie</mat-icon> Watchlist</a></li>
+                <li> <a [routerLink]="['/watchlist']"><mat-icon aria-hidden="false"
+                      fontIcon="movie"></mat-icon> Watchlist</a></li>
                 <li><a href=""><mat-icon aria-hidden="false" aria-label="Example home icon"
                       fontIcon="star">star</mat-icon> Valorados</a></li>
+
               </ul>
             </div>
           </div>
         </ng-template>
 
         <button class="botonPerfil btn btn-lg btn-outline-primary mb-2 me-2" (click)="openEnd(offcanvasProfile)">
-          <img id="userPhoto" [src]="userPhoto" width="100%" alt="{{userName}}" class="avatar" />
+          <img id="userPhoto" [src]="userPhoto" width="100%" alt="" class="avatar" />
         </button>
-
         <button id="botonLogOut" (click)="logout()">
           Cerrar sesión
         </button>

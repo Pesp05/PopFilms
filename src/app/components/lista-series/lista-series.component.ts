@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Serie } from '../../models/lista-series.interface';
 import { ListaSeriesService } from '../../services/lista-series.service';
+import { WatchListService } from '../../services/watch-list.service';
 import { AccountService } from '../../services/authentication/account.service';
 
 @Component({
@@ -11,10 +12,8 @@ import { AccountService } from '../../services/authentication/account.service';
 export class ListaSeriesComponent implements OnInit {
   listaSeries: Serie[] = [];
   serieMasPopular: Serie | undefined;
-  
-  
 
-  constructor(private servicioListaSeries: ListaSeriesService, private accountService: AccountService) { }
+  constructor(private servicioListaSeries: ListaSeriesService, private accountService: AccountService, private watchListService: WatchListService) { }
 
   ngOnInit(): void {
     this.servicioListaSeries.getPopularWithHeader().subscribe((data) => {
@@ -56,5 +55,9 @@ export class ListaSeriesComponent implements OnInit {
 
   getVideoUrl(keySerie: string): string {
     return `https://www.youtube.com/watch?v=${keySerie}`;
+  }
+
+  addSerieToWatchList(serieId: number): void {
+    this.watchListService.addToWatchList(serieId, 'tv', true)
   }
 }

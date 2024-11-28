@@ -23,8 +23,12 @@ import { FiltroPeliComponent } from './components/filtros/filtro-peli/filtro-pel
 import { FiltroSerieComponent } from './components/filtros/filtro-serie/filtro-serie.component';
 import { SearchComponent } from './components/search/search.component';
 import { ApprovedComponent } from './components/shared/approved/approved.component';
+
+import { WatchListComponent } from './components/perfil/watch-list/watch-list.component';
+
 import { SeriesFavoritasComponent } from './components/series-favoritas/series-favoritas.component';
 import { PeliculasFavoritasComponent } from './components/peliculas-favoritas/peliculas-favoritas.component';
+
 
 @NgModule({
   declarations: [
@@ -44,11 +48,11 @@ import { PeliculasFavoritasComponent } from './components/peliculas-favoritas/pe
     FiltroSerieComponent,
     SearchComponent,
     ApprovedComponent,
+    WatchListComponent,
     SeriesFavoritasComponent,
     PeliculasFavoritasComponent,
-    
-
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -57,6 +61,7 @@ import { PeliculasFavoritasComponent } from './components/peliculas-favoritas/pe
     MatIcon,
     NgbCollapseModule
   ],
+  
   providers: [provideHttpClient(), provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })

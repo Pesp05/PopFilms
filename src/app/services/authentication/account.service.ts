@@ -15,7 +15,7 @@ const ACCOUNT_ID = parseInt(localStorage.getItem('account_id') ?? '0', 10);
   })
   export class AccountService {
     constructor(private http: HttpClient) {}
-  
+
     getAccountDetails(): Observable<AccountDetailsResponse> {
       return this.http.get<AccountDetailsResponse>(
         `${API_BASE_URL}/account?api_key=${API_KEY}&session_id=${SESSION_ID}`
@@ -27,16 +27,11 @@ const ACCOUNT_ID = parseInt(localStorage.getItem('account_id') ?? '0', 10);
         `${API_BASE_URL}/account/${ACCOUNT_ID}/favorite/movies?api_key=${API_KEY}&session_id=${SESSION_ID}`
       );
     }
-
     getAccountFavoriteSeries(): Observable<ListaSeries> {
       return this.http.get<ListaSeries>(
         `${API_BASE_URL}/account/${ACCOUNT_ID}/favorite/tv?api_key=${API_KEY}&session_id=${SESSION_ID}`
       );
     }
-
-
-    
-
 
     markAsFavorite(mediaId: number, mediaType: string, favorite: boolean): void {
       const url = `${API_BASE_URL}/account/${ACCOUNT_ID}/favorite?api_key=${API_KEY}&session_id=${SESSION_ID}`;
