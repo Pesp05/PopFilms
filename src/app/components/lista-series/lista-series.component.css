@@ -14,15 +14,6 @@
     justify-items: center;
 }
 
-.botonLista{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    margin-top: 10px;
-    padding: 3px 8px;
-    justify-content: space-evenly;
-}
-
 mat-icon{
     margin-left: 4px;
     margin-right: 4px;
@@ -30,8 +21,7 @@ mat-icon{
     margin-bottom: -3px;
 }
 
-.favoritos{ 
-
+.favoritos{
     background-color: #FF7F30;
     color: #fff;
     border: none;
@@ -55,6 +45,18 @@ button:hover {
     padding: 3px 8px;
     justify-content: space-evenly;
 }
+
+button {
+  background-color: #FF7F30;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 
 
 

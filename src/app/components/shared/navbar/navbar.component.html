@@ -37,7 +37,7 @@
               <ul>
                 <li><a href><mat-icon aria-hidden="false"
                       fontIcon="person"></mat-icon> Perfil</a>
-                </li>           
+                </li>
                 <li>
                   <mat-icon aria-hidden="false" fontIcon="favorite" aria-label="Example home icon"></mat-icon>
                   <button mat-button (click)="collapse.toggle()" [attr.aria-expanded]="isFavoritesCollapsed"
@@ -67,7 +67,9 @@
           </div>
         </ng-template>
 
-        <button class="botonPerfil btn btn-lg btn-outline-primary mb-2 me-2" (click)="openEnd(offcanvasProfile)"></button>
+        <button class="botonPerfil btn btn-lg btn-outline-primary mb-2 me-2" (click)="openEnd(offcanvasProfile)">
+          <img id="userPhoto" [src]="userPhoto" width="100%" alt="" class="avatar" />
+        </button>
         <button id="botonLogOut" (click)="logout()">
           Cerrar sesión
         </button>
