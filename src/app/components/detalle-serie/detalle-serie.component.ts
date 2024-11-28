@@ -15,14 +15,9 @@ export class DetalleSerieComponent implements OnInit {
   serieId: string | null = '';
   serie: DetalleSerieResponse | undefined;
   creditoSerie: Cast[] = [];
-<<<<<<< HEAD
   ratingSerie: number = 0;
   serieValorada: boolean = false;
-  constructor(private route: ActivatedRoute, private servicioListaSeries: ListaSeriesService) { }
-=======
   constructor(private route: ActivatedRoute, private servicioListaSeries: ListaSeriesService, private accountService: AccountService) { }
->>>>>>> main
-
   ngOnInit(): void {
     this.serieId = this.route.snapshot.paramMap.get('id');
     
