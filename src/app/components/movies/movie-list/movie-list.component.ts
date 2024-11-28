@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../../../services/movies.service';
 import { Pelicula } from '../../../models/lista-peliculas-response.interface';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-list',
@@ -10,11 +10,18 @@ import { Router } from '@angular/router';
 })
 export class MovieListComponent implements OnInit{
 
+  languageFilter: string = '';
   listaPeliculasPopulares :Pelicula[] =[];
 
-  constructor(private movieService:MoviesService,private router: Router){}
+  constructor(private movieService:MoviesService,
+    private router: Router,
+    private route: ActivatedRoute
+  ){}
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      this.languageFilter = params['languaje'] || '';
+    });
     this.movieService.obtenerPeliculasPopulares().subscribe((data:any) => {
       this.listaPeliculasPopulares = data.results.map((peli:any)=>{
         return {
@@ -22,7 +29,7 @@ export class MovieListComponent implements OnInit{
           posterUrl:this.movieService.getImageUrl(peli.poster_path),
         }
       });
-    })
+    });
 
   }
 

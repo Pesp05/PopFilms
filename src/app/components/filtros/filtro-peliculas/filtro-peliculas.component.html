@@ -1,6 +1,6 @@
 <aside class="filters-container m-2 mt-5">
   <h2>Filtros</h2>
-
+<form action="get">
   <!-- Buscar por fecha -->
   <div class="filter-group">
     <label for="release-date-start">Fecha de Estreno</label>
@@ -31,7 +31,7 @@
   <!-- Idioma original -->
   <div class="filter-group">
     <label for="original-language">Idioma Original</label>
-    <select id="original-language">
+    <select id="original-language" [(ngModel)]="languageFilter" name="languageFilter">
       <option value="es">Español</option>
       <option value="en">Inglés</option>
       <option value="fr">Francés</option>
@@ -48,12 +48,13 @@
   <!-- Ordenar por -->
   <div class="filter-group">
     <label for="sort-by">Ordenar por</label>
-    <select id="sort-by">
+    <select id="sort-by" [(ngModel)]="sortBy" name="sortBy">
       <option value="popularity">Popularidad</option>
       <option value="release_date">Fecha de Estreno</option>
       <option value="vote_average">Puntuación</option>
     </select>
   </div>
 
-  <button class="apply-filters">Aplicar Filtros</button>
+  <button class="apply-filters" (click)="sendFilters()">Aplicar Filtros</button>
+</form>
 </aside>

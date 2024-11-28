@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrl: './filtro-peliculas.component.css'
 })
 export class FiltroPeliculasComponent {
+languageFilter: string = '';
+sortBy: string = '';
+
+  sendFilters() {
+    window.location.href = `http://localhost:4200/movies?language=${this.languageFilter}&sortBy=${this.sortBy}`;
+  }
 
 }

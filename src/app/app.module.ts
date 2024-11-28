@@ -19,12 +19,12 @@ import {MatButtonModule} from '@angular/material/button';
 import { ListaSeriesComponent } from './components/lista-series/lista-series.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
-import { FiltroPeliComponent } from './components/filtros/filtro-peli/filtro-peli.component';
 import { FiltroSerieComponent } from './components/filtros/filtro-serie/filtro-serie.component';
 import { SearchComponent } from './components/search/search.component';
 import { ApprovedComponent } from './components/shared/approved/approved.component';
 import { BusquedaComponent } from './components/busqueda/busqueda.component';
 import { FormsModule } from '@angular/forms';
+import { FiltroPeliculasComponent } from './components/filtros/filtro-peliculas/filtro-peliculas.component';
 
 @NgModule({
   declarations: [
@@ -40,11 +40,11 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     HomeComponent,
     NavbarComponent,
-    FiltroPeliComponent,
     FiltroSerieComponent,
     SearchComponent,
     ApprovedComponent,
-    BusquedaComponent
+    BusquedaComponent,
+    FiltroPeliculasComponent
 
   ],
   imports: [

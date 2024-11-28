@@ -46,4 +46,8 @@ export class MoviesService {
       },
     });
   }
+
+  aplicarFiltros(languageFilter: string) {
+    throw new Error('Method not implemented.');
+  }
 }
