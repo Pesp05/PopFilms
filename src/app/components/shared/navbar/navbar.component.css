@@ -86,3 +86,59 @@ input{
     font-weight: bold;
     text-decoration: none;
 }
+
+.botonPerfil{
+    width:60px;
+    height:60px;
+    background-color:#FF7F30;
+    margin: 5px;
+    padding:10px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    line-height:32px;
+    float:left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul > li{
+    list-style: none;
+    align-items: center;
+    box-shadow: #ffffff;
+    font-size: large;
+    padding: 5px;
+    padding-left: 10px;
+    border-radius: 30px;
+}
+
+ul > li:hover{
+    background-color: #0a5e6b;
+}
+
+ul>li>a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 1%;
+}
+
+mat-icon{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.offcanvas-header{
+    border-bottom: solid 2px #ff5930;
+}
+
+.offcanvas-header, .offcanvas-body{
+    background-color: #0D7685;
+    color: #ffffff;
+}

@@ -1,44 +1,85 @@
 <div id="container">
-    <div id="navbar" class="d-flex justify-content-around">
-        <div class="col-2">
-            <a [routerLink]="['/home']">
-                <img src="assets/img/pop-films-light.png" alt="Popfilms logo"
-                    height="80px">
-            </a>
-        </div>
-
-        <div class="col-4">
-            <div class="col-12 d-flex justify-content-between">
-                <a class="enlace" [routerLink]="['/movies']">Peliculas</a>
-                <a class="enlace" [routerLink]="['/series']">Series</a>
-                <a class="enlace" [routerLink]="['/people']">Personas</a>
-            </div>
-        </div>
-
-        <div
-            class="col-6 d-flex align-items-center justify-content-between flex-nowrap row">
-            <div id="subs" class="col-3">
-                <input type="text" placeholder="Busqueda">
-                <button id="boton">Buscar</button>
-            </div>
-            <div id="profile"  class="col-3">
-                @if (isLoggedIn()) {
-                <img id="userPhoto" [src]="userPhoto" alt="Avatar"
-                    class="avatar w-100" />
-                <!-- <p id="userName">{{ userName }}</p>-->
-                <button id="botonLogOut"
-                    (click)="logout()">
-                    Cerrar sesión
-                </button>
-                } @else{
-                <button id="boton" class="btn btn-sm"
-                    (click)="createRequestToken()">
-                    Iniciar sesión
-                </button>
-                }
-            </div>
-        </div>
-
+  <div id="navbar" class="d-flex justify-content-around">
+    <div class="col-2">
+      <a [routerLink]="['/home']">
+        <img src="assets/img/pop-films-light.png" alt="Popfilms logo" height="80px">
+      </a>
     </div>
-</div>
 
+    <div class="col-4">
+      <div class="col-12 d-flex justify-content-between">
+        <a class="enlace" [routerLink]="['/movies']">Peliculas</a>
+        <a class="enlace" [routerLink]="['/series']">Series</a>
+        <a class="enlace" [routerLink]="['/people']">Personas</a>
+      </div>
+    </div>
+
+    <div class="col-6 d-flex align-items-center justify-content-between flex-nowrap row">
+      <div id="subs" class="col-3">
+        <input type="text" placeholder="Busqueda">
+        <button id="boton">Buscar</button>
+      </div>
+      <div id="profile" class="col-3">
+        @if (isLoggedIn()) {
+
+        <!-- <p id="userName">{{ userName }}</p>-->
+
+
+        <ng-template #offcanvasProfile let-offcanvas>
+          <div class="offcanvas-header">
+            <img id="userPhoto" [src]="userPhoto" width="20%" alt="" class="avatar" />
+            <h4 class="offcanvas-title" id="userName">{{ userName }}</h4>
+            <button type="button" class="btn-close btn-close-white" aria-label="Close"
+              (click)="offcanvas.dismiss('Cross click')"></button>
+          </div>
+          <div class="offcanvas-body">
+            <div>
+              <ul>
+                <li><a href=""><mat-icon aria-hidden="false" aria-label="Example home icon"
+                      fontIcon="person">person</mat-icon> Perfil</a></li>
+                      <li>
+                        <mat-icon aria-hidden="false" aria-label="Example home icon">favorite</mat-icon>
+                        <button mat-button (click)="collapse.toggle()" [attr.aria-expanded]="isFavoritesCollapsed"
+                          aria-controls="collapseExample">
+                          Favoritos
+                        </button>
+                        <div #collapse="ngbCollapse" [(ngbCollapse)]="isFavoritesCollapsed">
+                          <div class="mt-3 row">
+                            <a [routerLink]="['/seriesFavorites']" class="text-decoration-none text-white col-12">
+                              <button mat-button class="ms-5 mt-2">Series</button>
+                            </a>
+                            <a [routerLink]="['/peliculasFavorites']" class="text-decoration-none text-white col-12">
+                              <button mat-button class="ms-5 mt-2">Peliculas</button>
+                            </a>
+                          </div>
+                        </div>
+                      </li>
+                <li><a href=""><mat-icon aria-hidden="false" aria-label="Example home icon"
+                      fontIcon="library_books">library_books</mat-icon> Listas</a></li>
+                <li><a href=""><mat-icon aria-hidden="false" aria-label="Example home icon"
+                      fontIcon="movie">movie</mat-icon> Watchlist</a></li>
+                <li><a href=""><mat-icon aria-hidden="false" aria-label="Example home icon"
+                      fontIcon="star">star</mat-icon> Valorados</a></li>
+              </ul>
+            </div>
+          </div>
+        </ng-template>
+
+        <button class="botonPerfil btn btn-lg btn-outline-primary mb-2 me-2" (click)="openEnd(offcanvasProfile)">
+          <img id="userPhoto" [src]="userPhoto" width="100%" alt="{{userName}}" class="avatar" />
+        </button>
+
+        <button id="botonLogOut" (click)="logout()">
+          Cerrar sesión
+        </button>
+
+        } @else{
+        <button id="boton" class="btn btn-sm" (click)="createRequestToken()">
+          Iniciar sesión
+        </button>
+        }
+      </div>
+    </div>
+
+  </div>
+</div>

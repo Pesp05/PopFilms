@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 
 import { MovieListComponent } from './components/movies/movie-list/movie-list.component';
 import { MovieDetailComponent } from './components/movies/movie-detail/movie-detail.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCollapseModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ListaPersonasComponent } from './components/lista-personas/lista-personas.component';
 import { provideHttpClient } from '@angular/common/http';
@@ -23,6 +23,8 @@ import { FiltroPeliComponent } from './components/filtros/filtro-peli/filtro-pel
 import { FiltroSerieComponent } from './components/filtros/filtro-serie/filtro-serie.component';
 import { SearchComponent } from './components/search/search.component';
 import { ApprovedComponent } from './components/shared/approved/approved.component';
+import { SeriesFavoritasComponent } from './components/series-favoritas/series-favoritas.component';
+import { PeliculasFavoritasComponent } from './components/peliculas-favoritas/peliculas-favoritas.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,10 @@ import { ApprovedComponent } from './components/shared/approved/approved.compone
     FiltroPeliComponent,
     FiltroSerieComponent,
     SearchComponent,
-    ApprovedComponent
+    ApprovedComponent,
+    SeriesFavoritasComponent,
+    PeliculasFavoritasComponent,
+    
 
   ],
   imports: [
@@ -49,7 +54,8 @@ import { ApprovedComponent } from './components/shared/approved/approved.compone
     AppRoutingModule,
     NgbModule,
     MatButtonModule,
-    MatIcon
+    MatIcon,
+    NgbCollapseModule
   ],
   providers: [provideHttpClient(), provideAnimationsAsync()],
   bootstrap: [AppComponent]
