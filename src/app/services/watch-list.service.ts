@@ -47,14 +47,19 @@ export class WatchListService {
     };
     this.http.post(url, body, { headers }).subscribe();  }
 
-  removeMovieToWatchList(peliculaId:number):Observable<any>{
+  removeMovieToWatchList(peliculaId:number):Observable<void>{
     const url = `${API_BASE_URL}/account/{${ACCOUNT_ID}}/watchlist/movies/${peliculaId}`;
-    return this.http.delete(url, HEADERS);
+    const body = {
+      media_type: 'movie',
+      media_id: peliculaId,
+      watchlist: false
+    };
+    return this.http.post<void>(url,body,HEADERS);
 
   }
 
-  removeSerieToWatchList(serieId:number):Observable<any>{
+  removeSerieToWatchList(serieId:number):Observable<void>{
     const url = `${API_BASE_URL}/account/{${ACCOUNT_ID}}/watchlist/tv/${serieId}`;
-    return this.http.delete(url, HEADERS)
+    return this.http.delete<void>(url, HEADERS)
   }
 }
