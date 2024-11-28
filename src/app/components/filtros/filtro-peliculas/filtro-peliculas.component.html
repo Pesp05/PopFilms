@@ -12,10 +12,7 @@
   <div class="filter-group">
     <label>Géneros</label>
     <ul class="genre-list">
-      <li data-value="accion">Acción</li>
-      <li data-value="comedia">Comedia</li>
-      <li data-value="drama">Drama</li>
-      <li data-value="terror">Terror</li>
+      <li class="no-selected" (click)="gestionarChecked()" *ngFor="let genero of listaGeneros" [attr.data-value]="genero.name | lowercase">{{ genero.name }}</li>
     </ul>
   </div>
 
