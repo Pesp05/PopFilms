@@ -10,6 +10,10 @@ import { FiltroPeliculasService } from '../../../services/filtro-peliculas.servi
 export class FiltroPeliculasComponent implements OnInit {
 languageFilter: string = '';
 sortBy: string = '';
+fechaEstrenoMin: string = '';
+fechaEstrenoMax: string = '';
+runtimeMin: string = '';
+runtimeMax: string = '';
 
 listaGeneros: Genre[] = [];
 listaGenerosSeleccionados: Genre[] = [];
@@ -17,7 +21,7 @@ listaGenerosSeleccionados: Genre[] = [];
 constructor(private filtroPeliculaService: FiltroPeliculasService) { }
 
   sendFilters() {
-    window.location.href = `http://localhost:4200/movies?language=${this.languageFilter}&sortBy=${this.sortBy}`;
+    window.location.href = `http://localhost:4200/movies?language=${this.languageFilter}&sortBy=${this.sortBy}&genres=${this.listaGenerosSeleccionados.map(g => g.id).join(',')}&releaseDateMin=${this.fechaEstrenoMin}&releaseDateMax=${this.fechaEstrenoMax}&runtimeMin=${this.runtimeMin}&runtimeMax=${this.runtimeMax}`;
   }
 
   ngOnInit() {
@@ -26,10 +30,17 @@ constructor(private filtroPeliculaService: FiltroPeliculasService) { }
     });
   }
 
-  gestionarChecked() {
-    if(document.getElementsByClassName('no-selected')){
-
+  toggleSelection(genero: Genre) {
+    const index = this.listaGenerosSeleccionados.findIndex(g => g.id === genero.id);
+    if (index === -1) {
+      this.listaGenerosSeleccionados.push(genero);
+    } else {
+      this.listaGenerosSeleccionados.splice(index, 1);
     }
+  }
+
+  isSelected(genero: Genre): boolean {
+    return this.listaGenerosSeleccionados.some(g => g.id === genero.id);
   }
 
 }

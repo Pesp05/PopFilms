@@ -25,6 +25,7 @@ import { ApprovedComponent } from './components/shared/approved/approved.compone
 import { BusquedaComponent } from './components/busqueda/busqueda.component';
 import { FormsModule } from '@angular/forms';
 import { FiltroPeliculasComponent } from './components/filtros/filtro-peliculas/filtro-peliculas.component';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { FiltroPeliculasComponent } from './components/filtros/filtro-peliculas/
     NgbModule,
     MatButtonModule,
     MatIcon,
-    FormsModule
+    FormsModule,
+    MatSliderModule
   ],
   providers: [provideHttpClient(), provideAnimationsAsync()],
   bootstrap: [AppComponent]

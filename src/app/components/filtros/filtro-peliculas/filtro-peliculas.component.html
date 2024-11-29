@@ -4,24 +4,36 @@
   <!-- Buscar por fecha -->
   <div class="filter-group">
     <label for="release-date-start">Fecha de Estreno</label>
-    <input type="date" id="release-date-start" placeholder="Desde">
-    <input type="date" id="release-date-end" placeholder="Hasta">
+    <input type="date" id="release-date-start" [(ngModel)]="fechaEstrenoMin" name="fechaEstrenoMin" placeholder="Desde">
+    <input type="date" id="release-date-end" [(ngModel)]="fechaEstrenoMax" name="fechaEstrenoMax" placeholder="Hasta">
   </div>
 
   <!-- Filtros por Géneros -->
   <div class="filter-group">
     <label>Géneros</label>
     <ul class="genre-list">
-      <li class="no-selected" (click)="gestionarChecked()" *ngFor="let genero of listaGeneros" [attr.data-value]="genero.name | lowercase">{{ genero.name }}</li>
+      <li 
+    *ngFor="let genero of listaGeneros" 
+    [attr.data-value]="genero.name | lowercase" 
+    [ngClass]="{'no-selected': !isSelected(genero), 'selected': isSelected(genero)}" 
+    (click)="toggleSelection(genero)">
+    {{ genero.name }}
+  </li>
     </ul>
   </div>
 
   <!-- Puntuación de usuario -->
   <div class="filter-group">
     <label for="rating-slider">Puntuación de Usuario</label>
+    <p>Mínimo</p>
     <div class="slider-container">
-      <input type="range" id="rating-slider" min="0" max="10" step="1" value="3" oninput="this.nextElementSibling.value = this.value">
-      <output>3</output>
+      <input type="range" id="rating-slider" min="0" max="10" step="1" value="0" oninput="this.nextElementSibling.value = this.value">
+      <output>0</output>
+    </div>
+    <p>Máximo</p>
+    <div class="slider-container">
+      <input type="range" id="rating-slider" min="0" max="10" step="1" value="10" oninput="this.nextElementSibling.value = this.value">
+      <output>10</output>
     </div>
   </div>
 
@@ -38,8 +50,8 @@
   <!-- Duración en minutos -->
   <div class="filter-group">
     <label for="runtime">Duración (min)</label>
-    <input type="number" id="runtime-min" placeholder="Mínimo">
-    <input type="number" id="runtime-max" placeholder="Máximo">
+    <input type="number" id="runtime-min" [(ngModel)]="runtimeMin" name="runtimeMin" placeholder="Mínimo">
+    <input type="number" id="runtime-max" [(ngModel)]="runtimeMax" name="runtimeMax" placeholder="Máximo">
   </div>
 
   <!-- Ordenar por -->
