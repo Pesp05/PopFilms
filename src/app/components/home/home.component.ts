@@ -4,6 +4,7 @@ import { Serie } from '../../models/top-serie-list.interface';
 import { Personas } from '../../models/lista-personas.interfaces';
 import { HomeService } from '../../services/home.service';
 import { WatchListService } from '../../services/watch-list.service';
+import { AccountService } from '../../services/authentication/account.service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomeComponent {
   listaPersonasTop: Personas[] = [];
   
 
-  constructor(private homeService: HomeService, private watchListService: WatchListService) { }
+  constructor(private homeService: HomeService, private watchListService: WatchListService, private accountService: AccountService) { }
 
   ngOnInit() {
     this.homeService.getTopMoviesList().subscribe((resp) => {
@@ -62,4 +63,13 @@ export class HomeComponent {
   addSerieToWatchList(serieId: number): void {
     this.watchListService.addToWatchList(serieId, 'tv', true)
   }
+
+  marcarComoFavorita(serie: Serie) {
+    this.accountService.markAsFavorite(serie.id, 'tv', true);
+}
+
+marcarPeliculaComoFavorita(pelicula: Pelicula) {
+  this.accountService.markAsFavorite(pelicula.id, 'movie', true);
+}
+
 }

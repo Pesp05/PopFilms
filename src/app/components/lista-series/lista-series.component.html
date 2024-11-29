@@ -25,7 +25,7 @@
                 </span>
               </button>
               @if (serieMasPopular) {
-                <button class="" (click)="marcarComoFavorita(serieMasPopular)"
+                <button class="" (click)="marcarComoFavorita(serieMasPopular)" placement="top" ngbPopover="Se ha añadido a favoritos"
                   class="w-25 m-2 p-2 btn mt-3"><i class="bi bi-heart"></i> Favorito</button>
                 }
             </div>
@@ -62,7 +62,7 @@
               [rate]="serie.vote_average / 2" [max]="5"
               [ngClass]="getColorEstrellas(serie.vote_average / 2)"></ngb-rating>
             <div class="botonLista">
-              <button class="p-1 botonIcon" (click)="marcarComoFavorita(serie)">
+              <button class="p-1 botonIcon" (click)="marcarComoFavorita(serie)" placement="top" ngbPopover="Se ha añadido a favoritos">
                 <mat-icon aria-hidden="false" aria-label="Example home icon"
                   fontIcon="favorite"></mat-icon>
               </button>
@@ -70,7 +70,7 @@
                 <mat-icon aria-hidden="false" aria-label="Example home icon"
                   fontIcon="visibility"></mat-icon>
               </button>
-              <button class="p-1" (click)="addSerieToWatchList(serie.id)">
+              <button class="p-1" (click)="addSerieToWatchList(serie.id)" placement="top" ngbPopover="Se ha añadido a la watchlist">
                 <mat-icon aria-hidden="false" aria-label="Bookmark icon"
                   fontIcon="bookmark"></mat-icon>
               </button>
