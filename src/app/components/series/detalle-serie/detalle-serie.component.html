@@ -22,8 +22,8 @@
                         </p>
                         <div class="d-flex align-items-center">
                             <p class="text-center">Puntuación de <br>usuarios:</p>
-                            <ngb-rating class="fs-5 ms-3" [readonly]="true" [rate]="serie?.vote_average || 0" [max]="5"
-                            [ngClass]="getColorEstrellas((serie?.vote_average || 0) / 2)"></ngb-rating>
+                            <ngb-rating class="fs-5 ms-3" [readonly]="true" [rate]="serie!.vote_average / 2" [max]="5"
+                                [ngClass]="getColorEstrellas(serie!.vote_average / 2)"></ngb-rating>
                             <p class="ms-3">({{serie?.vote_count}} Votos)</p>
                             <div class="ms-5 d-flex align-items-center">
                                 <a class="mb-3 me-3" (click)="verTrailer(serie)">
@@ -39,32 +39,17 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="d-flex">
-                            <p class="text-center">Valorar Pelicula:</p>
-                            <ngb-rating class="fs-5 ms-3 text-light" [(rate)]="ratingSerie" [max]="5" (rateChange)="onRateChange($event)"></ngb-rating>
+                        <div class="d-flex mb-3 rounded-3">
+                            <div class="border border-dark favoritos">
+                                <p class="text-center">Valorar Serie: <span> <ngb-rating class="fs-5 ms-3 text-light" [(rate)]="ratingSerie" [max]="5"
+                                    (rateChange)="onRateChange($event)"></ngb-rating></span></p>
+                            </div>
+
                             @if (serieValorada) {
-                                <button mat-fab class="ms-3 bg-danger w-25 rounded-3 ms-5" (click)="deleteRating()">Eliminar Valoracion</button>
+                            <button mat-fab class="ms-3 bg-danger w-25 rounded-3 ms-5" (click)="deleteRating()">Eliminar
+                                Valoracion</button>
                             }
                         </div>
-                    </div>
-                    <div class="mb-4">
-                        <p>
-                            @if (!serieValorada) {
-                                <span mat-fab class="border rounded-3 p-3 bg-light rounded-3 text-dark">Valorar Serie: 
-                                    <span>
-                                        <ngb-rating class="fs-5 ms-3" [(rate)]="valorSerie" [max]="5" (rateChange)="valorarSerie()"></ngb-rating>
-                                    </span>
-                                </span>
-                            }
-                            @if (serieValorada) {
-                                <span mat-fab class="border rounded-3 p-3 bg-light rounded-3 text-dark">Valorar Serie: 
-                                    <span>
-                                        <ngb-rating class="fs-5 ms-3" [readonly]="true" [(rate)]="valorSerie" [max]="5"></ngb-rating>
-                                    </span>
-                                </span>
-                                <button mat-fab class="ms-3 bg-light rounded-3 w-100 ms-5" (click)="quitarValoracion()">Quitar valoración</button>
-                            }
-                        </p>
                     </div>
                     <div class="mb-4">
                         <h3>Vista general</h3>

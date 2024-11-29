@@ -48,7 +48,7 @@ import { PeliculasFavoritasComponent } from './components/peliculas-favoritas/pe
     SearchComponent,
     ApprovedComponent,
     SeriesValoradaComponent,
-    PeliculasValoradasComponent
+    PeliculasValoradasComponent,
     SeriesFavoritasComponent,
     PeliculasFavoritasComponent
     

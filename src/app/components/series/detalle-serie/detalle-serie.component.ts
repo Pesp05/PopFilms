@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ListaSeriesService } from '../../services/lista-series.service';
-import { DetalleSerieResponse } from '../../models/detalle-serie.interfaces';
-import { Cast } from '../../models/creditos-serie.interface';
-import { AccountService } from '../../services/authentication/account.service';
+
+import { ListaSeriesService } from '../../../services/lista-series.service';
+import { AccountService } from '../../../services/authentication/account.service';
+import { Cast } from '../../../models/creditos-peliculas.interface';
+import { DetalleSerieResponse } from '../../../models/detalle-serie.interfaces';
 
 @Component({
   selector: 'app-detalle-serie',
@@ -15,11 +16,7 @@ export class DetalleSerieComponent implements OnInit {
   serieId: string | null = '';
   serie: DetalleSerieResponse | undefined;
   creditoSerie: Cast[] = [];
-<<<<<<< HEAD:src/app/components/series/detalle-serie/detalle-serie.component.ts
-  valorSerie: number = 0;
-=======
   ratingSerie: number = 0;
->>>>>>> main:src/app/components/detalle-serie/detalle-serie.component.ts
   serieValorada: boolean = false;
   constructor(private route: ActivatedRoute, private servicioListaSeries: ListaSeriesService, private accountService: AccountService) { }
   ngOnInit(): void {
@@ -72,18 +69,6 @@ export class DetalleSerieComponent implements OnInit {
   getVideoUrl(keySerie: string): string {
     return `https://www.youtube.com/watch?v=${keySerie}`;
   }
-<<<<<<< HEAD:src/app/components/series/detalle-serie/detalle-serie.component.ts
-  valorarSerie() {
-    this.servicioListaSeries.setRatingSerie(parseInt(this.serieId!), this.valorSerie).subscribe((response) => {
-      this.serieValorada = true;
-    });
-    console.log(this.valorSerie);
-  }
-  quitarValoracion() {
-    this.servicioListaSeries.deleteRatingSerie(parseInt(this.serieId!)).subscribe((response) => {
-      this.serieValorada = false;
-    });
-=======
 
   setSerieRating(rating: number): void {
     this.servicioListaSeries.setRatingSerie(parseInt(this.serieId!), rating).subscribe();
@@ -100,6 +85,5 @@ export class DetalleSerieComponent implements OnInit {
     this.servicioListaSeries.deleteRatingSerie(parseInt(this.serieId!)).subscribe();
     this.serieValorada = false;
     this.ratingSerie = 0;
->>>>>>> main:src/app/components/detalle-serie/detalle-serie.component.ts
   }
 }
