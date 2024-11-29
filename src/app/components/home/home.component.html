@@ -12,7 +12,7 @@
             date:'dd/MM/yyyy'}}</p>
           <div class="d-flex justify-content-center flex-column align-items-center">
             <span class="ms-2">{{peli.vote_average.toFixed(2)}}</span>
-            <ngb-rating class="fs-5" [readonly]="true" [(rate)]="peli.vote_average" [ngClass]="getColorEstrellas(peli.vote_average)"/>
+            <ngb-rating class="fs-5" [max]="5" [readonly]="true" [rate]="peli.vote_average / 2" [ngClass]="getColorEstrellas(peli.vote_average / 2)"/>
             <span class="text-muted ms-1">({{peli.vote_count}} votos)</span>
           </div>
           <div class="botonLista">
