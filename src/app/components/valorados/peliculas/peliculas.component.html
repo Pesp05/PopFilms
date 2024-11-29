@@ -20,6 +20,7 @@
                         <p>{{(pelicula.vote_average/2).toFixed(2)}}</p>
                         <ngb-rating class="fs-5" [readonly]="true" [rate]="pelicula.vote_average / 2" [max]="5"
                             [ngClass]="getColorEstrellas(pelicula.vote_average / 2)"></ngb-rating>
+                        <p class="text-muted ms-1">({{pelicula.vote_count}} Votos)</p>
                     </div>
                 </div>
             </div>
