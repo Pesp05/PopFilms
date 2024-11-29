@@ -39,11 +39,11 @@ export class MoviesService {
   }
 
   getDetallePeli(idPeli: number): Observable<DetallePelicula> {
-    return this.http.get<DetallePelicula>(`https://api.themoviedb.org/3/movie/${idPeli}?language=es-ES`, HEADERS);
+    return this.http.get<DetallePelicula>(`${environment.apiBaseUrl}/movie/${idPeli}?language=es-ES`, HEADERS);
   }
 
   getCreditosPeli(idMovie: number): Observable<CreditosPeliResponse> {
-    return this.http.get<CreditosPeliResponse>(`https://api.themoviedb.org/3/movie/${idMovie}/credits?&language=es-ES`, HEADERS);
+    return this.http.get<CreditosPeliResponse>(`${environment.apiBaseUrl}/movie/${idMovie}/credits?&language=es-ES`, HEADERS);
   }
   setRatingPeli(idPeli: number, rating: number): Observable<void> {
 

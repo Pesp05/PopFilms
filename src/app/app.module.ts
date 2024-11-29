@@ -54,8 +54,8 @@ import { PeliculasFavoritasComponent } from './components/peliculas-favoritas/pe
     SeriesValoradaComponent,
     PeliculasValoradasComponent,
     SeriesFavoritasComponent,
-    PeliculasFavoritasComponent
-    WatchListComponent,
+    PeliculasFavoritasComponent,
+    WatchListComponent
   ],
   
   imports: [

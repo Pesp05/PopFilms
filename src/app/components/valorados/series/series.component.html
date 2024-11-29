@@ -11,9 +11,9 @@
                 <div class="card h-100 text-center colorFondo">
                     <a [href]="'serie/'+serie.id">
                         <img class="card-img-top"
-                            [src]="serie?.poster_path ? (serie!.poster_path! | poster) : 'assets/img/ImagenNoEncontrada.jpg'"
-                            alt="{{serie?.name}}">
-                    </a>
+                          [src]="serie?.poster_path ? (serie!.poster_path! | poster) : 'assets/img/ImagenNoEncontrada.jpg'"
+                          alt="{{serie?.name}}">
+                      </a>
                     <div class="card-body">
                         <h5 class="card-title fw-bold text-start fw-bolder">{{serie.name}}</h5>
                         <p class="text-start">{{serie.first_air_date| date:'dd/MM/yyyy'}}</p>

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Serie } from '../../models/lista-series.interface';
-import { ListaSeriesService } from '../../services/lista-series.service';
-import { WatchListService } from '../../services/watch-list.service';
-import { AccountService } from '../../services/authentication/account.service';
+import { Component, OnInit } from "@angular/core";
+import { Serie } from "../../../models/lista-series.interface";
+import { AccountService } from "../../../services/authentication/account.service";
+import { ListaSeriesService } from "../../../services/lista-series.service";
+import { WatchListService } from "../../../services/watch-list.service";
 
 @Component({
   selector: 'app-lista-series',
