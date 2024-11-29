@@ -34,11 +34,10 @@
                     </div>
                     <div class="d-flex rounded-3">
                         <div class="border border-dark favoritos">
-                            <p class="text-center">Valorar Pelicula:</p>
-                            <ngb-rating class="fs-5 ms-3 text-light" [(rate)]="ratingPelicula" [max]="5"
-                                (rateChange)="onRateChange($event)"></ngb-rating>
+                            <p class="text-center">Valorar Serie: <span> <ngb-rating class="fs-5 ms-3 text-light" [(rate)]="ratingPelicula" [max]="5"
+                                (rateChange)="onRateChange($event)"></ngb-rating></span></p>
                         </div>
-                        
+
                         @if (peliculaValorada) {
                         <button mat-fab class="ms-3 bg-danger w-25 rounded-3 ms-5" (click)="deleteRating()">Eliminar
                             Valoracion</button>
