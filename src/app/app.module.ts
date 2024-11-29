@@ -26,8 +26,12 @@ import { ApprovedComponent } from './components/shared/approved/approved.compone
 import { MatMenuModule } from '@angular/material/menu';
 import { SeriesValoradaComponent } from './components/valorados/series/series.component';
 import { PeliculasValoradasComponent } from './components/valorados/peliculas/peliculas.component';
+
+import { WatchListComponent } from './components/perfil/watch-list/watch-list.component';
+
 import { SeriesFavoritasComponent } from './components/series-favoritas/series-favoritas.component';
 import { PeliculasFavoritasComponent } from './components/peliculas-favoritas/peliculas-favoritas.component';
+
 
 @NgModule({
   declarations: [
@@ -51,9 +55,9 @@ import { PeliculasFavoritasComponent } from './components/peliculas-favoritas/pe
     PeliculasValoradasComponent,
     SeriesFavoritasComponent,
     PeliculasFavoritasComponent
-    
-
+    WatchListComponent,
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -63,6 +67,7 @@ import { PeliculasFavoritasComponent } from './components/peliculas-favoritas/pe
     MatMenuModule,
     NgbCollapseModule
   ],
+  
   providers: [provideHttpClient(), provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })

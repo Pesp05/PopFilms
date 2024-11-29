@@ -15,6 +15,17 @@
             <ngb-rating class="fs-5" [readonly]="true" [(rate)]="peli.vote_average" [ngClass]="getColorEstrellas(peli.vote_average)"/>
             <span class="text-muted ms-1">({{peli.vote_count}} votos)</span>
           </div>
+          <div class="botonLista">
+            <button class="p-1 botonIcon" (click)="marcarPeliculaComoFavorita(peli)" placement="top" ngbPopover="Se ha añdido a favoritos">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="favorite"></mat-icon>
+            </button>
+            <button class="p-1">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="visibility"></mat-icon>
+            </button>
+            <button class="p-1" (click)="addMovieToWatchList(peli.id)" placement="top" ngbPopover="Se ha añadido a la watchlist">
+              <mat-icon aria-hidden="false" aria-label="Bookmark icon" fontIcon="bookmark"></mat-icon>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -36,6 +47,17 @@
             <span class="ms-2">{{serie.vote_average.toFixed(2)}}</span>
             <ngb-rating class="fs-5" [readonly]="true" [(rate)]="serie.vote_average" [ngClass]="getColorEstrellas(serie.vote_average)"/>
             <span class="text-muted ms-1">({{serie.vote_count}} votos)</span>
+          </div>
+          <div class="botonLista">
+            <button class="p-1 botonIcon" (click)="marcarComoFavorita(serie)" placement="top" ngbPopover="Se ha añadido a favoritos" container="body">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="favorite"></mat-icon>
+            </button>
+            <button class="p-1">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="visibility"></mat-icon>
+            </button>
+            <button class="p-1" (click)="addSerieToWatchList(serie.id)" placement="top" ngbPopover="Se ha añadido a la watchlist" container="body">
+              <mat-icon aria-hidden="false" aria-label="Bookmark icon" fontIcon="bookmark"></mat-icon>
+            </button>
           </div>
         </div>
       </div>

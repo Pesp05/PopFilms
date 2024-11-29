@@ -11,8 +11,10 @@ import { ApprovedComponent } from './components/shared/approved/approved.compone
 import { SeriesValoradaComponent } from './components/valorados/series/series.component';
 import { PeliculasValoradasComponent } from './components/valorados/peliculas/peliculas.component';
 import { ListaSeriesComponent } from './components/series/lista-series/lista-series.component';
+import { WatchListComponent } from './components/perfil/watch-list/watch-list.component';
 import { SeriesFavoritasComponent } from './components/series-favoritas/series-favoritas.component';
 import { PeliculasFavoritasComponent } from './components/peliculas-favoritas/peliculas-favoritas.component';
+
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -26,8 +28,10 @@ const routes: Routes = [
   {path: 'movie/:id', component: MovieDetailComponent },
   {path: 'seriesRated', component: SeriesValoradaComponent},
   {path: 'moviesRated', component: PeliculasValoradasComponent},
+  {path: 'watchlist', component:WatchListComponent},
   {path: 'seriesFavorites', component: SeriesFavoritasComponent},
   {path: 'peliculasFavorites', component: PeliculasFavoritasComponent}
+
 
 ];
 
