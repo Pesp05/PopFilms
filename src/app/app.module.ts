@@ -14,15 +14,18 @@ import { EdadActorPipe } from './pipes/edad-actor.pipe';
 import { PosterPipe } from './pipes/poster.pipe';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { MatIcon } from '@angular/material/icon';
-import { DetalleSerieComponent } from './components/detalle-serie/detalle-serie.component';
+import { DetalleSerieComponent } from './components/series/detalle-serie/detalle-serie.component';
 import {MatButtonModule} from '@angular/material/button';
-import { ListaSeriesComponent } from './components/lista-series/lista-series.component';
+import { ListaSeriesComponent } from './components/series/lista-series/lista-series.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { FiltroPeliComponent } from './components/filtros/filtro-peli/filtro-peli.component';
 import { FiltroSerieComponent } from './components/filtros/filtro-serie/filtro-serie.component';
 import { SearchComponent } from './components/search/search.component';
 import { ApprovedComponent } from './components/shared/approved/approved.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { SeriesValoradaComponent } from './components/valorados/series/series.component';
+import { PeliculasValoradasComponent } from './components/valorados/peliculas/peliculas.component';
 
 import { WatchListComponent } from './components/perfil/watch-list/watch-list.component';
 
@@ -48,9 +51,11 @@ import { PeliculasFavoritasComponent } from './components/peliculas-favoritas/pe
     FiltroSerieComponent,
     SearchComponent,
     ApprovedComponent,
-    WatchListComponent,
+    SeriesValoradaComponent,
+    PeliculasValoradasComponent,
     SeriesFavoritasComponent,
-    PeliculasFavoritasComponent,
+    PeliculasFavoritasComponent
+    WatchListComponent,
   ],
   
   imports: [
@@ -59,6 +64,7 @@ import { PeliculasFavoritasComponent } from './components/peliculas-favoritas/pe
     NgbModule,
     MatButtonModule,
     MatIcon,
+    MatMenuModule,
     NgbCollapseModule
   ],
   

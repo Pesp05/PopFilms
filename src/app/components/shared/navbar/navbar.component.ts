@@ -12,6 +12,8 @@ export class NavbarComponent {
 
   userName = '';
   userPhoto = '';
+  isCollapsed = true;
+
   isFavoritesCollapsed = true;
   constructor(private authService: AuthService,
               private accountService: AccountService

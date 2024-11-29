@@ -3,15 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { MovieDetailComponent } from './components/movies/movie-detail/movie-detail.component';
 import { MovieListComponent } from './components/movies/movie-list/movie-list.component';
-
-
-
-import { ListaSeriesComponent } from './components/lista-series/lista-series.component';
-import { DetalleSerieComponent } from './components/detalle-serie/detalle-serie.component';
+import { DetalleSerieComponent } from './components/series/detalle-serie/detalle-serie.component';
 import { DetallePersonaComponent } from './components/detalle-persona/detalle-persona.component';
 import { ListaPersonasComponent } from './components/lista-personas/lista-personas.component';
 import { HomeComponent } from './components/home/home.component';
 import { ApprovedComponent } from './components/shared/approved/approved.component';
+import { SeriesValoradaComponent } from './components/valorados/series/series.component';
+import { PeliculasValoradasComponent } from './components/valorados/peliculas/peliculas.component';
+import { ListaSeriesComponent } from './components/series/lista-series/lista-series.component';
 import { WatchListComponent } from './components/perfil/watch-list/watch-list.component';
 import { SeriesFavoritasComponent } from './components/series-favoritas/series-favoritas.component';
 import { PeliculasFavoritasComponent } from './components/peliculas-favoritas/peliculas-favoritas.component';
@@ -27,6 +26,8 @@ const routes: Routes = [
   {path: 'serie/:id', component: DetalleSerieComponent},
   {path: 'movies', component: MovieListComponent },
   {path: 'movie/:id', component: MovieDetailComponent },
+  {path: 'seriesRated', component: SeriesValoradaComponent},
+  {path: 'moviesRated', component: PeliculasValoradasComponent},
   {path: 'watchlist', component:WatchListComponent},
   {path: 'seriesFavorites', component: SeriesFavoritasComponent},
   {path: 'peliculasFavorites', component: PeliculasFavoritasComponent}

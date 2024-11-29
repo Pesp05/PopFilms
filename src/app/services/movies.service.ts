@@ -4,9 +4,8 @@ import { Observable } from 'rxjs';
 import { DetallePelicula, ListaPeliculasResponse, Pelicula } from '../models/lista-peliculas-response.interface';
 import { PeliculasVideosResponse } from '../models/peliculas-videos-response.interface';
 import { CreditosPeliResponse } from '../models/creditos-peliculas.interface';
+import { environment } from '../../environments/environment';
 
-const API_KEY = '4c92ea126ceabbca4fbdaa0e7e3696ca';
-const API_BASE_URL = 'https://api.themoviedb.org/3';
 const HEADERS = {
   headers: {
     accept: 'application/json',
@@ -26,7 +25,7 @@ export class MoviesService {
   constructor(private http:HttpClient) {}
 
   public obtenerPeliculasPopulares():Observable<ListaPeliculasResponse>{
-    return this.http.get<ListaPeliculasResponse>(`${API_BASE_URL}/movie/popular?&language=es-ES`, HEADERS);
+    return this.http.get<ListaPeliculasResponse>(`${environment.apiBaseUrl}/movie/popular?&language=es-ES`, HEADERS);
   }
 
   public getImageUrl(posterPath: string): string {
@@ -36,7 +35,7 @@ export class MoviesService {
   }
 
   public obtenerTrailerPorId(idPeli:number):Observable<PeliculasVideosResponse>{
-    return this.http.get<PeliculasVideosResponse>(`${API_BASE_URL}/movie/${idPeli}/videos`,HEADERS)
+    return this.http.get<PeliculasVideosResponse>(`${environment.apiBaseUrl}/movie/${idPeli}/videos`,HEADERS)
   }
 
   getDetallePeli(idPeli: number): Observable<DetallePelicula> {
@@ -46,12 +45,13 @@ export class MoviesService {
   getCreditosPeli(idMovie: number): Observable<CreditosPeliResponse> {
     return this.http.get<CreditosPeliResponse>(`https://api.themoviedb.org/3/movie/${idMovie}/credits?&language=es-ES`, HEADERS);
   }
-  setRatingPeli(idMovie: number, rating: number): Observable<void> {
+  setRatingPeli(idPeli: number, rating: number): Observable<void> {
+
     const SESSION_ID = localStorage.getItem('session_id');
-    return this.http.post<void>(`${API_BASE_URL}/movie/${idMovie}/rating?api_key=${API_KEY}&session_id=${SESSION_ID}`, { value: rating }, HEADERSANDPOST);
+    return this.http.post<void>(`${environment.apiBaseUrl}/movie/${idPeli}/rating?api_key=${environment.apiKey}&session_id=${SESSION_ID}`, { value: rating }, HEADERSANDPOST);
   }
-  deleteRatingPeli(idMovie: number): Observable<void> {
+  deleteRatingPeli(idPeli: number): Observable<void> {
     const SESSION_ID = localStorage.getItem('session_id');
-    return this.http.delete<void>(`${API_BASE_URL}/movie/${idMovie}/rating?api_key=${API_KEY}&session_id=${SESSION_ID}`, HEADERSANDPOST);
+    return this.http.delete<void>(`${environment.apiBaseUrl}/movie/${idPeli}/rating?api_key=${environment.apiKey}&session_id=${SESSION_ID}`, HEADERSANDPOST);
   }
 }

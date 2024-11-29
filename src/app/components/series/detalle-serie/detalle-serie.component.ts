@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ListaSeriesService } from '../../services/lista-series.service';
-import { DetalleSerieResponse } from '../../models/detalle-serie.interfaces';
-import { Cast } from '../../models/creditos-serie.interface';
-import { AccountService } from '../../services/authentication/account.service';
+
+import { ListaSeriesService } from '../../../services/lista-series.service';
+import { AccountService } from '../../../services/authentication/account.service';
+import { Cast } from '../../../models/creditos-peliculas.interface';
+import { DetalleSerieResponse } from '../../../models/detalle-serie.interfaces';
 
 @Component({
   selector: 'app-detalle-serie',
