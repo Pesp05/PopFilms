@@ -15,7 +15,11 @@ export class DetalleSerieComponent implements OnInit {
   serieId: string | null = '';
   serie: DetalleSerieResponse | undefined;
   creditoSerie: Cast[] = [];
+<<<<<<< HEAD:src/app/components/series/detalle-serie/detalle-serie.component.ts
   valorSerie: number = 0;
+=======
+  ratingSerie: number = 0;
+>>>>>>> main:src/app/components/detalle-serie/detalle-serie.component.ts
   serieValorada: boolean = false;
   constructor(private route: ActivatedRoute, private servicioListaSeries: ListaSeriesService, private accountService: AccountService) { }
   ngOnInit(): void {
@@ -68,6 +72,7 @@ export class DetalleSerieComponent implements OnInit {
   getVideoUrl(keySerie: string): string {
     return `https://www.youtube.com/watch?v=${keySerie}`;
   }
+<<<<<<< HEAD:src/app/components/series/detalle-serie/detalle-serie.component.ts
   valorarSerie() {
     this.servicioListaSeries.setRatingSerie(parseInt(this.serieId!), this.valorSerie).subscribe((response) => {
       this.serieValorada = true;
@@ -78,5 +83,23 @@ export class DetalleSerieComponent implements OnInit {
     this.servicioListaSeries.deleteRatingSerie(parseInt(this.serieId!)).subscribe((response) => {
       this.serieValorada = false;
     });
+=======
+
+  setSerieRating(rating: number): void {
+    this.servicioListaSeries.setRatingSerie(parseInt(this.serieId!), rating).subscribe();
+  }
+
+  onRateChange(newRating: number): void {
+    this.ratingSerie = newRating;
+    newRating = newRating * 2;
+    this.serieValorada = true;
+    this.setSerieRating(newRating);
+    
+  }
+  deleteRating(): void {
+    this.servicioListaSeries.deleteRatingSerie(parseInt(this.serieId!)).subscribe();
+    this.serieValorada = false;
+    this.ratingSerie = 0;
+>>>>>>> main:src/app/components/detalle-serie/detalle-serie.component.ts
   }
 }

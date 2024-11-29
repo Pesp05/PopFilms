@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../../../services/movies.service';
-import { DetallePelicula, Pelicula } from '../../../models/lista-peliculas-response.interface';
+import { DetallePelicula } from '../../../models/lista-peliculas-response.interface';
 import { ActivatedRoute } from '@angular/router';
 import { Cast } from '../../../models/creditos-peliculas.interface';
 import { AccountService } from '../../../services/authentication/account.service';
@@ -17,6 +17,8 @@ export class MovieDetailComponent implements OnInit {
   trailerUrl: string | null = null;
   showTrailer: boolean = false;
   creditoPeli: Cast[] = [];
+  ratingPelicula: number = 0;
+  peliculaValorada: boolean = false;
 
   constructor(private route: ActivatedRoute, private movieService: MoviesService, private accountService: AccountService) { }
 
@@ -71,11 +73,22 @@ export class MovieDetailComponent implements OnInit {
       return 'text-danger';
     }
   }
-
   getposterPath(posterPath: string): string {
     return `https://image.tmdb.org/t/p/w500` + posterPath;
   }
+  setMovieRating(rating: number): void {
+    this.movieService.setRatingPeli(parseInt(this.peliId!), rating).subscribe();
+  }
 
-
-
+  onRateChange(newRating: number): void {
+    this.ratingPelicula = newRating;
+    newRating = newRating * 2;
+    this.setMovieRating(newRating);
+    this.peliculaValorada = true;
+  }
+  deleteRating(): void {
+    this.movieService.deleteRatingPeli(parseInt(this.peliId!)).subscribe();
+    this.peliculaValorada = false;
+    this.ratingPelicula = 0;
+  }
 }
