@@ -44,9 +44,9 @@ export class HomeComponent {
   }
 
   getColorEstrellas(voteAverage: number): string {
-    if (voteAverage >= 7) {
+    if (voteAverage >= 3.5) {
       return 'text-success';
-    } else if (voteAverage >= 4) {
+    } else if (voteAverage >= 2.5) {
       return 'text-warning';
     } else {
       return 'text-danger';

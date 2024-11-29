@@ -25,17 +25,17 @@ export class ListaSeriesService {
   constructor(private http: HttpClient) {}
 
   getPopularWithHeader(): Observable<ListaSeries> {
-    return this.http.get<ListaSeries>(`https://api.themoviedb.org/3/tv/popular?&language=es-ES`, HEADER);
+    return this.http.get<ListaSeries>(`${environment.apiBaseUrl}/tv/popular?&language=es-ES`, HEADER);
   }
   getSerieVideo(idSerie: number): Observable<SerieVideosResponse> {
-    return this.http.get<SerieVideosResponse>(`https://api.themoviedb.org/3/tv/${idSerie}/videos`, HEADER);
+    return this.http.get<SerieVideosResponse>(`${environment.apiBaseUrl}/tv/${idSerie}/videos`, HEADER);
   }
 
   getDetalleSerie(idSerie: number): Observable<DetalleSerieResponse> {
-    return this.http.get<DetalleSerieResponse>(`https://api.themoviedb.org/3/tv/${idSerie}`, HEADER);
+    return this.http.get<DetalleSerieResponse>(`${environment.apiBaseUrl}/tv/${idSerie}`, HEADER);
   }
   getCreditosSerie(idSerie: number): Observable<CreditosSerieResponse> {
-    return this.http.get<CreditosSerieResponse>(`https://api.themoviedb.org/3/tv/${idSerie}/credits`, HEADER);
+    return this.http.get<CreditosSerieResponse>(`${environment.apiBaseUrl}/tv/${idSerie}/credits`, HEADER);
   }
   setRatingSerie(idSerie: number, rating: number): Observable<void> {
 

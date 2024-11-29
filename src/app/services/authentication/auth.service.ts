@@ -14,14 +14,14 @@ export class AuthService {
   // STEP 1
   createRequestToken(): Observable<CreateRequestTokenResponse> {
     return this.http.get<CreateRequestTokenResponse>(
-      `${environment.apiBaseUrl}/authentication/token/new?environment.apiKey=${environment.apiKey}`
+      `${environment.apiBaseUrl}/authentication/token/new?api_key=${environment.apiKey}`
     );
   }
 
   // STEP 3
   createSession(): Observable<CreateSessionResponse> {
     return this.http.post<CreateSessionResponse>(
-      `${environment.apiBaseUrl}/authentication/session/new?environment.apiKey=${environment.apiKey}`,
+      `${environment.apiBaseUrl}/authentication/session/new?api_key=${environment.apiKey}`,
       {
         request_token: localStorage.getItem('token'),
       }
