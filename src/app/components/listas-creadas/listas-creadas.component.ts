@@ -8,9 +8,7 @@ import { ListaCreada } from '../../models/listas-creadas.interface';
   styleUrl: './listas-creadas.component.css'
 })
 export class ListasCreadasComponent implements OnInit {
-verLista(arg0: number) {
-throw new Error('Method not implemented.');
-}
+
 
   listasCreadas: ListaCreada[] = [];
   constructor(private listaService: CrudListasService) {}
@@ -29,5 +27,4 @@ throw new Error('Method not implemented.');
       this.cargarListas();
     }, 200);
   }
-  
 }
