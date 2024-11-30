@@ -1,0 +1,47 @@
+<div class="container-fluid" style="width: 800px">
+    <div class="card colorCuerpo text-light mt-5 mb-5 py-5">
+        <div class="row card-title">
+            @if (mostrarErrores) {
+                <div class="alert w-50 mx-auto text-center col-12 alert-danger">
+                    @if (!todosCamposCompletos()) {
+                    <h1>Los campos son obligatorios.</h1>
+                    }
+                </div>
+                }
+            <div class="col-12">
+                <h1 class="ms-3">Crear Nueva lista</h1>
+            </div>
+        </div>
+        <div class="card-body ">
+            <form (ngSubmit)="validarFormulario()" method="post">
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="nombre" class="form-label fs-3">Nombre de la Lista <span
+                                class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" 
+                        placeholder="Nombre" [(ngModel)]="nombreLista" required />
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="Descripcion" class="form-label fs-3">Descripción de la lista <span
+                                class="text-danger">*</span></label>
+                        <textarea class="form-control" id="Descripcion" name="Descripcion"
+                            placeholder="Descripción de la lista" [(ngModel)]="descripcionLista" required></textarea>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary" style="width: 100%">
+                            Crear usuario
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row" [hidden]="!enviado">
+            <div class="col-12 w-50 mx-auto">
+                <div class="alert alert-success text-center align-items-center" role="alert">
+                    <h1>Lista Creada</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { MovieListComponent } from './components/movies/movie-list/movie-list.component';
 import { MovieDetailComponent } from './components/movies/movie-detail/movie-detail.component';
 import { NgbCollapseModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -26,13 +25,17 @@ import { ApprovedComponent } from './components/shared/approved/approved.compone
 import { MatMenuModule } from '@angular/material/menu';
 import { SeriesValoradaComponent } from './components/valorados/series/series.component';
 import { PeliculasValoradasComponent } from './components/valorados/peliculas/peliculas.component';
-
 import { WatchListComponent } from './components/perfil/watch-list/watch-list.component';
-
 import { SeriesFavoritasComponent } from './components/series-favoritas/series-favoritas.component';
 import { PeliculasFavoritasComponent } from './components/peliculas-favoritas/peliculas-favoritas.component';
-
-
+import { FormCrearListaComponent } from './components/form-crear-lista/form-crear-lista.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import { ListasCreadasComponent } from './components/listas-creadas/listas-creadas.component';
+import { DetalleListaCreadaComponent } from './components/detalle-lista-creada/detalle-lista-creada.component';
+import { TraducirTipoPipe } from './pipes/traducir-tipo.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +58,11 @@ import { PeliculasFavoritasComponent } from './components/peliculas-favoritas/pe
     PeliculasValoradasComponent,
     SeriesFavoritasComponent,
     PeliculasFavoritasComponent,
-    WatchListComponent
+    WatchListComponent,
+    FormCrearListaComponent,
+    ListasCreadasComponent,
+    DetalleListaCreadaComponent,
+    TraducirTipoPipe
   ],
   
   imports: [
@@ -65,7 +72,11 @@ import { PeliculasFavoritasComponent } from './components/peliculas-favoritas/pe
     MatButtonModule,
     MatIcon,
     MatMenuModule,
-    NgbCollapseModule
+    NgbCollapseModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatSelectModule
   ],
   
   providers: [provideHttpClient(), provideAnimationsAsync()],

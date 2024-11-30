@@ -74,25 +74,27 @@
                       fontIcon="library_books">library_books</mat-icon> Listas</a></li>
                 <li> <a [routerLink]="['/watchlist']"><mat-icon aria-hidden="false" fontIcon="movie"></mat-icon>
                     Watchlist</a></li>
+                <li> <a [routerLink]="['/createdLists']"><mat-icon aria-hidden="false" fontIcon="lists"></mat-icon>
+                    Listas</a></li>
               </ul>
             </div>
           </div>
         </ng-template>
 
-    <button class="botonPerfil btn btn-lg btn-outline-primary mb-2 me-2" (click)="openEnd(offcanvasProfile)">
-      <img id="userPhoto" [src]="userPhoto" width="100%" alt="" class="avatar" />
-    </button>
-    <button id="botonLogOut" (click)="logout()">
-      Cerrar sesión
-    </button>
+        <button class="botonPerfil btn btn-lg btn-outline-primary mb-2 me-2" (click)="openEnd(offcanvasProfile)">
+          <img id="userPhoto" [src]="userPhoto" width="100%" alt="" class="avatar" />
+        </button>
+        <button id="botonLogOut" (click)="logout()">
+          Cerrar sesión
+        </button>
 
-    } @else{
-    <button id="boton" class="btn btn-sm" (click)="createRequestToken()">
-      Iniciar sesión
-    </button>
-    }
+        } @else{
+        <button id="boton" class="btn btn-sm" (click)="createRequestToken()">
+          Iniciar sesión
+        </button>
+        }
+      </div>
+    </div>
+
   </div>
-</div>
-
-</div>
 </div>

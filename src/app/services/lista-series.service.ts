@@ -7,7 +7,6 @@ import { DetalleSerieResponse } from '../models/detalle-serie.interfaces';
 import { CreditosSerieResponse } from '../models/creditos-serie.interface';
 import { environment } from '../../environments/environment';
 
-const API_KEY = '4c92ea126ceabbca4fbdaa0e7e3696ca';
 const HEADERSANDPOST = {
   headers: {
     'Content-Type': 'application/json;charset=utf-8'
