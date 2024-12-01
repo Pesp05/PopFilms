@@ -4,6 +4,7 @@ import {ListaPersonas} from '../models/lista-personas.interfaces';
 import {Observable} from 'rxjs';
 import { DetallePersonaResponse } from '../models/details-personas.interfaces';
 import { CreditosPersonasResponse } from '../models/creditos-personas.interfaces';
+import { environment } from '../../environments/environment';
 
 
 const HEADERS = {
@@ -19,19 +20,19 @@ export class ListaPersonasService {
 
   constructor(private http: HttpClient) { }
 
-  getPersonas(): Observable<ListaPersonas> {
-    return this.http.get<ListaPersonas>(`https://api.themoviedb.org/3/person/popular?&language=es-ES`, HEADERS);{     
+  getPersonas(page: number): Observable<ListaPersonas> {
+    return this.http.get<ListaPersonas>(`${environment.apiBaseUrl}/person/popular?&language=es-ES&page=${page}`, HEADERS);{     
   }
 }
 
   getpersonasId(id: number): Observable<DetallePersonaResponse> {
-    return this.http.get<DetallePersonaResponse>(`https://api.themoviedb.org/3/person/${id}`, HEADERS); {
+    return this.http.get<DetallePersonaResponse>(`${environment.apiBaseUrl}/person/${id}`, HEADERS); {
   }
 }
 
 
   getCreditosId(id: number): Observable<CreditosPersonasResponse> {
-    return this.http.get<CreditosPersonasResponse>(`https://api.themoviedb.org/3/person/${id}/combined_credits?&language=es-ES`, HEADERS); {  
+    return this.http.get<CreditosPersonasResponse>(`${environment.apiBaseUrl}/person/${id}/combined_credits?&language=es-ES`, HEADERS); {  
   }
 }
 

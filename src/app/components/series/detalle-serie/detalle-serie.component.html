@@ -20,19 +20,35 @@
                                 {{genero.name}}}
                             </span>
                         </p>
-                        <div class="d-flex">
+                        <div class="d-flex align-items-center">
                             <p class="text-center">Puntuación de <br>usuarios:</p>
                             <ngb-rating class="fs-5 ms-3" [readonly]="true" [rate]="serie!.vote_average / 2" [max]="5"
                                 [ngClass]="getColorEstrellas(serie!.vote_average / 2)"></ngb-rating>
                             <p class="ms-3">({{serie?.vote_count}} Votos)</p>
-                            <a class="mb-3" (click)="verTrailer(serie)">
-                                <button mat-fab class="ms-3 bg-light w-100 ms-5">Ver Tráiler
-                                    <span>
-                                        <mat-icon style="line-height: 37px;" fontIcon="keyboard_arrow_right">
-                                        </mat-icon>
-                                    </span>
+                            <div class="ms-5 d-flex align-items-center">
+                                <a class="mb-3 me-3" (click)="verTrailer(serie)">
+                                    <button mat-fab class="favoritos w-100">Ver Tráiler
+                                        <span>
+                                            <mat-icon style="line-height: 37px;" fontIcon="keyboard_arrow_right">
+                                            </mat-icon>
+                                        </span>
+                                    </button>
+                                </a>
+                                <button (click)="marcarComoFavorita()" class="btn favoritos" placement="top" ngbPopover="Se ha añadido a favoritos" >
+                                    <i class="bi bi-heart"></i>
                                 </button>
-                            </a>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3 rounded-3">
+                            <div class="border border-dark favoritos">
+                                <p class="text-center">Valorar Serie: <span> <ngb-rating class="fs-5 ms-3 text-light" [(rate)]="ratingSerie" [max]="5"
+                                    (rateChange)="onRateChange($event)"></ngb-rating></span></p>
+                            </div>
+
+                            @if (serieValorada) {
+                            <button mat-fab class="ms-3 bg-danger w-25 rounded-3 ms-5" (click)="deleteRating()">Eliminar
+                                Valoracion</button>
+                            }
                         </div>
                     </div>
                     <div class="mb-4">

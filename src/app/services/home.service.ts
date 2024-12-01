@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { TopMoviesListResponse } from '../models/top-movie-list.interface';
 import { ListaPersonas } from '../models/lista-personas.interfaces';
 import { TopSeriesListResponse } from '../models/top-serie-list.interface';
+import { environment } from '../../environments/environment';
 
-const API_BASE_URL = 'https://api.themoviedb.org/3';
 const HEADERS = {
   headers: {
     accept: 'application/json',
@@ -21,15 +21,15 @@ export class HomeService {
   constructor(private http: HttpClient) { }
 
   getTopMoviesList(): Observable<TopMoviesListResponse> {
-    return this.http.get<TopMoviesListResponse>(`${API_BASE_URL}/movie/top_rated?&language=es-ES`, HEADERS);
+    return this.http.get<TopMoviesListResponse>(`${environment.apiBaseUrl}/movie/top_rated?&language=es-ES`, HEADERS);
   }
 
   getTopSeriesList(): Observable<TopSeriesListResponse> {
-    return this.http.get<TopSeriesListResponse>(`${API_BASE_URL}/tv/top_rated?&language=es-ES`, HEADERS);
+    return this.http.get<TopSeriesListResponse>(`${environment.apiBaseUrl}/tv/top_rated?&language=es-ES`, HEADERS);
   }
 
   getPeopleList(): Observable<ListaPersonas>{
-    return this.http.get<ListaPersonas>(`${API_BASE_URL}/person/popular?&language=es-ES`, HEADERS);
+    return this.http.get<ListaPersonas>(`${environment.apiBaseUrl}/person/popular?&language=es-ES`, HEADERS);
   }
 
   public getMovieImageUrl(posterPath: string): string {

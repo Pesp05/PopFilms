@@ -1,0 +1,23 @@
+.imagenMasPopular{
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+    border-radius: 15px;
+}
+.fondoPagina{
+    background-color: #398874;
+}
+.fondoDatos{
+    background-color: #200B0B;
+}
+
+.favoritos { /*No sale bien con su color*/
+    background-color: #FF7F30;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}

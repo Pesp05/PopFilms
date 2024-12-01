@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../../../services/movies.service';
 import { Pelicula } from '../../../models/lista-peliculas-response.interface';
+<<<<<<< HEAD
 import { ActivatedRoute, Router } from '@angular/router';
+=======
+import { Router } from '@angular/router';
+import { WatchListService } from '../../../services/watch-list.service';
+import { AccountService } from '../../../services/authentication/account.service';
+>>>>>>> main
 
 @Component({
   selector: 'app-movie-list',
@@ -21,6 +27,7 @@ export class MovieListComponent implements OnInit{
   listaGeneros: string = '';
 
   listaPeliculasPopulares :Pelicula[] =[];
+<<<<<<< HEAD
 
   constructor(private movieService:MoviesService,
     private router: Router,
@@ -48,6 +55,18 @@ export class MovieListComponent implements OnInit{
             posterUrl:this.movieService.getImageUrl(peli.poster_path),
           }
         });
+=======
+  paginaActual = 1;
+  constructor(private movieService:MoviesService,private router: Router, private accountService: AccountService,private watchListService: WatchListService){}
+
+  ngOnInit(): void {
+    this.movieService.obtenerPeliculasPopulares(this.paginaActual).subscribe((data:any) => {
+      this.listaPeliculasPopulares = data.results.map((peli:any)=>{
+        return {
+          ...peli,
+          posterUrl:this.movieService.getImageUrl(peli.poster_path),
+        }
+>>>>>>> main
       });
 
     } else {
@@ -62,6 +81,13 @@ export class MovieListComponent implements OnInit{
     }
   }
 
+<<<<<<< HEAD
+=======
+  marcarComoFavorita(pelicula: Pelicula) {
+    this.accountService.markAsFavorite(pelicula.id, 'movie', true);
+}
+
+>>>>>>> main
 
   verTrailer(peli: any) {
     this.movieService.obtenerTrailerPorId(peli.id).subscribe((data) => {
@@ -82,14 +108,26 @@ export class MovieListComponent implements OnInit{
   }
 
   getColorEstrellas(voteAverage: number): string {
-    if (voteAverage >= 7) {
+    if (voteAverage >= 3.5) {
       return 'text-success';
-    } else if (voteAverage >= 4) {
+    } else if (voteAverage >= 2.5) {
       return 'text-warning';
     } else {
       return 'text-danger';
     }
   }
-
-
+  addMovieToWatchList(peliculaId: number): void {
+    this.watchListService.addToWatchList(peliculaId, 'movie', true);
+  }
+  cambiarPagina(): void {
+    this.movieService.obtenerPeliculasPopulares(this.paginaActual).subscribe((data:any) => {
+      this.listaPeliculasPopulares = data.results.map((peli:any)=>{
+        return {
+          ...peli,
+          posterUrl:this.movieService.getImageUrl(peli.poster_path),
+        }
+      });
+    })
+  }
 }
+
