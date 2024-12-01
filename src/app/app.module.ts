@@ -14,14 +14,17 @@ import { PosterPipe } from './pipes/poster.pipe';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { MatIcon } from '@angular/material/icon';
 import { DetalleSerieComponent } from './components/series/detalle-serie/detalle-serie.component';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule} from '@angular/material/button';
 import { ListaSeriesComponent } from './components/series/lista-series/lista-series.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
-import { FiltroPeliComponent } from './components/filtros/filtro-peli/filtro-peli.component';
 import { FiltroSerieComponent } from './components/filtros/filtro-serie/filtro-serie.component';
 import { SearchComponent } from './components/search/search.component';
 import { ApprovedComponent } from './components/shared/approved/approved.component';
+import { BusquedaComponent } from './components/busqueda/busqueda.component';
+import { FormsModule } from '@angular/forms';
+import { FiltroPeliculasComponent } from './components/filtros/filtro-peliculas/filtro-peliculas.component';
+import { MatSliderModule } from '@angular/material/slider';
 import { MatMenuModule } from '@angular/material/menu';
 import { SeriesValoradaComponent } from './components/valorados/series/series.component';
 import { PeliculasValoradasComponent } from './components/valorados/peliculas/peliculas.component';
@@ -31,8 +34,7 @@ import { PeliculasFavoritasComponent } from './components/peliculas-favoritas/pe
 import { FormCrearListaComponent } from './components/form-crear-lista/form-crear-lista.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule} from '@angular/material/select';
 import { ListasCreadasComponent } from './components/listas-creadas/listas-creadas.component';
 import { DetalleListaCreadaComponent } from './components/detalle-lista-creada/detalle-lista-creada.component';
 import { TraducirTipoPipe } from './pipes/traducir-tipo.pipe';
@@ -51,10 +53,11 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
     FooterComponent,
     HomeComponent,
     NavbarComponent,
-    FiltroPeliComponent,
     FiltroSerieComponent,
     SearchComponent,
     ApprovedComponent,
+    BusquedaComponent,
+    FiltroPeliculasComponent,
     SeriesValoradaComponent,
     PeliculasValoradasComponent,
     SeriesFavoritasComponent,
@@ -63,7 +66,7 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
     FormCrearListaComponent,
     ListasCreadasComponent,
     DetalleListaCreadaComponent,
-    TraducirTipoPipe
+    TraducirTipoPipe,
   ],
   
   imports: [
@@ -72,6 +75,8 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     MatButtonModule,
     MatIcon,
+    FormsModule,
+    MatSliderModule,
     MatMenuModule,
     NgbCollapseModule,
     MatFormFieldModule,

@@ -1,9 +1,53 @@
 <div id="container">
+<<<<<<< HEAD
+    <div id="navbar" class="d-flex justify-content-around">
+        <div class="col-2">
+            <a [routerLink]="['/home']">
+                <img src="assets/img/pop-films-light.png" alt="Popfilms logo"
+                    height="80px">
+            </a>
+        </div>
+
+        <div class="col-4">
+            <div class="col-12 d-flex justify-content-between">
+                <a class="enlace" [routerLink]="['/movies']">Peliculas</a>
+                <a class="enlace" [routerLink]="['/series']">Series</a>
+                <a class="enlace" [routerLink]="['/people']">Personas</a>
+            </div>
+        </div>
+
+        <div
+            class="col-6 d-flex align-items-center justify-content-between flex-nowrap row">
+            <div id="subs" class="col-3">
+                <form action="get">
+                    <input type="text" placeholder="Busqueda" [(ngModel)]="busqueda" name="busqueda">
+                    <button id="boton" type="button" (click)="iniciarBusqueda()">Buscar</button>
+                </form>
+            </div>
+            <div id="profile"  class="col-3">
+                @if (isLoggedIn()) {
+                <img id="userPhoto" [src]="userPhoto" alt="Avatar"
+                    class="avatar w-100" />
+                <button id="botonLogOut"
+                    (click)="logout()">
+                    Cerrar sesión
+                </button>
+                } @else{
+                <button id="boton" class="btn btn-sm"
+                    (click)="createRequestToken()">
+                    Iniciar sesión
+                </button>
+                }
+            </div>
+        </div>
+
+=======
   <div id="navbar" class="d-flex justify-content-around">
     <div class="col-2">
       <a [routerLink]="['/home']">
         <img src="assets/img/pop-films-light.png" alt="Popfilms logo" height="80px">
       </a>
+>>>>>>> main
     </div>
 
     <div class="col-4">
