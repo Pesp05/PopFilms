@@ -23,7 +23,7 @@ export class CrudListasService {
   getListasCreadas(): Observable<ListasCreadasResponse> {
     const SESSION_ID = localStorage.getItem('session_id');
     const ACCOUNT_ID = localStorage.getItem('account_id');
-    return this.http.get<ListasCreadasResponse>(`${environment.apiBaseUrl}/account/${ACCOUNT_ID}/lists?`, HEADERGET);
+    return this.http.get<ListasCreadasResponse>(`${environment.apiBaseUrl}/account/${ACCOUNT_ID}/lists?api_key=${environment.apiKey}&session_id=${SESSION_ID}`, HEADERGET);
   }
   createList(nombre: string, descripcion: string, idioma: string): Observable<void> {
     const SESSION_ID = localStorage.getItem('session_id');
