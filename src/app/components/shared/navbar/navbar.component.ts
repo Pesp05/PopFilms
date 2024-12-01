@@ -1,4 +1,5 @@
-import { Component, inject, TemplateRef } from '@angular/core';
+
+import { Component, inject, TemplateRef, EventEmitter, Output } from '@angular/core';
 import { AuthService } from '../../../services/authentication/auth.service';
 import { AccountService } from '../../../services/authentication/account.service';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
@@ -12,9 +13,10 @@ export class NavbarComponent {
 
   userName = '';
   userPhoto = '';
+  busqueda = '';
   isCollapsed = true;
-
   isFavoritesCollapsed = true;
+
   constructor(private authService: AuthService,
               private accountService: AccountService
   ) {}
@@ -33,6 +35,8 @@ export class NavbarComponent {
     this.authService.createRequestToken().subscribe((response) => {
       localStorage.setItem('token', response.request_token);
 
+
+      //window.location.href = `https://www.themoviedb.org/authenticate/${response.request_token}?redirect_to=http://localhost:4200/home`;
       // STEP 2 de la autenticación en TMDB (firma del token iniciando sesión en TMDB)
       window.location.href = `https://www.themoviedb.org/authenticate/${response.request_token}?redirect_to=http://localhost:4200/approved`;
     });
@@ -45,6 +49,10 @@ export class NavbarComponent {
   logout() {
     localStorage.clear();
     window.location.href = 'http://localhost:4200/home';
+  }
+
+  iniciarBusqueda() {
+    window.location.href = `http://localhost:4200/busqueda?busqueda=${this.busqueda}`;
   }
 
   toggleFavorites(): void {
@@ -94,4 +102,6 @@ export class NavbarComponent {
 	openCustomPanelClass(content: TemplateRef<any>) {
 		this.offcanvasService.open(content, { panelClass: 'bg-info' });
 	}
+
 }
+

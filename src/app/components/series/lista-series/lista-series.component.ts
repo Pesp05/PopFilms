@@ -3,6 +3,7 @@ import { Serie } from "../../../models/lista-series.interface";
 import { AccountService } from "../../../services/authentication/account.service";
 import { ListaSeriesService } from "../../../services/lista-series.service";
 import { WatchListService } from "../../../services/watch-list.service";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-lista-series',
@@ -10,19 +11,53 @@ import { WatchListService } from "../../../services/watch-list.service";
   styleUrl: './lista-series.component.css'
 })
 export class ListaSeriesComponent implements OnInit {
+  languageFilter: string = '';
+  sortBy: string = '';
+  fechaEstrenoMin: string = '';
+  fechaEstrenoMax: string = '';
+  rateMin: string = '';
+  rateMax: string = '';
+  listaGeneros: string = '';
+
   listaSeries: Serie[] = [];
   serieMasPopular: Serie | undefined;
   paginaActual = 1;
-  constructor(private servicioListaSeries: ListaSeriesService, private accountService: AccountService, private watchListService: WatchListService) { }
+
+  constructor(private servicioListaSeries: ListaSeriesService,
+    private accountService: AccountService,
+    private watchListService: WatchListService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.servicioListaSeries.getPopularWithHeader(this.paginaActual).subscribe((data) => {
-      this.listaSeries = data.results.splice(1);
-      console.log(this.listaSeries.length);
-      this.serieMasPopular = data.results[0];
+    this.route.queryParams.subscribe((params) => {
+      this.languageFilter = params['languaje'] || '',
+        this.sortBy = params['sortBy'] || '',
+        this.listaGeneros = params['genres'] || '',
+        this.fechaEstrenoMin = params['releaseDateMin'] || '',
+        this.fechaEstrenoMax = params['releaseDateMax'] || '',
+        this.rateMin = params['rateMin'] || '',
+        this.rateMax = params['rateMax'] || ''
     });
-    
+    if (this.languageFilter || this.sortBy || this.fechaEstrenoMin || this.fechaEstrenoMax || this.rateMin || this.rateMax) {
+      this.servicioListaSeries.obtenerSeriesPorFiltros(this.languageFilter, this.sortBy, this.listaGeneros.toLowerCase(),
+        this.fechaEstrenoMin, this.fechaEstrenoMax, this.rateMin, this.rateMax).subscribe((serie: any) => {
+          this.listaSeries = serie.results.map((serie: any) => {
+            return {
+              ...serie,
+            }
+          });
+        });
+
+    } else {
+
+      this.servicioListaSeries.getPopularWithHeader(this.paginaActual).subscribe((data) => {
+        this.listaSeries = data.results.splice(1);
+        this.serieMasPopular = data.results[6];
+      });
+    }
   }
+
   getColorEstrellas(voteAverage: number): string {
     if (voteAverage >= 3.5) {
       return 'text-success';
@@ -64,7 +99,11 @@ export class ListaSeriesComponent implements OnInit {
       this.listaSeries = data.results.slice(1);
       this.serieMasPopular = data.results[0];
     });
-    scrollTo({top: 0, behavior: 'smooth'});
+    scrollTo({ top: 0, behavior: 'smooth' });
     console.log(this.paginaActual);
+  }
+
+  getPosterUrl(posterPath: string): string {
+    return `https://image.tmdb.org/t/p/original${posterPath}`;
   }
 }

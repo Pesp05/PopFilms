@@ -1,37 +1,46 @@
 <aside class="filters-container m-2 mt-5">
   <h2>Filtros</h2>
-
+<form action="get">
   <!-- Buscar por fecha -->
   <div class="filter-group">
     <label for="release-date-start">Fecha de Estreno</label>
-    <input type="date" id="release-date-start" placeholder="Desde">
-    <input type="date" id="release-date-end" placeholder="Hasta">
+    <input type="date" id="release-date-start" [(ngModel)]="fechaEstrenoMin" name="fechaEstrenoMin" placeholder="Desde">
+    <input type="date" id="release-date-end" [(ngModel)]="fechaEstrenoMax" name="fechaEstrenoMax" placeholder="Hasta">
   </div>
 
   <!-- Filtros por Géneros -->
   <div class="filter-group">
     <label>Géneros</label>
     <ul class="genre-list">
-      <li data-value="accion">Acción</li>
-      <li data-value="comedia">Comedia</li>
-      <li data-value="drama">Drama</li>
-      <li data-value="terror">Terror</li>
+      <li 
+    *ngFor="let genero of listaGeneros" 
+    [attr.data-value]="genero.name | lowercase" 
+    [ngClass]="{'no-selected': !isSelected(genero), 'selected': isSelected(genero)}" 
+    (click)="toggleSelection(genero)">
+    {{ genero.name }}
+  </li>
     </ul>
   </div>
 
   <!-- Puntuación de usuario -->
   <div class="filter-group">
     <label for="rating-slider">Puntuación de Usuario</label>
+    <p>Mínimo</p>
     <div class="slider-container">
-      <input type="range" id="rating-slider" min="0" max="10" step="1" value="3" oninput="this.nextElementSibling.value = this.value">
-      <output>3</output>
+      <input type="range" id="rating-slider" min="0" max="10" step="1" value="0" oninput="this.nextElementSibling.value = this.value" [(ngModel)]="rateMin" name="rateMin">
+      <output>0</output>
+    </div>
+    <p>Máximo</p>
+    <div class="slider-container">
+      <input type="range" id="rating-slider" min="0" max="10" step="1" value="10" oninput="this.nextElementSibling.value = this.value" [(ngModel)]="rateMax" name="rateMax">
+      <output>10</output>
     </div>
   </div>
 
   <!-- Idioma original -->
   <div class="filter-group">
     <label for="original-language">Idioma Original</label>
-    <select id="original-language">
+    <select id="original-language" [(ngModel)]="languageFilter" name="languageFilter">
       <option value="es">Español</option>
       <option value="en">Inglés</option>
       <option value="fr">Francés</option>
@@ -41,19 +50,20 @@
   <!-- Duración en minutos -->
   <div class="filter-group">
     <label for="runtime">Duración (min)</label>
-    <input type="number" id="runtime-min" placeholder="Mínimo">
-    <input type="number" id="runtime-max" placeholder="Máximo">
+    <input type="number" id="runtime-min" [(ngModel)]="runtimeMin" name="runtimeMin" placeholder="Mínimo">
+    <input type="number" id="runtime-max" [(ngModel)]="runtimeMax" name="runtimeMax" placeholder="Máximo">
   </div>
 
   <!-- Ordenar por -->
   <div class="filter-group">
     <label for="sort-by">Ordenar por</label>
-    <select id="sort-by">
-      <option value="popularity">Popularidad</option>
-      <option value="release_date">Fecha de Estreno</option>
-      <option value="vote_average">Puntuación</option>
+    <select id="sort-by" [(ngModel)]="sortBy" name="sortBy">
+      <option value="popularity.desc">Popularidad</option>
+      <option value="primary_release_date.desc">Fecha de Estreno</option>
+      <option value="vote_average.desc">Puntuación</option>
     </select>
   </div>
 
-  <button class="apply-filters">Aplicar Filtros</button>
+  <button class="apply-filters" (click)="sendFilters()">Aplicar Filtros</button>
+</form>
 </aside>

@@ -16,6 +16,7 @@ const HEADER = { headers: {
   Authorization: `Bearer ${'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NDY5Mjg1OTczM2FmM2E4MjMwMzQxYjM1MGE1OTVmZCIsIm5iZiI6MTczMTc1MjA2MC44MTk0MjU2LCJzdWIiOiI2NzMxYmQ5NjYxNjI2YWMxMDZiZTY3ZGMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.59a-DzPdbcfNJ8mWyRnkG_yFZ5DkQQCL4IsR3q_X30M'}`,
 },
 };
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,6 +27,11 @@ export class ListaSeriesService {
   getPopularWithHeader(page: number): Observable<ListaSeries> {
     return this.http.get<ListaSeries>(`${environment.apiBaseUrl}/tv/popular?&language=es-ES&page=${page}`, HEADER);
   }
+
+  obtenerSeriesPorFiltros(languageFilter: string, sortBy: string, genres: string, releaseDateMin: string, releaseDateMax: string, rateMin: string, rateMax: string): Observable<ListaSeries> {
+    return this.http.get<ListaSeries>(`${environment.apiBaseUrl}/discover/tv?&language=${languageFilter}&sort_by=${sortBy}&with_genres=${genres}&primary_release_date.gte=${releaseDateMin}&primary_release_date.lte=${releaseDateMax}&vote_average.gte=${rateMin}&vote_average.lte=${rateMax}`, HEADER);
+  }
+
   getSerieVideo(idSerie: number): Observable<SerieVideosResponse> {
     return this.http.get<SerieVideosResponse>(`${environment.apiBaseUrl}/tv/${idSerie}/videos`, HEADER);
   }
