@@ -11,6 +11,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class MovieListComponent implements OnInit{
 
   languageFilter: string = '';
+  sortBy: string = '';
+  fechaEstrenoMin: string = '';
+  fechaEstrenoMax: string = '';
+  runtimeMin: string = '';
+  runtimeMax: string = '';
+  rateMin: string = '';
+  rateMax: string = '';
+  listaGeneros: string = '';
+
   listaPeliculasPopulares :Pelicula[] =[];
 
   constructor(private movieService:MoviesService,
@@ -20,18 +29,39 @@ export class MovieListComponent implements OnInit{
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
-      this.languageFilter = params['languaje'] || '';
+      this.languageFilter = params['languaje'] || '',
+      this.sortBy = params['sortBy'] || '',
+      this.listaGeneros = params['genres'] || '',
+      this.fechaEstrenoMin = params['releaseDateMin'] || '',
+      this.fechaEstrenoMax = params['releaseDateMax'] || '', 
+      this.runtimeMin = params['runtimeMin'] || '',
+      this.runtimeMax = params['runtimeMax'] || '',
+      this.rateMin = params['rateMin'] || '',
+      this.rateMax = params['rateMax'] || ''
     });
-    this.movieService.obtenerPeliculasPopulares().subscribe((data:any) => {
-      this.listaPeliculasPopulares = data.results.map((peli:any)=>{
-        return {
-          ...peli,
-          posterUrl:this.movieService.getImageUrl(peli.poster_path),
-        }
+    if(this.languageFilter || this.sortBy || this.fechaEstrenoMin || this.fechaEstrenoMax || this.runtimeMin || this.runtimeMax || this.rateMin || this.rateMax){
+      this.movieService.obtenerPeliculasPorFiltros(this.languageFilter, this.sortBy, this.listaGeneros.toLowerCase(), 
+        this.fechaEstrenoMin, this.fechaEstrenoMax, this.runtimeMin, this.runtimeMax, this.rateMin, this.rateMax).subscribe((peli:any) => {
+          this.listaPeliculasPopulares = peli.results.map((peli:any)=>{
+          return {
+            ...peli,
+            posterUrl:this.movieService.getImageUrl(peli.poster_path),
+          }
+        });
       });
-    });
 
+    } else {
+      this.movieService.obtenerPeliculasPopulares().subscribe((data:any) => {
+        this.listaPeliculasPopulares = data.results.map((peli:any)=>{
+          return {
+            ...peli,
+            posterUrl:this.movieService.getImageUrl(peli.poster_path),
+          }
+        });
+      });
+    }
   }
+
 
   verTrailer(peli: any) {
     this.movieService.obtenerTrailerPorId(peli.id).subscribe((data) => {

@@ -14,14 +14,16 @@ fechaEstrenoMin: string = '';
 fechaEstrenoMax: string = '';
 runtimeMin: string = '';
 runtimeMax: string = '';
-
+rateMin: string = '';
+rateMax: string = '';
 listaGeneros: Genre[] = [];
+
 listaGenerosSeleccionados: Genre[] = [];
 
 constructor(private filtroPeliculaService: FiltroPeliculasService) { }
 
   sendFilters() {
-    window.location.href = `http://localhost:4200/movies?language=${this.languageFilter}&sortBy=${this.sortBy}&genres=${this.listaGenerosSeleccionados.map(g => g.id).join(',')}&releaseDateMin=${this.fechaEstrenoMin}&releaseDateMax=${this.fechaEstrenoMax}&runtimeMin=${this.runtimeMin}&runtimeMax=${this.runtimeMax}`;
+    window.location.href = `http://localhost:4200/movies?language=${this.languageFilter}&sortBy=${this.sortBy}&genres=${this.listaGenerosSeleccionados.map(g => g.name).join(',')}&releaseDateMin=${this.fechaEstrenoMin}&releaseDateMax=${this.fechaEstrenoMax}&runtimeMin=${this.runtimeMin}&runtimeMax=${this.runtimeMax}&rateMin=${this.rateMin}&rateMax=${this.rateMax}`;
   }
 
   ngOnInit() {

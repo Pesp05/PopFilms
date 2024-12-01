@@ -27,12 +27,12 @@
     <label for="rating-slider">Puntuación de Usuario</label>
     <p>Mínimo</p>
     <div class="slider-container">
-      <input type="range" id="rating-slider" min="0" max="10" step="1" value="0" oninput="this.nextElementSibling.value = this.value">
+      <input type="range" id="rating-slider" min="0" max="10" step="1" value="0" oninput="this.nextElementSibling.value = this.value" [(ngModel)]="rateMin" name="rateMin">
       <output>0</output>
     </div>
     <p>Máximo</p>
     <div class="slider-container">
-      <input type="range" id="rating-slider" min="0" max="10" step="1" value="10" oninput="this.nextElementSibling.value = this.value">
+      <input type="range" id="rating-slider" min="0" max="10" step="1" value="10" oninput="this.nextElementSibling.value = this.value" [(ngModel)]="rateMax" name="rateMax">
       <output>10</output>
     </div>
   </div>
@@ -58,9 +58,9 @@
   <div class="filter-group">
     <label for="sort-by">Ordenar por</label>
     <select id="sort-by" [(ngModel)]="sortBy" name="sortBy">
-      <option value="popularity">Popularidad</option>
-      <option value="release_date">Fecha de Estreno</option>
-      <option value="vote_average">Puntuación</option>
+      <option value="popularity.desc">Popularidad</option>
+      <option value="primary_release_date.desc">Fecha de Estreno</option>
+      <option value="vote_average.desc">Puntuación</option>
     </select>
   </div>
 
