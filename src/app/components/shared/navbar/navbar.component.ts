@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 import { Component, inject, TemplateRef } from '@angular/core';
+=======
+import { Component, inject, TemplateRef, EventEmitter, Output } from '@angular/core';
+>>>>>>> Stashed changes
 import { AuthService } from '../../../services/authentication/auth.service';
 import { AccountService } from '../../../services/authentication/account.service';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
@@ -12,8 +16,11 @@ export class NavbarComponent {
 
   userName = '';
   userPhoto = '';
+<<<<<<< Updated upstream
+=======
+  busqueda = '';
+>>>>>>> Stashed changes
   isCollapsed = true;
-
   isFavoritesCollapsed = true;
   constructor(private authService: AuthService,
               private accountService: AccountService
@@ -33,6 +40,10 @@ export class NavbarComponent {
     this.authService.createRequestToken().subscribe((response) => {
       localStorage.setItem('token', response.request_token);
 
+<<<<<<< Updated upstream
+=======
+      //window.location.href = `https://www.themoviedb.org/authenticate/${response.request_token}?redirect_to=http://localhost:4200/home`;
+>>>>>>> Stashed changes
       // STEP 2 de la autenticación en TMDB (firma del token iniciando sesión en TMDB)
       window.location.href = `https://www.themoviedb.org/authenticate/${response.request_token}?redirect_to=http://localhost:4200/approved`;
     });
@@ -47,6 +58,13 @@ export class NavbarComponent {
     window.location.href = 'http://localhost:4200/home';
   }
 
+<<<<<<< Updated upstream
+=======
+  iniciarBusqueda() {
+    window.location.href = `http://localhost:4200/busqueda?busqueda=${this.busqueda}`;
+  }
+
+>>>>>>> Stashed changes
   toggleFavorites(): void {
     this.isFavoritesCollapsed = !this.isFavoritesCollapsed;
   }
@@ -94,4 +112,5 @@ export class NavbarComponent {
 	openCustomPanelClass(content: TemplateRef<any>) {
 		this.offcanvasService.open(content, { panelClass: 'bg-info' });
 	}
+
 }

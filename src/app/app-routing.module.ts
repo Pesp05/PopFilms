@@ -3,6 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { MovieDetailComponent } from './components/movies/movie-detail/movie-detail.component';
 import { MovieListComponent } from './components/movies/movie-list/movie-list.component';
+<<<<<<< Updated upstream
+=======
+import { ListaSeriesComponent } from './components/series/lista-series/lista-series.component';
+>>>>>>> Stashed changes
 import { DetalleSerieComponent } from './components/series/detalle-serie/detalle-serie.component';
 import { DetallePersonaComponent } from './components/detalle-persona/detalle-persona.component';
 import { ListaPersonasComponent } from './components/lista-personas/lista-personas.component';

@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../../../services/movies.service';
 import { Pelicula } from '../../../models/lista-peliculas-response.interface';
+<<<<<<< Updated upstream
 import { Router } from '@angular/router';
+=======
+import { ActivatedRoute, Router } from '@angular/router';
+>>>>>>> Stashed changes
 import { WatchListService } from '../../../services/watch-list.service';
 import { AccountService } from '../../../services/authentication/account.service';
 
@@ -13,6 +17,7 @@ import { AccountService } from '../../../services/authentication/account.service
 export class MovieListComponent implements OnInit{
 
   listaPeliculasPopulares :Pelicula[] =[];
+<<<<<<< Updated upstream
   paginaActual = 1;
   constructor(private movieService:MoviesService,private router: Router, private accountService: AccountService,private watchListService: WatchListService){}
 
@@ -23,9 +28,51 @@ export class MovieListComponent implements OnInit{
           ...peli,
           posterUrl:this.movieService.getImageUrl(peli.poster_path),
         }
+=======
+paginaActual = 1;
+  constructor(private movieService:MoviesService,
+    private router: Router,
+    private route: ActivatedRoute, private accountService: AccountService,private watchListService: WatchListService
+  ){}
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      this.languageFilter = params['languaje'] || '',
+      this.sortBy = params['sortBy'] || '',
+      this.listaGeneros = params['genres'] || '',
+      this.fechaEstrenoMin = params['releaseDateMin'] || '',
+      this.fechaEstrenoMax = params['releaseDateMax'] || '', 
+      this.runtimeMin = params['runtimeMin'] || '',
+      this.runtimeMax = params['runtimeMax'] || '',
+      this.rateMin = params['rateMin'] || '',
+      this.rateMax = params['rateMax'] || ''
+    });
+    if(this.languageFilter || this.sortBy || this.fechaEstrenoMin || this.fechaEstrenoMax || this.runtimeMin || this.runtimeMax || this.rateMin || this.rateMax){
+      this.movieService.obtenerPeliculasPorFiltros(this.languageFilter, this.sortBy, this.listaGeneros.toLowerCase(), 
+        this.fechaEstrenoMin, this.fechaEstrenoMax, this.runtimeMin, this.runtimeMax, this.rateMin, this.rateMax).subscribe((peli:any) => {
+          this.listaPeliculasPopulares = peli.results.map((peli:any)=>{
+          return {
+            ...peli,
+            posterUrl:this.movieService.getImageUrl(peli.poster_path),
+          }
+        });
+>>>>>>> Stashed changes
       });
     })
 
+<<<<<<< Updated upstream
+=======
+    } else {
+      this.movieService.obtenerPeliculasPopulares(this.paginaActual).subscribe((data:any) => {
+        this.listaPeliculasPopulares = data.results.map((peli:any)=>{
+          return {
+            ...peli,
+            posterUrl:this.movieService.getImageUrl(peli.poster_path),
+          }
+        });
+      });
+    }
+>>>>>>> Stashed changes
   }
 
   marcarComoFavorita(pelicula: Pelicula) {

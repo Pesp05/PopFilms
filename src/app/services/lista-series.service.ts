@@ -26,6 +26,14 @@ export class ListaSeriesService {
   getPopularWithHeader(page: number): Observable<ListaSeries> {
     return this.http.get<ListaSeries>(`${environment.apiBaseUrl}/tv/popular?&language=es-ES&page=${page}`, HEADER);
   }
+<<<<<<< Updated upstream
+=======
+
+  obtenerSeriesPorFiltros(languageFilter: string, sortBy: string, genres: string, releaseDateMin: string, releaseDateMax: string, rateMin: string, rateMax: string): Observable<ListaSeries> {
+    return this.http.get<ListaSeries>(`${environment.apiBaseUrl}/discover/tv?&language=${languageFilter}&sort_by=${sortBy}&with_genres=${genres}&primary_release_date.gte=${releaseDateMin}&primary_release_date.lte=${releaseDateMax}&vote_average.gte=${rateMin}&vote_average.lte=${rateMax}`, HEADER);
+  }
+
+>>>>>>> Stashed changes
   getSerieVideo(idSerie: number): Observable<SerieVideosResponse> {
     return this.http.get<SerieVideosResponse>(`${environment.apiBaseUrl}/tv/${idSerie}/videos`, HEADER);
   }
