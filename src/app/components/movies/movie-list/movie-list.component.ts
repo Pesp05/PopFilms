@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../../../services/movies.service';
 import { Pelicula } from '../../../models/lista-peliculas-response.interface';
-<<<<<<< Updated upstream
-import { Router } from '@angular/router';
-=======
 import { ActivatedRoute, Router } from '@angular/router';
->>>>>>> Stashed changes
 import { WatchListService } from '../../../services/watch-list.service';
 import { AccountService } from '../../../services/authentication/account.service';
 
@@ -16,19 +12,19 @@ import { AccountService } from '../../../services/authentication/account.service
 })
 export class MovieListComponent implements OnInit{
 
-  listaPeliculasPopulares :Pelicula[] =[];
-<<<<<<< Updated upstream
-  paginaActual = 1;
-  constructor(private movieService:MoviesService,private router: Router, private accountService: AccountService,private watchListService: WatchListService){}
+  languageFilter: string = '';
+  sortBy: string = '';
+  fechaEstrenoMin: string = '';
+  fechaEstrenoMax: string = '';
+  runtimeMin: string = '';
+  runtimeMax: string = '';
+  rateMin: string = '';
+  rateMax: string = '';
+  listaGeneros: string = '';
 
-  ngOnInit(): void {
-    this.movieService.obtenerPeliculasPopulares(this.paginaActual).subscribe((data:any) => {
-      this.listaPeliculasPopulares = data.results.map((peli:any)=>{
-        return {
-          ...peli,
-          posterUrl:this.movieService.getImageUrl(peli.poster_path),
-        }
-=======
+  listaPeliculasPopulares :Pelicula[] =[];
+
+
 paginaActual = 1;
   constructor(private movieService:MoviesService,
     private router: Router,
@@ -56,14 +52,10 @@ paginaActual = 1;
             posterUrl:this.movieService.getImageUrl(peli.poster_path),
           }
         });
->>>>>>> Stashed changes
       });
-    })
-
-<<<<<<< Updated upstream
-=======
     } else {
       this.movieService.obtenerPeliculasPopulares(this.paginaActual).subscribe((data:any) => {
+
         this.listaPeliculasPopulares = data.results.map((peli:any)=>{
           return {
             ...peli,
@@ -72,13 +64,11 @@ paginaActual = 1;
         });
       });
     }
->>>>>>> Stashed changes
   }
 
   marcarComoFavorita(pelicula: Pelicula) {
     this.accountService.markAsFavorite(pelicula.id, 'movie', true);
 }
-
 
   verTrailer(peli: any) {
     this.movieService.obtenerTrailerPorId(peli.id).subscribe((data) => {

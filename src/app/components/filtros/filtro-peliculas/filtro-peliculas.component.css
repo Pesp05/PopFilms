@@ -92,8 +92,7 @@
 }
 
 .genre-list li {
-  padding: 10px;
-  background-color: #f0f0f0;
+  padding: 10px;;
   border-radius: 15px;
   cursor: pointer;
   font-size: 16px;
@@ -108,4 +107,14 @@
 .genre-list li.active {
   background-color: #FF7F30;
   color: #fff;
+}
+
+.selected{
+  color: white;
+  background-color: #FF7F30;
+}
+
+.no-selected{
+  background-color: #f0f0f0;
+  color: black;
 }

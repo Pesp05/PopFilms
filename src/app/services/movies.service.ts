@@ -28,13 +28,10 @@ export class MoviesService {
     return this.http.get<ListaPeliculasResponse>(`${environment.apiBaseUrl}/movie/popular?&language=es-ES&page=${page}`, HEADERS);
   }
 
-<<<<<<< Updated upstream
-=======
   public obtenerPeliculasPorFiltros(languageFilter: string, sortBy: string, genres: string, releaseDateMin: string, releaseDateMax: string, runtimeMin: string, runtimeMax: string, rateMin: string, rateMax: string): Observable<ListaPeliculasResponse> {
     return this.http.get<ListaPeliculasResponse>(`${environment.apiBaseUrl}/discover/movie?&language=${languageFilter}&sort_by=${sortBy}&with_genres=${genres}&primary_release_date.gte=${releaseDateMin}&primary_release_date.lte=${releaseDateMax}&with_runtime.gte=${runtimeMin}&with_runtime.lte=${runtimeMax}&vote_average.gte=${rateMin}&vote_average.lte=${rateMax}`, HEADERS);
   }
 
->>>>>>> Stashed changes
   public getImageUrl(posterPath: string): string {
     const baseUrl = 'https://image.tmdb.org/t/p/';
     const fileSize = 'w500';
@@ -52,13 +49,11 @@ export class MoviesService {
   getCreditosPeli(idMovie: number): Observable<CreditosPeliResponse> {
     return this.http.get<CreditosPeliResponse>(`${environment.apiBaseUrl}/movie/${idMovie}/credits?&language=es-ES`, HEADERS);
   }
-<<<<<<< Updated upstream
-=======
 
   aplicarFiltros(languageFilter: string) {
     throw new Error('Method not implemented.');
   }
->>>>>>> Stashed changes
+
   setRatingPeli(idPeli: number, rating: number): Observable<void> {
 
     const SESSION_ID = localStorage.getItem('session_id');
@@ -68,8 +63,4 @@ export class MoviesService {
     const SESSION_ID = localStorage.getItem('session_id');
     return this.http.delete<void>(`${environment.apiBaseUrl}/movie/${idPeli}/rating?api_key=${environment.apiKey}&session_id=${SESSION_ID}`, HEADERSANDPOST);
   }
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes
