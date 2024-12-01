@@ -20,8 +20,8 @@ export class ListaPersonasService {
 
   constructor(private http: HttpClient) { }
 
-  getPersonas(): Observable<ListaPersonas> {
-    return this.http.get<ListaPersonas>(`${environment.apiBaseUrl}/person/popular?&language=es-ES`, HEADERS);{     
+  getPersonas(page: number): Observable<ListaPersonas> {
+    return this.http.get<ListaPersonas>(`${environment.apiBaseUrl}/person/popular?&language=es-ES&page=${page}`, HEADERS);{     
   }
 }
 

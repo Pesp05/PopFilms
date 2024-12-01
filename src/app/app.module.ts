@@ -36,6 +36,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { ListasCreadasComponent } from './components/listas-creadas/listas-creadas.component';
 import { DetalleListaCreadaComponent } from './components/detalle-lista-creada/detalle-lista-creada.component';
 import { TraducirTipoPipe } from './pipes/traducir-tipo.pipe';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +77,8 @@ import { TraducirTipoPipe } from './pipes/traducir-tipo.pipe';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    MatSelectModule
+    MatSelectModule,
+    NgbPaginationModule
   ],
   
   providers: [provideHttpClient(), provideAnimationsAsync()],

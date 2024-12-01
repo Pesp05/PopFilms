@@ -13,11 +13,11 @@ import { AccountService } from '../../../services/authentication/account.service
 export class MovieListComponent implements OnInit{
 
   listaPeliculasPopulares :Pelicula[] =[];
-
+  paginaActual = 1;
   constructor(private movieService:MoviesService,private router: Router, private accountService: AccountService,private watchListService: WatchListService){}
 
   ngOnInit(): void {
-    this.movieService.obtenerPeliculasPopulares().subscribe((data:any) => {
+    this.movieService.obtenerPeliculasPopulares(this.paginaActual).subscribe((data:any) => {
       this.listaPeliculasPopulares = data.results.map((peli:any)=>{
         return {
           ...peli,
@@ -63,6 +63,15 @@ export class MovieListComponent implements OnInit{
   addMovieToWatchList(peliculaId: number): void {
     this.watchListService.addToWatchList(peliculaId, 'movie', true);
   }
-
+  cambiarPagina(): void {
+    this.movieService.obtenerPeliculasPopulares(this.paginaActual).subscribe((data:any) => {
+      this.listaPeliculasPopulares = data.results.map((peli:any)=>{
+        return {
+          ...peli,
+          posterUrl:this.movieService.getImageUrl(peli.poster_path),
+        }
+      });
+    })
+  }
 }
 
