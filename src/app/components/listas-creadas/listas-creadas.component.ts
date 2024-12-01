@@ -23,8 +23,6 @@ export class ListasCreadasComponent implements OnInit {
   }
   eliminarLista(id: number): void {
     this.listaService.deleteList(id).subscribe();
-    setTimeout(() => {
-      this.cargarListas();
-    }, 200);
+    this.cargarListas();
   }
 }

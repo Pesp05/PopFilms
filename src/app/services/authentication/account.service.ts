@@ -32,11 +32,6 @@ const ACCOUNT_ID = parseInt(localStorage.getItem('account_id') ?? '0', 10);
         `${environment.apiBaseUrl}/account/${ACCOUNT_ID}/favorite/tv?api_key=${environment.apiKey}&session_id=${SESSION_ID}`
       );
     }
-
-
-    
-
-
     markAsFavorite(mediaId: number, mediaType: string, favorite: boolean): void {
       const url = `${environment.apiBaseUrl}/account/${ACCOUNT_ID}/favorite?api_key=${environment.apiKey}&session_id=${SESSION_ID}`;
       const headers = {

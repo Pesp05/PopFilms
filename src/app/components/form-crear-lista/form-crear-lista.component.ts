@@ -27,9 +27,7 @@ constructor(private listaServices: CrudListasService, private router: Router){}
       this.mostrarErrores = false;
       this.enviado = true;
       this.listaServices.createList(this.nombreLista, this.descripcionLista, 'es').subscribe();
-      setTimeout(() => {
-        this.router.navigate(['/createdLists']);
-      }, 300);
+      this.router.navigate(['/createdLists']);
     } else {
       this.mostrarErrores = true;
       this.enviado = false;
