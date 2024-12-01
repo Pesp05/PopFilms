@@ -12,17 +12,16 @@ import { WatchListService } from "../../../services/watch-list.service";
 export class ListaSeriesComponent implements OnInit {
   listaSeries: Serie[] = [];
   serieMasPopular: Serie | undefined;
-
+  paginaActual = 1;
   constructor(private servicioListaSeries: ListaSeriesService, private accountService: AccountService, private watchListService: WatchListService) { }
 
   ngOnInit(): void {
-    this.servicioListaSeries.getPopularWithHeader().subscribe((data) => {
-      this.listaSeries = data.results;
-      this.serieMasPopular = data.results[6];
+    this.servicioListaSeries.getPopularWithHeader(this.paginaActual).subscribe((data) => {
+      this.listaSeries = data.results.splice(1);
+      console.log(this.listaSeries.length);
+      this.serieMasPopular = data.results[0];
     });
-  }
-  getPosterUrl(posterPath: string): string {
-    return `https://image.tmdb.org/t/p/original${posterPath}`;
+    
   }
   getColorEstrellas(voteAverage: number): string {
     if (voteAverage >= 3.5) {
@@ -42,7 +41,7 @@ export class ListaSeriesComponent implements OnInit {
   }
 
   marcarComoFavorita(serie: Serie) {
-      this.accountService.markAsFavorite(serie.id, 'tv', true);
+    this.accountService.markAsFavorite(serie.id, 'tv', true);
   }
 
   getKeySerie(idSerie: number): string {
@@ -59,5 +58,13 @@ export class ListaSeriesComponent implements OnInit {
 
   addSerieToWatchList(serieId: number): void {
     this.watchListService.addToWatchList(serieId, 'tv', true)
+  }
+  cambiarPagina(): void {
+    this.servicioListaSeries.getPopularWithHeader(this.paginaActual).subscribe((data) => {
+      this.listaSeries = data.results.slice(1);
+      this.serieMasPopular = data.results[0];
+    });
+    scrollTo({top: 0, behavior: 'smooth'});
+    console.log(this.paginaActual);
   }
 }

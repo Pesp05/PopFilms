@@ -24,8 +24,8 @@ export class MoviesService {
 
   constructor(private http:HttpClient) {}
 
-  public obtenerPeliculasPopulares():Observable<ListaPeliculasResponse>{
-    return this.http.get<ListaPeliculasResponse>(`${environment.apiBaseUrl}/movie/popular?&language=es-ES`, HEADERS);
+  public obtenerPeliculasPopulares(page: number):Observable<ListaPeliculasResponse>{
+    return this.http.get<ListaPeliculasResponse>(`${environment.apiBaseUrl}/movie/popular?&language=es-ES&page=${page}`, HEADERS);
   }
 
   public getImageUrl(posterPath: string): string {

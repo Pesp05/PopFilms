@@ -36,7 +36,7 @@
       </div>
       <div class="row">
         @for(peli of listaPeliculasPopulares; track peli.id) {
-        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-4">
+        <div class="col-3 mb-4">
           <div class="card shadow-sm border-0 rounded">
             <a [routerLink]="['/movie', peli.id]">
               <img [src]="peli.posterUrl" class="card-img-top rounded" alt="{{peli.title}}" />
@@ -65,6 +65,8 @@
           </div>
         </div>
         }
+        <ngb-pagination class="d-flex justify-content-center" [collectionSize]="500" [pageSize]="19" [(page)]="paginaActual" aria-label="Default pagination"
+        (pageChange)="cambiarPagina()" />
       </div>
     </div>
   </div>

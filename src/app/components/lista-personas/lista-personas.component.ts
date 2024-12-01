@@ -12,11 +12,11 @@ export class ListaPersonasComponent implements OnInit {
 
 
   constructor(private listaPersonasService: ListaPersonasService) { }
- 
+  paginaActual = 1;
   listaPersonas: Personas[] = [];
 
   ngOnInit(): void {
-    this.listaPersonasService.getPersonas().subscribe((data) => {
+    this.listaPersonasService.getPersonas(this.paginaActual).subscribe((data) => {
       this.listaPersonas = data.results;
     });
   }
@@ -24,5 +24,10 @@ export class ListaPersonasComponent implements OnInit {
     return `https://image.tmdb.org/t/p/w500/${posterPath}`;
   }
   
-
+  cambiarPagina(): void {
+    this.listaPersonasService.getPersonas(this.paginaActual).subscribe((data) => {
+      this.listaPersonas = data.results;
+    });
+    scrollTo({top: 0, behavior: 'smooth'});
+  }
 }

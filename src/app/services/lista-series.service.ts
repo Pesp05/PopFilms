@@ -23,8 +23,8 @@ export class ListaSeriesService {
 
   constructor(private http: HttpClient) {}
 
-  getPopularWithHeader(): Observable<ListaSeries> {
-    return this.http.get<ListaSeries>(`${environment.apiBaseUrl}/tv/popular?&language=es-ES`, HEADER);
+  getPopularWithHeader(page: number): Observable<ListaSeries> {
+    return this.http.get<ListaSeries>(`${environment.apiBaseUrl}/tv/popular?&language=es-ES&page=${page}`, HEADER);
   }
   getSerieVideo(idSerie: number): Observable<SerieVideosResponse> {
     return this.http.get<SerieVideosResponse>(`${environment.apiBaseUrl}/tv/${idSerie}/videos`, HEADER);

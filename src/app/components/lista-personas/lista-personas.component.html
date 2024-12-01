@@ -15,9 +15,10 @@
                         <span class="colorListado">{{detalle.original_title || detalle.original_name}}</span>
                     }
                 </p>
-
             </div>
         </div>
     </div>
     }
+    <ngb-pagination class="d-flex justify-content-center" [collectionSize]="500" [pageSize]="19" [(page)]="paginaActual" aria-label="Default pagination"
+    (pageChange)="cambiarPagina()" />
 </div>
