@@ -14,6 +14,9 @@ import { ListaSeriesComponent } from './components/series/lista-series/lista-ser
 import { WatchListComponent } from './components/perfil/watch-list/watch-list.component';
 import { SeriesFavoritasComponent } from './components/series-favoritas/series-favoritas.component';
 import { PeliculasFavoritasComponent } from './components/peliculas-favoritas/peliculas-favoritas.component';
+import { FormCrearListaComponent } from './components/form-crear-lista/form-crear-lista.component';
+import { ListasCreadasComponent } from './components/listas-creadas/listas-creadas.component';
+import { DetalleListaCreadaComponent } from './components/detalle-lista-creada/detalle-lista-creada.component';
 
 
 const routes: Routes = [
@@ -30,7 +33,10 @@ const routes: Routes = [
   {path: 'moviesRated', component: PeliculasValoradasComponent},
   {path: 'watchlist', component:WatchListComponent},
   {path: 'seriesFavorites', component: SeriesFavoritasComponent},
-  {path: 'peliculasFavorites', component: PeliculasFavoritasComponent}
+  {path: 'peliculasFavorites', component: PeliculasFavoritasComponent},
+  {path: 'createList', component: FormCrearListaComponent},
+  {path: 'createdLists', component: ListasCreadasComponent},
+  {path: 'listDetail/:id', component: DetalleListaCreadaComponent}
 
 
 ];

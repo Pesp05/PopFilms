@@ -1,0 +1,14 @@
+.colorFondo{
+    background-color: #027a5c;
+}
+.boton{
+    background-color: white;   
+    border: solid 1px #adadad;
+    border-radius: 30px;
+}
+
+.lista{
+    background-color: white;
+    border-radius: 30px;
+    height: 40px;
+}

@@ -1,0 +1,12 @@
+.colorFondo{
+    background-color: #027a5c;
+}
+.colorCuerpo{
+    background-color: #0D7685;
+}
+.boton{
+    background-color: transparent;   
+    border: solid 1px #adadad;
+    border-radius: 30px;
+    cursor: pointer;
+}
