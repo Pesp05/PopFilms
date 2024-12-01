@@ -4,9 +4,20 @@
 .colorCuerpo{
     background-color: #0D7685;
 }
-.boton{
-    background-color: transparent;   
-    border: solid 1px #adadad;
+
+button {
+    background-color: #FF7F30;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
     border-radius: 30px;
+    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e06b25; /* Color más oscuro al pasar el ratón */
+    text-transform: uppercase;
+
 }
