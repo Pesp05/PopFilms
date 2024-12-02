@@ -16,8 +16,8 @@ runtimeMax: string = '';
 rateMin: string = '';
 rateMax: string = '';
 listaGeneros: Genre[] = [];
-
 listaGenerosSeleccionados: Genre[] = [];
+languageFilter: any;
 
 constructor(private filtroPeliculaService: FiltroPeliculasService) { }
 

@@ -12,30 +12,27 @@
                 date:'yyyy'}}</span>)</h1>
           </div>
           <p>{{listaPeliculasPopulares[0].overview}} </p>
-          <a class="w-100 m-0"
-            (click)="verFichaPelicula(listaPeliculasPopulares[0].id)">
+          <a class="w-100 m-0" (click)="verFichaPelicula(listaPeliculasPopulares[0].id)">
             <button id="ficha" mat-fab class="w-100">Ver Ficha</button>
           </a>
           <div class="d-flex w-100 justify-content-around flex-nowrap">
 
-              <button class="w-50" (click)="verTrailer(listaPeliculasPopulares[0])">Ver Tráiler
-                <span>
-                  <mat-icon
-                    fontIcon="keyboard_arrow_right">
-                  </mat-icon>
-                </span>
-              </button>
+            <button class="w-50" (click)="verTrailer(listaPeliculasPopulares[0])">Ver Tráiler
+              <span>
+                <mat-icon fontIcon="keyboard_arrow_right">
+                </mat-icon>
+              </span>
+            </button>
             @if (listaPeliculasPopulares[0]) {
-            <button (click)="marcarComoFavorita(listaPeliculasPopulares[0])"
-              class="w-50"><i class="bi bi-heart text-light"></i>
+            <button (click)="marcarComoFavorita(listaPeliculasPopulares[0])" class="w-50"><i
+                class="bi bi-heart text-light"></i>
               Favoritos</button>
             }
           </div>
 
         </div>
         <div class="col-6 top1">
-          <img src="{{listaPeliculasPopulares[0].posterUrl}}"
-            alt="{{listaPeliculasPopulares[0].title}}">
+          <img src="{{listaPeliculasPopulares[0].posterUrl}}" alt="{{listaPeliculasPopulares[0].title}}">
         </div>
       </div>
       <div class="container">
@@ -43,62 +40,48 @@
         <div class="col-6 col-md-3 col-lg-3 mb-4">
           <div class="card shadow-sm border-0 rounded">
             <a [routerLink]="['/movie', peli.id]">
-              <img [src]="peli.posterUrl" class="card-img-top rounded"
-                alt="{{peli.title}}" />
+              <img [src]="peli.posterUrl" class="card-img-top rounded" alt="{{peli.title}}" />
             </a>
             <div class="card-body">
               <h5 class="card-title text-center">{{peli.original_title}}</h5>
               <p class="card-text text-center">{{peli.release_date |
                 date:'dd/MM/yyyy'}}</p>
-              <div
-                class="d-flex justify-content-center flex-column align-items-center">
+              <div class="d-flex justify-content-center flex-column align-items-center">
                 <span class="ms-2">{{peli.vote_average.toFixed(2)}}</span>
-                <ngb-rating class="fs-5" [max]="5" [readonly]="true"
-                  [rate]="peli.vote_average / 2"
+                <ngb-rating class="fs-5" [max]="5" [readonly]="true" [rate]="peli.vote_average / 2"
                   [ngClass]="getColorEstrellas(peli.vote_average / 2)" />
                 <span class="text-muted ms-1">({{peli.vote_count}} votos)</span>
               </div>
               <div class="botonLista">
-                <button class="p-1 botonIcon" (click)="marcarComoFavorita(peli)"
-                  placement="top" ngbPopover="Se ha añdido a favoritos"
-                  container="body">
-                  <mat-icon aria-hidden="false" aria-label="Example home icon"
-                    fontIcon="favorite"></mat-icon>
+                <button class="p-1 botonIcon" (click)="marcarComoFavorita(peli)" placement="top"
+                  ngbPopover="Se ha añdido a favoritos" container="body">
+                  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="favorite"></mat-icon>
                 </button>
 
                 <button class="p-1">
-                  <mat-icon aria-hidden="false" aria-label="Example home icon"
-                    fontIcon="list_alt"></mat-icon>
+                  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="list_alt"></mat-icon>
                 </button>
-                <button class="p-1" (click)="addMovieToWatchList(peli.id)"
-                  placement="top" ngbPopover="Se ha añadido a la watchlist"
-                  container="body">
-                  <mat-icon aria-hidden="false" aria-label="Bookmark icon"
-                    fontIcon="bookmark"></mat-icon>
+                <button class="p-1" (click)="addMovieToWatchList(peli.id)" placement="top"
+                  ngbPopover="Se ha añadido a la watchlist" container="body">
+                  <mat-icon aria-hidden="false" aria-label="Bookmark icon" fontIcon="bookmark"></mat-icon>
+                </button>
                 <div ngbDropdown>
                   <button class="p-1" ngbDropdownToggle>
                     <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="list"></mat-icon>
                   </button>
                   <div ngbDropdownMenu>
                     @for(lista of listaDeListas; track lista.id){
-                      <button (click)="addToLista(lista.id, peli.id)" ngbDropdownItem>{{ lista.name }}</button>
+                    <button (click)="addToLista(lista.id, peli.id)" ngbDropdownItem>{{ lista.name }}</button>
                     }
                   </div>
                 </div>
-                <button class="p-1" (click)="addMovieToWatchList(peli.id)" placement="top" ngbPopover="Se ha añadido a la watchlist" container="body">
-                  <mat-icon aria-hidden="false" aria-label="Bookmark icon" fontIcon="bookmark"></mat-icon>
-
-                </button>
               </div>
             </div>
           </div>
         </div>
         }
       </div>
-      <ngb-pagination class="d-flex justify-content-center"
-          [collectionSize]="500" [pageSize]="19" [(page)]="paginaActual"
-          aria-label="Default pagination"
-          (pageChange)="cambiarPagina()" />
     </div>
+    <ngb-pagination class="d-flex justify-content-center" [collectionSize]="500" [pageSize]="19" [(page)]="paginaActual"
+      aria-label="Default pagination" (pageChange)="cambiarPagina()" />
   </div>
-</div>
