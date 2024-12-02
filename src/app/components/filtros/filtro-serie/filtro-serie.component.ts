@@ -8,7 +8,6 @@ import { FiltroSeriesService } from '../../../services/filtro-series.service';
   styleUrl: './filtro-serie.component.css'
 })
 export class FiltroSerieComponent {
-  languageFilter: string = '';
   sortBy: string = '';
   fechaEstrenoMin: string = '';
   fechaEstrenoMax: string = '';
@@ -20,7 +19,7 @@ export class FiltroSerieComponent {
   constructor(private filtroSerieService: FiltroSeriesService) { }
 
   sendFilters() {
-    window.location.href = `http://localhost:4200/series?language=${this.languageFilter}&sortBy=${this.sortBy}&genres=${this.listaGenerosSeleccionados.map(g => g.name).join(',')}&releaseDateMin=${this.fechaEstrenoMin}&releaseDateMax=${this.fechaEstrenoMax}&rateMin=${this.rateMin}&rateMax=${this.rateMax}`;
+    window.location.href = `http://localhost:4200/series?sortBy=${this.sortBy}&genres=${this.listaGenerosSeleccionados.map(g => g.id).join(',')}&releaseDateMin=${this.fechaEstrenoMin}&releaseDateMax=${this.fechaEstrenoMax}&rateMin=${this.rateMin}&rateMax=${this.rateMax}`;
   }
 
   ngOnInit() {

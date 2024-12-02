@@ -12,7 +12,6 @@ import { AccountService } from '../../../services/authentication/account.service
 })
 export class MovieListComponent implements OnInit{
 
-  languageFilter: string = '';
   sortBy: string = '';
   fechaEstrenoMin: string = '';
   fechaEstrenoMax: string = '';
@@ -33,7 +32,6 @@ paginaActual = 1;
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
-      this.languageFilter = params['languaje'] || '',
       this.sortBy = params['sortBy'] || '',
       this.listaGeneros = params['genres'] || '',
       this.fechaEstrenoMin = params['releaseDateMin'] || '',
@@ -43,8 +41,8 @@ paginaActual = 1;
       this.rateMin = params['rateMin'] || '',
       this.rateMax = params['rateMax'] || ''
     });
-    if(this.languageFilter || this.sortBy || this.fechaEstrenoMin || this.fechaEstrenoMax || this.runtimeMin || this.runtimeMax || this.rateMin || this.rateMax){
-      this.movieService.obtenerPeliculasPorFiltros(this.languageFilter, this.sortBy, this.listaGeneros.toLowerCase(), 
+    if(this.sortBy || this.listaGeneros || this.fechaEstrenoMin || this.fechaEstrenoMax || this.runtimeMin || this.runtimeMax || this.rateMin || this.rateMax){
+      this.movieService.obtenerPeliculasPorFiltros(this.sortBy, this.listaGeneros, 
         this.fechaEstrenoMin, this.fechaEstrenoMax, this.runtimeMin, this.runtimeMax, this.rateMin, this.rateMax).subscribe((peli:any) => {
           this.listaPeliculasPopulares = peli.results.map((peli:any)=>{
           return {
