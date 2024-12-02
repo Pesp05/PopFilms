@@ -3,3 +3,18 @@
     border: solid 1px #adadad;
     border-radius: 30px;
 }
+
+.empty-message {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .empty-message p {
+    font-size: 1.2rem;
+    color: #666;
+  }
