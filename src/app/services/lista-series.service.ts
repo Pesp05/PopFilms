@@ -25,22 +25,27 @@ export class ListaSeriesService {
   constructor(private http: HttpClient) {}
 
   getPopularWithHeader(page: number): Observable<ListaSeries> {
-    return this.http.get<ListaSeries>(`${environment.apiBaseUrl}/tv/popular?&language=es-ES&page=${page}`, HEADER);
+    const IDIOMA = localStorage.getItem('idioma');;
+    return this.http.get<ListaSeries>(`${environment.apiBaseUrl}/tv/popular?language=${IDIOMA}&page=${page}`, HEADER);
   }
 
   obtenerSeriesPorFiltros(languageFilter: string, sortBy: string, genres: string, releaseDateMin: string, releaseDateMax: string, rateMin: string, rateMax: string): Observable<ListaSeries> {
-    return this.http.get<ListaSeries>(`${environment.apiBaseUrl}/discover/tv?&language=${languageFilter}&sort_by=${sortBy}&with_genres=${genres}&primary_release_date.gte=${releaseDateMin}&primary_release_date.lte=${releaseDateMax}&vote_average.gte=${rateMin}&vote_average.lte=${rateMax}`, HEADER);
+    const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<ListaSeries>(`${environment.apiBaseUrl}/discover/tv?&language=${IDIOMA}&sort_by=${sortBy}&with_genres=${genres}&primary_release_date.gte=${releaseDateMin}&primary_release_date.lte=${releaseDateMax}&vote_average.gte=${rateMin}&vote_average.lte=${rateMax}`, HEADER);
   }
 
   getSerieVideo(idSerie: number): Observable<SerieVideosResponse> {
+    const IDIOMA = localStorage.getItem('idioma');
     return this.http.get<SerieVideosResponse>(`${environment.apiBaseUrl}/tv/${idSerie}/videos`, HEADER);
   }
 
   getDetalleSerie(idSerie: number): Observable<DetalleSerieResponse> {
-    return this.http.get<DetalleSerieResponse>(`${environment.apiBaseUrl}/tv/${idSerie}`, HEADER);
+      const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<DetalleSerieResponse>(`${environment.apiBaseUrl}/tv/${idSerie}?language=${IDIOMA}`, HEADER);
   }
   getCreditosSerie(idSerie: number): Observable<CreditosSerieResponse> {
-    return this.http.get<CreditosSerieResponse>(`${environment.apiBaseUrl}/tv/${idSerie}/credits`, HEADER);
+      const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<CreditosSerieResponse>(`${environment.apiBaseUrl}/tv/${idSerie}/credits?language=${IDIOMA}`, HEADER);
   }
   setRatingSerie(idSerie: number, rating: number): Observable<void> {
 

@@ -15,7 +15,7 @@
                                     class="bi bi-circle-fill" viewBox="0 0 16 16">
                                     <circle cx="8" cy="8" r="8" />
                                 </svg> &nbsp;
-                                @for (genero of creditoPeli; track genero.id) {
+                                @for (genero of peli?.genres; track genero.id) {
                                 {{genero.name}}}
                             </span>
                         </p>
