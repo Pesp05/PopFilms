@@ -52,7 +52,7 @@
 
           <div class="d-flex justify-content-center flex-column align-items-center">
             <span class="ms-2">{{serie.vote_average.toFixed(2)}}</span>
-            <ngb-rating class="fs-5" [readonly]="true" [(rate)]="serie.vote_average" [ngClass]="getColorEstrellas(serie.vote_average)"/>
+            <ngb-rating class="fs-5" [max]="5" [readonly]="true" [rate]="serie.vote_average / 2" [ngClass]="getColorEstrellas(serie.vote_average)"/>
             <span class="text-muted ms-1">({{serie.vote_count}} votos)</span>
           </div>
           <div class="botonLista">
