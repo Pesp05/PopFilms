@@ -33,8 +33,11 @@
                 <div class="d-flex flex-wrap">
                     @for (peliculas of ListaPeliculas.slice(2, 6); track $index) {
                         <div class="card tamCard rounded-5 m-3 mx-auto shadow">
-                            <img class="card-img-top rounded-top-5" [src]="getposterPath(peliculas.poster_path || '')" 
+                            <a [routerLink]="['/movie', peliculas.id]">
+                                <img class="card-img-top rounded-top-5" [src]="getposterPath(peliculas.poster_path || '')" 
                                 alt="Foto de la película">
+                            </a>
+                            
                             <div class="card-body text-center">
                                 <p>{{peliculas.title}}</p>
                             </div>
