@@ -28,8 +28,8 @@ export class ListaSeriesService {
     return this.http.get<ListaSeries>(`${environment.apiBaseUrl}/tv/popular?&language=es-ES&page=${page}`, HEADER);
   }
 
-  obtenerSeriesPorFiltros(languageFilter: string, sortBy: string, genres: string, releaseDateMin: string, releaseDateMax: string, rateMin: string, rateMax: string): Observable<ListaSeries> {
-    return this.http.get<ListaSeries>(`${environment.apiBaseUrl}/discover/tv?&language=${languageFilter}&sort_by=${sortBy}&with_genres=${genres}&primary_release_date.gte=${releaseDateMin}&primary_release_date.lte=${releaseDateMax}&vote_average.gte=${rateMin}&vote_average.lte=${rateMax}`, HEADER);
+  obtenerSeriesPorFiltros(sortBy: string, genres: string, releaseDateMin: string, releaseDateMax: string, rateMin: string, rateMax: string): Observable<ListaSeries> {
+    return this.http.get<ListaSeries>(`${environment.apiBaseUrl}/discover/tv?sort_by=${sortBy}&with_genres=${genres}&first_air_date.gte=${releaseDateMin}&first_air_date.lte=${releaseDateMax}&vote_average.gte=${rateMin}&vote_average.lte=${rateMax}`, HEADER);
   }
 
   getSerieVideo(idSerie: number): Observable<SerieVideosResponse> {

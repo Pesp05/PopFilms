@@ -11,7 +11,6 @@ import { ActivatedRoute, Router } from "@angular/router";
   styleUrl: './lista-series.component.css'
 })
 export class ListaSeriesComponent implements OnInit {
-  languageFilter: string = '';
   sortBy: string = '';
   fechaEstrenoMin: string = '';
   fechaEstrenoMax: string = '';
@@ -31,7 +30,6 @@ export class ListaSeriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
-      this.languageFilter = params['languaje'] || '',
         this.sortBy = params['sortBy'] || '',
         this.listaGeneros = params['genres'] || '',
         this.fechaEstrenoMin = params['releaseDateMin'] || '',
@@ -39,8 +37,8 @@ export class ListaSeriesComponent implements OnInit {
         this.rateMin = params['rateMin'] || '',
         this.rateMax = params['rateMax'] || ''
     });
-    if (this.languageFilter || this.sortBy || this.fechaEstrenoMin || this.fechaEstrenoMax || this.rateMin || this.rateMax) {
-      this.servicioListaSeries.obtenerSeriesPorFiltros(this.languageFilter, this.sortBy, this.listaGeneros.toLowerCase(),
+    if (this.sortBy || this.listaGeneros || this.fechaEstrenoMin || this.fechaEstrenoMax || this.rateMin || this.rateMax) {
+      this.servicioListaSeries.obtenerSeriesPorFiltros(this.sortBy, this.listaGeneros,
         this.fechaEstrenoMin, this.fechaEstrenoMax, this.rateMin, this.rateMax).subscribe((serie: any) => {
           this.listaSeries = serie.results.map((serie: any) => {
             return {
