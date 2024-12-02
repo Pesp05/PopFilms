@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MovieListComponent } from './components/movies/movie-list/movie-list.component';
 import { MovieDetailComponent } from './components/movies/movie-detail/movie-detail.component';
-import { NgbCollapseModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCollapseModule, NgbDropdownMenu, NgbDropdownToggle, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ListaPersonasComponent } from './components/lista-personas/lista-personas.component';
 import { provideHttpClient } from '@angular/common/http';
@@ -39,6 +39,7 @@ import { ListasCreadasComponent } from './components/listas-creadas/listas-cread
 import { DetalleListaCreadaComponent } from './components/detalle-lista-creada/detalle-lista-creada.component';
 import { TraducirTipoPipe } from './pipes/traducir-tipo.pipe';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,7 +84,10 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
     MatInputModule,
     FormsModule,
     MatSelectModule,
-    NgbPaginationModule
+    NgbPaginationModule,
+    NgbDropdown,
+    NgbDropdownToggle,
+    NgbDropdownMenu
   ],
   
   providers: [provideHttpClient(), provideAnimationsAsync()],

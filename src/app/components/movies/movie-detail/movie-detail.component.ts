@@ -4,6 +4,9 @@ import { DetallePelicula } from '../../../models/lista-peliculas-response.interf
 import { ActivatedRoute } from '@angular/router';
 import { Cast } from '../../../models/creditos-peliculas.interface';
 import { AccountService } from '../../../services/authentication/account.service';
+import { UserListsService } from '../../../services/user-lists.service';
+import { CrudListasService } from '../../../services/crud-listas.service';
+import { List } from '../../../models/user-lists-response.interface';
 
 @Component({
   selector: 'app-movie-detail',
@@ -19,8 +22,9 @@ export class MovieDetailComponent implements OnInit {
   creditoPeli: Cast[] = [];
   ratingPelicula: number = 0;
   peliculaValorada: boolean = false;
+  listaDeListas: List[] = [];
 
-  constructor(private route: ActivatedRoute, private movieService: MoviesService, private accountService: AccountService) { }
+  constructor(private route: ActivatedRoute, private movieService: MoviesService, private accountService: AccountService, private userListsService: UserListsService, private crudListasService: CrudListasService) { }
 
 
   ngOnInit(): void {
@@ -31,6 +35,10 @@ export class MovieDetailComponent implements OnInit {
     });
     this.movieService.getCreditosPeli(parseInt(this.peliId!)).subscribe((response) => {
       this.creditoPeli = response.cast;
+    });
+
+    this.userListsService.getUserLists().subscribe((resp) => {
+      this.listaDeListas = resp.results;
     });
   }
 
@@ -90,5 +98,11 @@ export class MovieDetailComponent implements OnInit {
     this.movieService.deleteRatingPeli(parseInt(this.peliId!)).subscribe();
     this.peliculaValorada = false;
     this.ratingPelicula = 0;
+  }
+
+  addToLista(listaId: number, peliculaId?: number) {
+    this.crudListasService.addToLista(listaId, peliculaId).subscribe(() => {
+      alert('Pelicula añadida a la lista');
+    });
   }
 }

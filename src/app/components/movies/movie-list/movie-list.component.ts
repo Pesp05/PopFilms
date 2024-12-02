@@ -4,6 +4,9 @@ import { Pelicula } from '../../../models/lista-peliculas-response.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WatchListService } from '../../../services/watch-list.service';
 import { AccountService } from '../../../services/authentication/account.service';
+import { List } from '../../../models/user-lists-response.interface';
+import { UserListsService } from '../../../services/user-lists.service';
+import { CrudListasService } from '../../../services/crud-listas.service';
 
 @Component({
   selector: 'app-movie-list',
@@ -23,11 +26,15 @@ export class MovieListComponent implements OnInit{
 
   listaPeliculasPopulares :Pelicula[] =[];
 
+  listaDeListas: List[] = [];
+
 
 paginaActual = 1;
   constructor(private movieService:MoviesService,
     private router: Router,
-    private route: ActivatedRoute, private accountService: AccountService,private watchListService: WatchListService
+    private route: ActivatedRoute, private accountService: AccountService,private watchListService: WatchListService,
+    private userListsService: UserListsService, 
+    private crudListasService: CrudListasService
   ){}
 
   ngOnInit(): void {
@@ -62,6 +69,10 @@ paginaActual = 1;
         });
       });
     }
+
+    this.userListsService.getUserLists().subscribe((resp) => {
+      this.listaDeListas = resp.results;
+    });
   }
 
   marcarComoFavorita(pelicula: Pelicula) {
@@ -107,6 +118,12 @@ paginaActual = 1;
         }
       });
     })
+  }
+
+  addToLista(listaId: number, peliculaId: number) {
+    this.crudListasService.addToLista(listaId, peliculaId).subscribe(() => {
+      alert('Pelicula añadida a la lista');
+    });
   }
 }
 
