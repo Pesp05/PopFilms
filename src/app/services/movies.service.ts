@@ -42,24 +42,24 @@ export class MoviesService {
     return this.http.get<PeliculasVideosResponse>(`${environment.apiBaseUrl}/movie/${idPeli}/videos`,HEADERS)
   }
 
-  getDetallePeli(idPeli: number): Observable<DetallePelicula> {
+  public getDetallePeli(idPeli: number): Observable<DetallePelicula> {
     return this.http.get<DetallePelicula>(`${environment.apiBaseUrl}/movie/${idPeli}?language=es-ES`, HEADERS);
   }
 
-  getCreditosPeli(idMovie: number): Observable<CreditosPeliResponse> {
+  public getCreditosPeli(idMovie: number): Observable<CreditosPeliResponse> {
     return this.http.get<CreditosPeliResponse>(`${environment.apiBaseUrl}/movie/${idMovie}/credits?&language=es-ES`, HEADERS);
   }
 
-  aplicarFiltros(languageFilter: string) {
+  public aplicarFiltros(languageFilter: string) {
     throw new Error('Method not implemented.');
   }
 
-  setRatingPeli(idPeli: number, rating: number): Observable<void> {
+  public setRatingPeli(idPeli: number, rating: number): Observable<void> {
 
     const SESSION_ID = localStorage.getItem('session_id');
     return this.http.post<void>(`${environment.apiBaseUrl}/movie/${idPeli}/rating?api_key=${environment.apiKey}&session_id=${SESSION_ID}`, { value: rating }, HEADERSANDPOST);
   }
-  deleteRatingPeli(idPeli: number): Observable<void> {
+  public deleteRatingPeli(idPeli: number): Observable<void> {
     const SESSION_ID = localStorage.getItem('session_id');
     return this.http.delete<void>(`${environment.apiBaseUrl}/movie/${idPeli}/rating?api_key=${environment.apiKey}&session_id=${SESSION_ID}`, HEADERSANDPOST);
   }
