@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {ListaPersonas} from '../models/lista-personas.interfaces';
-import {Observable} from 'rxjs';
+import { ListaPersonas } from '../models/lista-personas.interfaces';
+import { Observable } from 'rxjs';
 import { DetallePersonaResponse } from '../models/details-personas.interfaces';
 import { CreditosPersonasResponse } from '../models/creditos-personas.interfaces';
 import { environment } from '../../environments/environment';
@@ -21,22 +21,22 @@ export class ListaPersonasService {
   constructor(private http: HttpClient) { }
 
   getPersonas(page: number): Observable<ListaPersonas> {
-        const IDIOMA = localStorage.getItem('idioma');
-    return this.http.get<ListaPersonas>(`${environment.apiBaseUrl}/person/popular?&language=${IDIOMA}&page=${page}`, HEADERS);{     
+    const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<ListaPersonas>(`${environment.apiBaseUrl}/person/popular?&language=${IDIOMA}&page=${page}`, HEADERS); {
+    }
   }
-}
 
   getpersonasId(id: number): Observable<DetallePersonaResponse> {
-    return this.http.get<DetallePersonaResponse>(`${environment.apiBaseUrl}/person/${id}`, HEADERS); {
+    const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<DetallePersonaResponse>(`${environment.apiBaseUrl}/person/${id}?&language=${IDIOMA}`, HEADERS); {
+    }
   }
-}
-
 
   getCreditosId(id: number): Observable<CreditosPersonasResponse> {
-        const IDIOMA = localStorage.getItem('idioma');
-    return this.http.get<CreditosPersonasResponse>(`${environment.apiBaseUrl}/person/${id}/combined_credits?&language=${IDIOMA}`, HEADERS); {  
+    const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<CreditosPersonasResponse>(`${environment.apiBaseUrl}/person/${id}/combined_credits?&language=${IDIOMA}`, HEADERS); {
+    }
   }
-}
 
 
 }
