@@ -25,7 +25,7 @@ export class ListaSeriesService {
   constructor(private http: HttpClient) {}
 
   getPopularWithHeader(page: number): Observable<ListaSeries> {
-    const IDIOMA = localStorage.getItem('idioma');;
+    const IDIOMA = localStorage.getItem('idioma');
     return this.http.get<ListaSeries>(`${environment.apiBaseUrl}/tv/popular?language=${IDIOMA}&page=${page}`, HEADER);
   }
 
@@ -38,9 +38,8 @@ export class ListaSeriesService {
 
   getSerieVideo(idSerie: number): Observable<SerieVideosResponse> {
     const IDIOMA = localStorage.getItem('idioma');
-    return this.http.get<SerieVideosResponse>(`${environment.apiBaseUrl}/tv/${idSerie}/videos`, HEADER);
+    return this.http.get<SerieVideosResponse>(`${environment.apiBaseUrl}/tv/${idSerie}/videos?language=${IDIOMA}`, HEADER);
   }
-
   getDetalleSerie(idSerie: number): Observable<DetalleSerieResponse> {
       const IDIOMA = localStorage.getItem('idioma');
     return this.http.get<DetalleSerieResponse>(`${environment.apiBaseUrl}/tv/${idSerie}?language=${IDIOMA}`, HEADER);

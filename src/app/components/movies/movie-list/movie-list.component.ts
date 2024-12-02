@@ -81,9 +81,15 @@ paginaActual = 1;
 
   verTrailer(peli: any) {
     this.movieService.obtenerTrailerPorId(peli.id).subscribe((data) => {
-      const key = data.results[0].key;
-      const videoUrl = this.getVideoUrl(key);
-      window.open(videoUrl, '_blank');
+      const trailer = data.results.find((video) => video.type === 'Trailer' && video.site === 'YouTube');
+      const key = trailer?.key;
+      console.log('Trailer key:', key);
+      if (key) {
+        const videoUrl = this.getVideoUrl(key);
+        window.open(videoUrl, '_blank');
+      } else {
+        console.error('Trailer key not found');
+      }
     });
   }
 

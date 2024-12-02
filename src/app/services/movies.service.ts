@@ -40,9 +40,9 @@ export class MoviesService {
   }
 
   public obtenerTrailerPorId(idPeli:number):Observable<PeliculasVideosResponse>{
-    return this.http.get<PeliculasVideosResponse>(`${environment.apiBaseUrl}/movie/${idPeli}/videos`,HEADERS)
+    const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<PeliculasVideosResponse>(`${environment.apiBaseUrl}/movie/${idPeli}/videos?language=${IDIOMA}`,HEADERS)
   }
-
 
   getDetallePeli(idPeli: number): Observable<DetallePelicula> {
     const IDIOMA = localStorage.getItem('idioma');
