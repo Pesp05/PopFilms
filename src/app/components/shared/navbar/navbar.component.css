@@ -188,3 +188,8 @@ mat-icon {
     font-weight: bold;
     text-decoration: none;
 }
+#userPhoto {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
