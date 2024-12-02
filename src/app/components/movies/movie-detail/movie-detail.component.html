@@ -24,7 +24,7 @@
                             <ngb-rating class="fs-5 ms-3" [readonly]="true" [rate]="peli!.vote_average / 2" [max]="5"
                                 [ngClass]="getColorEstrellas(peli!.vote_average / 2)"></ngb-rating>
                             <p class="ms-3">({{peli?.vote_count}} Votos)</p>
-                            <a class="me-3 ms-5" (click)="verTrailer()">
+                            <a class="me-3 ms-5" (click)="verTrailer(peliId!)">
                                 <button mat-fab class="favoritos w-100">Ver Tráiler</button>
                             </a>
                             <div ngbDropdown>

@@ -50,28 +50,23 @@ export class MovieDetailComponent implements OnInit {
   }
 
 
-  verTrailer(): void {
-    if (!this.peli) return;
-
-    this.movieService.obtenerTrailerPorId(this.peli.id).subscribe({
-      next: (data) => {
-        const trailer = data.results[0];
-        if (trailer) {
-          this.trailerUrl = `https://www.youtube.com/embed/${trailer.key}`;
-          this.showTrailer = true;
-        } else {
-          alert('No se encontró un tráiler.');
-        }
-      },
-      error: () => alert('Error al cargar el tráiler.'),
+  verTrailer(peliculaId: string) {
+    this.movieService.obtenerTrailerPorId(parseInt(peliculaId)).subscribe((data) => {
+      const trailer = data.results.find((video) => video.type === 'Trailer' && video.site === 'YouTube');
+      const key = trailer?.key;
+      console.log('Trailer key:', key);
+      if (key) {
+        const videoUrl = this.getVideoUrl(key);
+        window.open(videoUrl, '_blank');
+      } else {
+        console.error('Trailer key not found');
+      }
     });
   }
-
-  cerrarTrailer(): void {
-    this.trailerUrl = null;
-    this.showTrailer = false;
+  
+  getVideoUrl(keyPelicula: string): string {
+    return `https://www.youtube.com/watch?v=${keyPelicula}`;
   }
-
   getColorEstrellas(voteAverage: number): string {
     if (voteAverage >= 3.5) {
       return 'text-success';

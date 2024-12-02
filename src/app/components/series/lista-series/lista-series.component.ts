@@ -51,7 +51,7 @@ export class ListaSeriesComponent implements OnInit {
 
       this.servicioListaSeries.getPopularWithHeader(this.paginaActual).subscribe((data) => {
         this.listaSeries = data.results.splice(1);
-        this.serieMasPopular = data.results[6];
+        this.serieMasPopular = data.results[0];
       });
     }
   }
@@ -65,26 +65,24 @@ export class ListaSeriesComponent implements OnInit {
       return 'text-danger';
     }
   }
-  verTrailer(serie: any) {
-    this.servicioListaSeries.getSerieVideo(serie.id).subscribe((data) => {
-      const key = data.results[0].key;
-      const videoUrl = this.getVideoUrl(key);
-      window.open(videoUrl, '_blank');
-    });
-  }
-
   marcarComoFavorita(serie: Serie) {
     this.accountService.markAsFavorite(serie.id, 'tv', true);
   }
 
-  getKeySerie(idSerie: number): string {
-    let key = '';
-    this.servicioListaSeries.getSerieVideo(idSerie).subscribe((data) => {
-      key = data.results[0].key;
+  verTrailer(serie: any) {
+    this.servicioListaSeries.getSerieVideo(serie.id).subscribe((data) => {
+      const trailer = data.results.find((video) => video.type === 'Trailer' && video.site === 'YouTube');
+      const key = trailer?.key;
+      console.log('Trailer key:', key);
+      if (key) {
+        const videoUrl = this.getVideoUrl(key);
+        window.open(videoUrl, '_blank');
+      } else {
+        console.error('Trailer key not found');
+      }
     });
-    return key;
   }
-
+  
   getVideoUrl(keySerie: string): string {
     return `https://www.youtube.com/watch?v=${keySerie}`;
   }
