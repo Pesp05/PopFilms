@@ -1,19 +1,9 @@
-#boton{
-    background-color: #FF7F30;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 14px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-#userPhoto{
-    border-radius: 50%;
-}
-
-#userName{
-    font-weight: bold;
+div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    padding: 2%;
+    width: 100%;
 }
