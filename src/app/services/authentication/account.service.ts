@@ -17,7 +17,7 @@ const ACCOUNT_ID = parseInt(localStorage.getItem('account_id') ?? '0', 10);
   
     getAccountDetails(): Observable<AccountDetailsResponse> {
       return this.http.get<AccountDetailsResponse>(
-        `${environment.apiBaseUrl}/account?api_key=${environment.apiKey}&session_id=${SESSION_ID}`
+        `${environment.apiBaseUrl}/account?api_key=${environment.apiKey}&session_id=${localStorage.getItem('session_id')}`
       );
     }
 

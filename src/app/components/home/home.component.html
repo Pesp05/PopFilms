@@ -1,7 +1,7 @@
 <h3 class="title">Peliculas Mejor Valoradas</h3>
-<div class="row container">
+<div class="container">
     @for(peli of listaPeliculasTop; track peli.id) {
-    <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-4 movieCard">
+    <div class="col-6 col-md-3 col-lg-3 mb-4">
       <div class="card shadow-sm border-0 rounded">
         <a [routerLink]="['/movie', peli.id]">
           <img [src]="peli.posterUrl" class="card-img-top rounded" alt="{{peli.title}}" />
@@ -33,9 +33,9 @@
 </div>
 
 <h3 class="title">Series Mejor Valoradas</h3>
-<div class="row container">
+<div class="container">
     @for(serie of listaSeriesTop; track serie.id) {
-    <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-4 movieCard">
+    <div class="col-6 col-md-3 col-lg-3 mb-4 movieCard">
       <div class="card shadow-sm border-0 rounded">
         <a [routerLink]="['/serie', serie.id]">
           <img [src]="serie.posterUrl" class="card-img-top rounded" alt="{{serie.name}}" />
@@ -66,9 +66,9 @@
 </div>
 
 <h3 class="title">Gente Popular</h3>
-<div class="row container">
+<div class="container">
     @for(person of listaPersonasTop; track person.id) {
-    <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-4 movieCard">
+    <div class="col-6 col-md-3 col-lg-3 mb-4">
       <div class="card shadow-sm border-0 rounded">
         <a [routerLink]="['/person', person.id]">
           <img [src]="getposterPath(person.profile_path)" class="card-img-top rounded" alt="{{person.name}}" />
