@@ -46,11 +46,10 @@ export class HomeComponent {
     this.homeService.getPeopleList().subscribe((resp) => {
       this.listaPersonasTop = resp.results.slice(0, 5);
     });
-
+    
     this.userListsService.getUserLists().subscribe((resp) => {
       this.listaDeListas = resp.results;
     });
-
   }
 
   getColorEstrellas(voteAverage: number): string {

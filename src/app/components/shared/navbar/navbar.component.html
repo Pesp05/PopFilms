@@ -2,11 +2,8 @@
   <div id="navbar" class="d-flex justify-content-around">
     <div class="col-2">
       <a [routerLink]="['/home']">
-        <img
-          src="assets/img/pop-films-light.png"
-          alt="Popfilms logo"
-          height="80px"
-        />
+
+        <img src="assets/img/pop-films-light.png" alt="Popfilms logo" height="80px">
       </a>
     </div>
 
@@ -17,6 +14,24 @@
         <a class="enlace" [routerLink]="['/people']">Personas</a>
       </div>
     </div>
+    <div class="col-6 d-flex align-items-center justify-content-between flex-nowrap row">
+      <div id="subs" class="col-3 ms-3">
+        <form action="get" class="me-5">
+          <input type="text" placeholder="Busqueda" [(ngModel)]="busqueda" name="busqueda">
+          <button id="boton" type="button" (click)="iniciarBusqueda()">Buscar</button>
+        </form>
+        <div ngbDropdown class="d-inline-block ms-5">
+          <button type="button" class="btn btn-outline-warning" id="dropdownBasic1" ngbDropdownToggle>
+            Toggle dropdown
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem (click)="cambiarIdioma('es-ES')">Español <span class="ms-2 fi fi-es"></span></button>
+            <button ngbDropdownItem (click)="cambiarIdioma('en-US')">Inglés <span class="ms-2 fi fi-gb"></span></button>
+          </div>
+        </div>
+      </div>
+      <div id="profile" class="col-3">
+        @if (isLoggedIn()) {
 
     <div
       class="col-6 d-flex align-items-center justify-content-between flex-nowrap row"
@@ -37,10 +52,16 @@
       <div id="profile" class="col-3">
         @if (isLoggedIn()) {
 
+
         <!-- <p id="userName">{{ userName }}</p>-->
 
         <ng-template #offcanvasProfile let-offcanvas>
           <div class="offcanvas-header">
+
+            <img id="userPhoto" [src]="userPhoto" width="20%" alt class="avatar" />
+            <h4 class="offcanvas-title" id="userName">{{ userName }}</h4>
+            <button type="button" class="btn-close btn-close-white" aria-label="Close"
+              (click)="offcanvas.dismiss('Cross click')"></button>
             <img
               id="userPhoto"
               [src]="userPhoto"
@@ -59,6 +80,14 @@
           <div class="offcanvas-body">
             <div>
               <ul>
+
+                <li><a href><mat-icon aria-hidden="false" aria-label="Example home icon"
+                      fontIcon="person">person</mat-icon> Perfil</a></li>
+                <li>
+                  <mat-icon aria-hidden="false" aria-label="Example home icon">star</mat-icon>
+                  <button mat-button (click)="valorados.toggle()" [attr.aria-expanded]="isCollapsed"
+                    aria-controls="collapseExample">
+
                 <li>
                   <mat-icon aria-hidden="false" aria-label="Example home icon"
                     >star</mat-icon
@@ -69,10 +98,17 @@
                     [attr.aria-expanded]="isCollapsed"
                     aria-controls="collapseExample"
                   >
+
                     Valorados
                   </button>
                   <div #valorados="ngbCollapse" [(ngbCollapse)]="isCollapsed">
                     <div class="mt-3 row">
+
+                      <a [routerLink]="['/seriesRated']" class="text-decoration-none text-white col-12">
+                        <button mat-button class="ms-5">Series</button>
+                      </a>
+                      <a [routerLink]="['/moviesRated']" class="text-decoration-none text-white col-12">
+
                       <a
                         [routerLink]="['/seriesRated']"
                         class="text-decoration-none text-white col-12"
@@ -83,12 +119,26 @@
                         [routerLink]="['/moviesRated']"
                         class="text-decoration-none text-white col-12"
                       >
+
                         <button mat-button class="ms-5">Peliculas</button>
                       </a>
                     </div>
                   </div>
                 </li>
                 <li>
+
+                  <mat-icon aria-hidden="false" aria-label="Example home icon">favorite</mat-icon>
+                  <button mat-button (click)="favoritos.toggle()" [attr.aria-expanded]="isFavoritesCollapsed"
+                    aria-controls="collapseExample">
+                    Favoritos
+                  </button>
+                  <div #favoritos="ngbCollapse" [(ngbCollapse)]="isFavoritesCollapsed">
+                    <div class="mt-3 row">
+                      <a [routerLink]="['/seriesFavorites']" class="text-decoration-none text-white col-12">
+                        <button mat-button class="ms-5 mt-2">Series</button>
+                      </a>
+                      <a [routerLink]="['/peliculasFavorites']" class="text-decoration-none text-white col-12">
+
                   <mat-icon aria-hidden="false" aria-label="Example home icon"
                     >favorite</mat-icon
                   >
@@ -115,11 +165,19 @@
                         [routerLink]="['/peliculasFavorites']"
                         class="text-decoration-none text-white col-12"
                       >
+
                         <button mat-button class="ms-5 mt-2">Peliculas</button>
                       </a>
                     </div>
                   </div>
                 </li>
+
+                <li><a [routerLink]="['/createdLists']"><mat-icon aria-hidden="false" aria-label="Example home icon"
+                      fontIcon="library_books">library_books</mat-icon>
+                    Listas</a></li>
+                <li> <a [routerLink]="['/watchlist']"><mat-icon aria-hidden="false" fontIcon="movie"></mat-icon>
+                    Watchlist</a></li>
+
                 <li>
                   <a [routerLink]="['/createdLists']"
                     ><mat-icon
@@ -141,10 +199,18 @@
                 <button id="botonLogOut" (click)="logout()">
                   Cerrar sesión
                 </button>
+
               </ul>
             </div>
           </div>
         </ng-template>
+
+
+        <button class="botonPerfil btn btn-lg btn-outline-primary mb-2 me-2" (click)="openEnd(offcanvasProfile)">
+          <img id="userPhoto" [src]="userPhoto" width="100%" alt class="avatar" />
+        </button>
+        <button id="botonLogOut" (click)="logout()">
+          Cerrar sesión
 
         <button
           class="botonPerfil btn btn-lg btn-outline-primary mb-2 me-2"

@@ -21,7 +21,7 @@ export interface Pelicula {
   video: boolean
   vote_average: number
   vote_count: number
-
+  rating: number
 }
 
 export interface DetallePelicula {

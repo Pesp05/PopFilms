@@ -24,6 +24,7 @@ export class BusquedaService {
   constructor(private http: HttpClient) { }
 
   getBusqueda(busqueda: string): Observable<BusquedaResponse> {
-    return this.http.get<BusquedaResponse>(`${API_BASE_URL}/search/multi?query=${busqueda}&language=es-ES`, HEADERS);
+    const idioma = localStorage.getItem('idioma');
+    return this.http.get<BusquedaResponse>(`${API_BASE_URL}/search/multi?query=${busqueda}&language=${idioma}`, HEADERS);
   }
 }

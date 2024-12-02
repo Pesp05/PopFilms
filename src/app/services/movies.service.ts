@@ -25,7 +25,8 @@ export class MoviesService {
   constructor(private http:HttpClient) {}
 
   public obtenerPeliculasPopulares(page: number):Observable<ListaPeliculasResponse>{
-    return this.http.get<ListaPeliculasResponse>(`${environment.apiBaseUrl}/movie/popular?&language=es-ES&page=${page}`, HEADERS);
+    const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<ListaPeliculasResponse>(`${environment.apiBaseUrl}/movie/popular?&language=${IDIOMA}&page=${page}`, HEADERS);
   }
 
   public obtenerPeliculasPorFiltros(sortBy: string, genres: string, releaseDateMin: string, releaseDateMax: string, runtimeMin: string, runtimeMax: string, rateMin: string, rateMax: string): Observable<ListaPeliculasResponse> {
@@ -42,12 +43,16 @@ export class MoviesService {
     return this.http.get<PeliculasVideosResponse>(`${environment.apiBaseUrl}/movie/${idPeli}/videos`,HEADERS)
   }
 
-  public getDetallePeli(idPeli: number): Observable<DetallePelicula> {
-    return this.http.get<DetallePelicula>(`${environment.apiBaseUrl}/movie/${idPeli}?language=es-ES`, HEADERS);
+
+  getDetallePeli(idPeli: number): Observable<DetallePelicula> {
+    const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<DetallePelicula>(`${environment.apiBaseUrl}/movie/${idPeli}?language=${IDIOMA}`, HEADERS);
   }
 
-  public getCreditosPeli(idMovie: number): Observable<CreditosPeliResponse> {
-    return this.http.get<CreditosPeliResponse>(`${environment.apiBaseUrl}/movie/${idMovie}/credits?&language=es-ES`, HEADERS);
+  getCreditosPeli(idMovie: number): Observable<CreditosPeliResponse> {
+    const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<CreditosPeliResponse>(`${environment.apiBaseUrl}/movie/${idMovie}/credits?&language=${IDIOMA}`, HEADERS);
+
   }
 
   public aplicarFiltros(languageFilter: string) {

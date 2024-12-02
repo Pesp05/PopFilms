@@ -19,6 +19,7 @@ export class FiltroPeliculasService {
   constructor(private http: HttpClient) { }
 
   getGenres(): Observable<GenreListResponse>{
-    return this.http.get<GenreListResponse>(`${API_BASE_URL}/genre/movie/list?&language=es-ES`, HEADERS);
+    const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<GenreListResponse>(`${API_BASE_URL}/genre/movie/list?&language=${IDIOMA}`, HEADERS);
   }
 }

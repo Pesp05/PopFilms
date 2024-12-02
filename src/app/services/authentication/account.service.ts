@@ -22,14 +22,16 @@ const ACCOUNT_ID = parseInt(localStorage.getItem('account_id') ?? '0', 10);
     }
 
     getAccountFavoriteMovies(): Observable<ListaPeliculasResponse> {
+         const IDIOMA = localStorage.getItem('idioma');
       return this.http.get<ListaPeliculasResponse>(
-        `${environment.apiBaseUrl}/account/${ACCOUNT_ID}/favorite/movies?api_key=${environment.apiKey}&session_id=${SESSION_ID}`
+        `${environment.apiBaseUrl}/account/${ACCOUNT_ID}/favorite/movies?language=${IDIOMA}&api_key=${environment.apiKey}&session_id=${SESSION_ID}`
       );
     }
 
     getAccountFavoriteSeries(): Observable<ListaSeries> {
+         const IDIOMA = localStorage.getItem('idioma');
       return this.http.get<ListaSeries>(
-        `${environment.apiBaseUrl}/account/${ACCOUNT_ID}/favorite/tv?api_key=${environment.apiKey}&session_id=${SESSION_ID}`
+        `${environment.apiBaseUrl}/account/${ACCOUNT_ID}/favorite/tv?language=${IDIOMA}&api_key=${environment.apiKey}&session_id=${SESSION_ID}`
       );
     }
 
