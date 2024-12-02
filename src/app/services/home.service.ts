@@ -21,15 +21,18 @@ export class HomeService {
   constructor(private http: HttpClient) { }
 
   getTopMoviesList(): Observable<TopMoviesListResponse> {
-    return this.http.get<TopMoviesListResponse>(`${environment.apiBaseUrl}/movie/top_rated?&language=es-ES`, HEADERS);
+    const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<TopMoviesListResponse>(`${environment.apiBaseUrl}/movie/top_rated?&language=${IDIOMA}`, HEADERS);
   }
 
   getTopSeriesList(): Observable<TopSeriesListResponse> {
-    return this.http.get<TopSeriesListResponse>(`${environment.apiBaseUrl}/tv/top_rated?&language=es-ES`, HEADERS);
+    const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<TopSeriesListResponse>(`${environment.apiBaseUrl}/tv/top_rated?&language=${IDIOMA}`, HEADERS);
   }
 
-  getPeopleList(): Observable<ListaPersonas>{
-    return this.http.get<ListaPersonas>(`${environment.apiBaseUrl}/person/popular?&language=es-ES`, HEADERS);
+  getPeopleList(): Observable<ListaPersonas> {
+    const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<ListaPersonas>(`${environment.apiBaseUrl}/person/popular?&language=${IDIOMA}`, HEADERS);
   }
 
   public getMovieImageUrl(posterPath: string): string {

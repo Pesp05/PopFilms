@@ -14,18 +14,18 @@ export class ValoradosService {
   constructor(private http: HttpClient) {}
 
   getPeliculasValoradas(cuentaID: number): Observable<ListaPeliculasResponse> {
-    return this.http.get<ListaPeliculasResponse>(`${environment.apiBaseUrl}/account/${cuentaID}/rated/movies`, {
-      headers: {
-        Authorization: `Bearer ${'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NDY5Mjg1OTczM2FmM2E4MjMwMzQxYjM1MGE1OTVmZCIsIm5iZiI6MTczMTc1MjA2MC44MTk0MjU2LCJzdWIiOiI2NzMxYmQ5NjYxNjI2YWMxMDZiZTY3ZGMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.59a-DzPdbcfNJ8mWyRnkG_yFZ5DkQQCL4IsR3q_X30M'}`,
-      },
-    });
+    const SESSION_ID = localStorage.getItem('session_id');
+
+    const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<ListaPeliculasResponse>(`${environment.apiBaseUrl}/account/${cuentaID}/rated/movies?language=${IDIOMA}&api_key=${environment.apiKey}&session_id=${SESSION_ID}`);
+
   }
 
   getSeriesValoradas(cuentaID: number): Observable<ListaSeries> {
-    return this.http.get<ListaSeries>(`${environment.apiBaseUrl}/account/${cuentaID}/rated/tv`, {
-      headers: {
-        Authorization: `Bearer ${'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NDY5Mjg1OTczM2FmM2E4MjMwMzQxYjM1MGE1OTVmZCIsIm5iZiI6MTczMTc1MjA2MC44MTk0MjU2LCJzdWIiOiI2NzMxYmQ5NjYxNjI2YWMxMDZiZTY3ZGMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.59a-DzPdbcfNJ8mWyRnkG_yFZ5DkQQCL4IsR3q_X30M'}`,
-      },
-    });
+    const SESSION_ID = localStorage.getItem('session_id');
+
+    const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<ListaSeries>(`${environment.apiBaseUrl}/account/${cuentaID}/rated/tv?language=${IDIOMA}&api_key=${environment.apiKey}&session_id=${SESSION_ID}`);
   }
 }
+

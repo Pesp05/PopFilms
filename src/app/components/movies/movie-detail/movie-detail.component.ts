@@ -4,6 +4,9 @@ import { DetallePelicula } from '../../../models/lista-peliculas-response.interf
 import { ActivatedRoute } from '@angular/router';
 import { Cast } from '../../../models/creditos-peliculas.interface';
 import { AccountService } from '../../../services/authentication/account.service';
+import { UserListsService } from '../../../services/user-lists.service';
+import { CrudListasService } from '../../../services/crud-listas.service';
+import { List } from '../../../models/user-lists-response.interface';
 
 @Component({
   selector: 'app-movie-detail',
@@ -19,8 +22,9 @@ export class MovieDetailComponent implements OnInit {
   creditoPeli: Cast[] = [];
   ratingPelicula: number = 0;
   peliculaValorada: boolean = false;
+  listaDeListas: List[] = [];
 
-  constructor(private route: ActivatedRoute, private movieService: MoviesService, private accountService: AccountService) { }
+  constructor(private route: ActivatedRoute, private movieService: MoviesService, private accountService: AccountService, private userListsService: UserListsService, private crudListasService: CrudListasService) { }
 
 
   ngOnInit(): void {
@@ -32,6 +36,10 @@ export class MovieDetailComponent implements OnInit {
     this.movieService.getCreditosPeli(parseInt(this.peliId!)).subscribe((response) => {
       this.creditoPeli = response.cast;
     });
+
+    this.userListsService.getUserLists().subscribe((resp) => {
+      this.listaDeListas = resp.results;
+    });
   }
 
 
@@ -42,28 +50,23 @@ export class MovieDetailComponent implements OnInit {
   }
 
 
-  verTrailer(): void {
-    if (!this.peli) return;
-
-    this.movieService.obtenerTrailerPorId(this.peli.id).subscribe({
-      next: (data) => {
-        const trailer = data.results[0];
-        if (trailer) {
-          this.trailerUrl = `https://www.youtube.com/embed/${trailer.key}`;
-          this.showTrailer = true;
-        } else {
-          alert('No se encontró un tráiler.');
-        }
-      },
-      error: () => alert('Error al cargar el tráiler.'),
+  verTrailer(peliculaId: string) {
+    this.movieService.obtenerTrailerPorId(parseInt(peliculaId)).subscribe((data) => {
+      const trailer = data.results.find((video) => video.type === 'Trailer' && video.site === 'YouTube');
+      const key = trailer?.key;
+      console.log('Trailer key:', key);
+      if (key) {
+        const videoUrl = this.getVideoUrl(key);
+        window.open(videoUrl, '_blank');
+      } else {
+        console.error('Trailer key not found');
+      }
     });
   }
-
-  cerrarTrailer(): void {
-    this.trailerUrl = null;
-    this.showTrailer = false;
+  
+  getVideoUrl(keyPelicula: string): string {
+    return `https://www.youtube.com/watch?v=${keyPelicula}`;
   }
-
   getColorEstrellas(voteAverage: number): string {
     if (voteAverage >= 3.5) {
       return 'text-success';
@@ -90,5 +93,11 @@ export class MovieDetailComponent implements OnInit {
     this.movieService.deleteRatingPeli(parseInt(this.peliId!)).subscribe();
     this.peliculaValorada = false;
     this.ratingPelicula = 0;
+  }
+
+  addToLista(listaId: number, peliculaId?: number) {
+    this.crudListasService.addToLista(listaId, peliculaId).subscribe(() => {
+      alert('Pelicula añadida a la lista');
+    });
   }
 }

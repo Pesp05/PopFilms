@@ -42,7 +42,6 @@
         <output>10</output>
       </div>
     </div>
-
     <!-- Idioma original -->
     <div class="filter-group">
       <label for="original-language">Idioma Original</label>
@@ -62,6 +61,12 @@
       <input type="number" id="runtime-max" [(ngModel)]="runtimeMax"
         name="runtimeMax" placeholder="Máximo">
     </div>
+  <!-- Duración en minutos -->
+  <div class="filter-group">
+    <label for="runtime">Duración (min)</label>
+    <input type="number" id="runtime-min" [(ngModel)]="runtimeMin" name="runtimeMin" placeholder="Mínimo">
+    <input type="number" id="runtime-max" [(ngModel)]="runtimeMax" name="runtimeMax" placeholder="Máximo">
+  </div>
 
     <!-- Ordenar por -->
     <div class="filter-group">

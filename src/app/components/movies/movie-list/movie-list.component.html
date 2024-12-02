@@ -17,14 +17,14 @@
             <button id="ficha" mat-fab class="w-100">Ver Ficha</button>
           </a>
           <div class="d-flex w-100 justify-content-around flex-nowrap">
-            <button class="w-50"
-              (click)="verTrailer(listaPeliculasPopulares[0].id)">Ver Tráiler
-              <span>
-                <mat-icon
-                  fontIcon="keyboard_arrow_right">
-                </mat-icon>
-              </span>
-            </button>
+
+              <button class="w-50" (click)="verTrailer(listaPeliculasPopulares[0])">Ver Tráiler
+                <span>
+                  <mat-icon
+                    fontIcon="keyboard_arrow_right">
+                  </mat-icon>
+                </span>
+              </button>
             @if (listaPeliculasPopulares[0]) {
             <button (click)="marcarComoFavorita(listaPeliculasPopulares[0])"
               class="w-50"><i class="bi bi-heart text-light"></i>
@@ -65,6 +65,7 @@
                   <mat-icon aria-hidden="false" aria-label="Example home icon"
                     fontIcon="favorite"></mat-icon>
                 </button>
+
                 <button class="p-1">
                   <mat-icon aria-hidden="false" aria-label="Example home icon"
                     fontIcon="list_alt"></mat-icon>
@@ -74,6 +75,19 @@
                   container="body">
                   <mat-icon aria-hidden="false" aria-label="Bookmark icon"
                     fontIcon="bookmark"></mat-icon>
+                <div ngbDropdown>
+                  <button class="p-1" ngbDropdownToggle>
+                    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="list"></mat-icon>
+                  </button>
+                  <div ngbDropdownMenu>
+                    @for(lista of listaDeListas; track lista.id){
+                      <button (click)="addToLista(lista.id, peli.id)" ngbDropdownItem>{{ lista.name }}</button>
+                    }
+                  </div>
+                </div>
+                <button class="p-1" (click)="addMovieToWatchList(peli.id)" placement="top" ngbPopover="Se ha añadido a la watchlist" container="body">
+                  <mat-icon aria-hidden="false" aria-label="Bookmark icon" fontIcon="bookmark"></mat-icon>
+
                 </button>
               </div>
             </div>

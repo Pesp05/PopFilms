@@ -1,4 +1,4 @@
-#navbar{
+#navbar {
     background-color: #0D7685;
     padding: 20px 40px;
     width: 100%;
@@ -11,28 +11,28 @@
     font-family: 'Inter', sans-serif;
     font-size: 12pt;
     align-items: center;
-    box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.6);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.6);
 }
 
-#container{
+#container {
     width: 100%;
     display: flex;
     justify-content: center;
     border-radius: 30px;
 }
 
-.title{
+.title {
     font-size: 25px;
 }
 
-.enlace{
+.enlace {
     color: #ffffff;
     font-size: 14pt;
     text-decoration: none;
     font-weight: bold;
 }
 
-#boton{
+#boton {
     background-color: #FF7F30;
     color: #ffffff;
     border: none;
@@ -44,7 +44,7 @@
     text-decoration: none;
 }
 
-input{
+input {
     border-radius: 30px;
     padding: 10px 20px;
     font-size: 14px;
@@ -53,14 +53,14 @@ input{
     background-color: #ffffff75;
 }
 
-#subs{
+#subs {
     display: flex;
     flex-direction: row;
     justify-content: center;
     width: 70%;
 }
 
-#profile{
+#profile {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -68,14 +68,15 @@ input{
     align-items: center;
     width: 30%;
     gap: 5px;
-    height:100px ;
+    height: 100px;
 }
-#profile > img{
+
+#profile>img {
     max-height: 80px;
     object-fit: contain;
 }
 
-#botonLogOut{
+#botonLogOut {
     background-color: #ff5930;
     color: #ffffff;
     border: none;
@@ -87,23 +88,23 @@ input{
     text-decoration: none;
 }
 
-.botonPerfil{
-    width:60px;
-    height:60px;
-    background-color:#FF7F30;
+.botonPerfil {
+    width: 60px;
+    height: 60px;
+    background-color: #FF7F30;
     margin: 5px;
-    padding:10px;
+    padding: 10px;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
     border-radius: 50px;
-    line-height:32px;
-    float:left;
+    line-height: 32px;
+    float: left;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-ul > li{
+ul>li {
     list-style: none;
     align-items: center;
     box-shadow: #ffffff;
@@ -113,39 +114,82 @@ ul > li{
     border-radius: 30px;
 }
 
-ul > li:hover{
+ul>li:hover {
     background-color: #0a5e6b;
 }
 
-ul>li>a{
+ul>li>a {
     text-decoration: none;
     color: #ffffff;
 }
 
-ul{
+ul {
     display: flex;
     flex-direction: column;
     gap: 5px;
     margin: 1%;
 }
 
-mat-icon{
+mat-icon {
     display: inline-block;
     vertical-align: top;
 }
 
-.offcanvas-header{
+.offcanvas-header {
     border-bottom: solid 2px #ff5930;
 }
 
-.offcanvas-header, .offcanvas-body, .fondoBoton{
+.offcanvas-header,
+.offcanvas-body,
+.fondoBoton {
     background-color: #0D7685;
     color: #ffffff;
 }
-.fondoBoton{
+
+.fondoBoton {
     color: #0a5e6b;
 }
+
 .no-border {
     border: none !important;
     box-shadow: none !important;
+}
+
+.botonIdioma {
+    background-color: #FF7F30;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+.btn{
+    background-color: #FF7F30;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+.btn:hover{
+    background-color: #FF7F30;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+#userPhoto {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
   }

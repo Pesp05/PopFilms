@@ -17,10 +17,10 @@
                     <div class="card-body">
                         <h5 class="card-title fw-bold text-start fw-bolder">{{pelicula.original_title}}</h5>
                         <p class="text-start">{{pelicula.release_date | date:'dd/MM/yyyy'}}</p>
-                        <p>{{(pelicula.vote_average/2).toFixed(2)}}</p>
-                        <ngb-rating class="fs-5" [readonly]="true" [rate]="pelicula.vote_average / 2" [max]="5"
-                            [ngClass]="getColorEstrellas(pelicula.vote_average / 2)"></ngb-rating>
-                        <p class="text-muted ms-1">({{pelicula.vote_count}} Votos)</p>
+                        <p>Media de los espectadores: {{(pelicula.vote_average/2).toFixed(2)}}</p>
+                        <ngb-rating class="fs-5" [readonly]="true" [rate]="pelicula.rating / 2" [max]="5"
+                            [ngClass]="getColorEstrellas(pelicula.rating / 2)"></ngb-rating>
+                        <p class="text-muted ms-1">({{pelicula.rating}})</p>
                     </div>
                 </div>
             </div>

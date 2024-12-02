@@ -11,7 +11,7 @@ export class DetalleListaCreadaComponent implements OnInit{
 
   listaID: string | null = '';
   listaDetalle: any[] = [];
-  constructor(private listaServicios: CrudListasService, private route: ActivatedRoute) { }
+  constructor(private listaServicios: CrudListasService, private route: ActivatedRoute, private crudListasService: CrudListasService) { }
 
   ngOnInit() {
     this.listaID  = this.route.snapshot.paramMap.get('id');
@@ -28,5 +28,12 @@ export class DetalleListaCreadaComponent implements OnInit{
     } else {
       return 'text-danger';
     }
+  }
+
+  removePeliFromList(peliId: number) {
+    this.crudListasService.removeFromLista(parseInt(this.listaID!), peliId).subscribe(() => {
+      alert('Pelicula eliminada de la lista');
+      window.location.reload();
+    });
   }
 }

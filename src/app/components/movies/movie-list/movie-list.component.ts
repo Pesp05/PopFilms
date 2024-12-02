@@ -4,6 +4,9 @@ import { Pelicula } from '../../../models/lista-peliculas-response.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WatchListService } from '../../../services/watch-list.service';
 import { AccountService } from '../../../services/authentication/account.service';
+import { List } from '../../../models/user-lists-response.interface';
+import { UserListsService } from '../../../services/user-lists.service';
+import { CrudListasService } from '../../../services/crud-listas.service';
 
 @Component({
   selector: 'app-movie-list',
@@ -12,7 +15,6 @@ import { AccountService } from '../../../services/authentication/account.service
 })
 export class MovieListComponent implements OnInit{
 
-  languageFilter: string = '';
   sortBy: string = '';
   fechaEstrenoMin: string = '';
   fechaEstrenoMax: string = '';
@@ -24,16 +26,19 @@ export class MovieListComponent implements OnInit{
 
   listaPeliculasPopulares :Pelicula[] =[];
 
+  listaDeListas: List[] = [];
+
 
 paginaActual = 1;
   constructor(private movieService:MoviesService,
     private router: Router,
-    private route: ActivatedRoute, private accountService: AccountService,private watchListService: WatchListService
+    private route: ActivatedRoute, private accountService: AccountService,private watchListService: WatchListService,
+    private userListsService: UserListsService, 
+    private crudListasService: CrudListasService
   ){}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
-      this.languageFilter = params['languaje'] || '',
       this.sortBy = params['sortBy'] || '',
       this.listaGeneros = params['genres'] || '',
       this.fechaEstrenoMin = params['releaseDateMin'] || '',
@@ -43,8 +48,8 @@ paginaActual = 1;
       this.rateMin = params['rateMin'] || '',
       this.rateMax = params['rateMax'] || ''
     });
-    if(this.languageFilter || this.sortBy || this.fechaEstrenoMin || this.fechaEstrenoMax || this.runtimeMin || this.runtimeMax || this.rateMin || this.rateMax){
-      this.movieService.obtenerPeliculasPorFiltros(this.languageFilter, this.sortBy, this.listaGeneros.toLowerCase(), 
+    if(this.sortBy || this.listaGeneros || this.fechaEstrenoMin || this.fechaEstrenoMax || this.runtimeMin || this.runtimeMax || this.rateMin || this.rateMax){
+      this.movieService.obtenerPeliculasPorFiltros(this.sortBy, this.listaGeneros, 
         this.fechaEstrenoMin, this.fechaEstrenoMax, this.runtimeMin, this.runtimeMax, this.rateMin, this.rateMax).subscribe((peli:any) => {
           this.listaPeliculasPopulares = peli.results.map((peli:any)=>{
           return {
@@ -64,6 +69,10 @@ paginaActual = 1;
         });
       });
     }
+
+    this.userListsService.getUserLists().subscribe((resp) => {
+      this.listaDeListas = resp.results;
+    });
   }
 
   marcarComoFavorita(pelicula: Pelicula) {
@@ -72,9 +81,15 @@ paginaActual = 1;
 
   verTrailer(peli: any) {
     this.movieService.obtenerTrailerPorId(peli.id).subscribe((data) => {
-      const key = data.results[0].key;
-      const videoUrl = this.getVideoUrl(key);
-      window.open(videoUrl, '_blank');
+      const trailer = data.results.find((video) => video.type === 'Trailer' && video.site === 'YouTube');
+      const key = trailer?.key;
+      console.log('Trailer key:', key);
+      if (key) {
+        const videoUrl = this.getVideoUrl(key);
+        window.open(videoUrl, '_blank');
+      } else {
+        console.error('Trailer key not found');
+      }
     });
   }
 
@@ -109,6 +124,12 @@ paginaActual = 1;
         }
       });
     })
+  }
+
+  addToLista(listaId: number, peliculaId: number) {
+    this.crudListasService.addToLista(listaId, peliculaId).subscribe(() => {
+      alert('Pelicula añadida a la lista');
+    });
   }
 }
 
