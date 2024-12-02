@@ -22,6 +22,24 @@ export class CrudListasService {
 
   constructor(private http: HttpClient) { }
 
+  addToLista(idLista: number, peliculaId?: number): Observable<void> {
+    const SESSION_ID = localStorage.getItem('session_id');
+    const body = {
+      media_type: 'movie',
+      media_id: peliculaId
+    };
+    return this.http.post<void>(`${environment.apiBaseUrl}/list/${idLista}/add_item?api_key=${environment.apiKey}&session_id=${SESSION_ID}`, body, HEADERSANDPOST);
+  }
+
+  removeFromLista(idLista: number, peliculaId: number): Observable<void> {
+    const SESSION_ID = localStorage.getItem('session_id');
+    const body = {
+      media_type: 'movie',
+      media_id: peliculaId
+    };
+    return this.http.post<void>(`${environment.apiBaseUrl}/list/${idLista}/remove_item?api_key=${environment.apiKey}&session_id=${SESSION_ID}`, body, HEADERSANDPOST);
+  }
+
   getListasCreadas(): Observable<ListasCreadasResponse> {
     const IDIOMA = localStorage.getItem('idioma');
     const SESSION_ID = localStorage.getItem('session_id');

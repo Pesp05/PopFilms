@@ -15,14 +15,17 @@ export class ValoradosService {
 
   getPeliculasValoradas(cuentaID: number): Observable<ListaPeliculasResponse> {
     const SESSION_ID = localStorage.getItem('session_id');
+
     const IDIOMA = localStorage.getItem('idioma');
     return this.http.get<ListaPeliculasResponse>(`${environment.apiBaseUrl}/account/${cuentaID}/rated/movies?language=${IDIOMA}&api_key=${environment.apiKey}&session_id=${SESSION_ID}`);
+
   }
 
   getSeriesValoradas(cuentaID: number): Observable<ListaSeries> {
     const SESSION_ID = localStorage.getItem('session_id');
+
     const IDIOMA = localStorage.getItem('idioma');
     return this.http.get<ListaSeries>(`${environment.apiBaseUrl}/account/${cuentaID}/rated/tv?language=${IDIOMA}&api_key=${environment.apiKey}&session_id=${SESSION_ID}`);
-  
   }
 }
+

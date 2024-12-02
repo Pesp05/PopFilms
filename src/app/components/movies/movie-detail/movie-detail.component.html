@@ -27,6 +27,16 @@
                             <a class="me-3 ms-5" (click)="verTrailer()">
                                 <button mat-fab class="favoritos w-100">Ver Tráiler</button>
                             </a>
+                            <div ngbDropdown>
+                                <button class="p-1" ngbDropdownToggle>
+                                  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="list"></mat-icon>
+                                </button>
+                                <div ngbDropdownMenu>
+                                  @for(lista of listaDeListas; track lista.id){
+                                    <button (click)="addToLista(lista.id, peli?.id)" ngbDropdownItem>{{ lista.name }}</button>
+                                  }
+                                </div>
+                            </div>
                             <button (click)="marcarComoFavorita()" class="btn ms-3" placement="top" ngbPopover="Se ha añadido a favoritos">
                                 <i class="bi favoritos bi-heart"></i>
                             </button>
@@ -57,7 +67,10 @@
             <div class="d-flex">
                 @for (actor of creditoPeli.slice(0,5); track $index) {
                 <div class="card text-center w-25 me-2">
-                    <img class="card-img-top" [src]="getposterPath(actor.profile_path || '')">
+                    <a [href]="'person/' + actor.id ">
+                        <img class="card-img-top" [src]="getposterPath(actor.profile_path || '')">
+                    </a>
+                    
                     <div class="card-body">
                         <h5 class="card-title fw-bold text-start fw-bolder">{{actor.name}}</h5>
                         <h6 class="card-title fw-bold text-start fw-bolder">{{actor.character}}</h6>

@@ -29,9 +29,11 @@ export class ListaSeriesService {
     return this.http.get<ListaSeries>(`${environment.apiBaseUrl}/tv/popular?language=${IDIOMA}&page=${page}`, HEADER);
   }
 
+
   obtenerSeriesPorFiltros(languageFilter: string, sortBy: string, genres: string, releaseDateMin: string, releaseDateMax: string, rateMin: string, rateMax: string): Observable<ListaSeries> {
     const IDIOMA = localStorage.getItem('idioma');
     return this.http.get<ListaSeries>(`${environment.apiBaseUrl}/discover/tv?&language=${IDIOMA}&sort_by=${sortBy}&with_genres=${genres}&primary_release_date.gte=${releaseDateMin}&primary_release_date.lte=${releaseDateMax}&vote_average.gte=${rateMin}&vote_average.lte=${rateMax}`, HEADER);
+
   }
 
   getSerieVideo(idSerie: number): Observable<SerieVideosResponse> {
