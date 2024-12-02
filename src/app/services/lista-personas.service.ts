@@ -21,7 +21,8 @@ export class ListaPersonasService {
   constructor(private http: HttpClient) { }
 
   getPersonas(page: number): Observable<ListaPersonas> {
-    return this.http.get<ListaPersonas>(`${environment.apiBaseUrl}/person/popular?&language=es-ES&page=${page}`, HEADERS);{     
+        const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<ListaPersonas>(`${environment.apiBaseUrl}/person/popular?&language=${IDIOMA}&page=${page}`, HEADERS);{     
   }
 }
 
@@ -32,7 +33,8 @@ export class ListaPersonasService {
 
 
   getCreditosId(id: number): Observable<CreditosPersonasResponse> {
-    return this.http.get<CreditosPersonasResponse>(`${environment.apiBaseUrl}/person/${id}/combined_credits?&language=es-ES`, HEADERS); {  
+        const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<CreditosPersonasResponse>(`${environment.apiBaseUrl}/person/${id}/combined_credits?&language=${IDIOMA}`, HEADERS); {  
   }
 }
 

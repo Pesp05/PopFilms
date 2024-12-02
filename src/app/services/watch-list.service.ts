@@ -20,12 +20,14 @@ export class WatchListService {
   constructor(private account: AccountService, private http:HttpClient) { }
 
   getMoviesWatchList():Observable<ListaPeliculasResponse>{
-    return this.http.get<ListaPeliculasResponse>(`${API_BASE_URL}/account/${ACCOUNT_ID}/watchlist/movies?api_key=${API_KEY}&session_id=${SESSION_ID}`)
+    const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<ListaPeliculasResponse>(`${API_BASE_URL}/account/${ACCOUNT_ID}/watchlist/movies?language=${IDIOMA}&api_key=${API_KEY}&session_id=${SESSION_ID}`)
 
   }
 
   getTvWatchList():Observable<ListaSeries>{
-    return this.http.get<ListaSeries>(`${API_BASE_URL}/account/${ACCOUNT_ID}/watchlist/tv?api_key=${API_KEY}&session_id=${SESSION_ID}`)
+    const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<ListaSeries>(`${API_BASE_URL}/account/${ACCOUNT_ID}/watchlist/tv?language=${IDIOMA}&api_key=${API_KEY}&session_id=${SESSION_ID}`)
 
   }
 

@@ -23,12 +23,11 @@ export class NavbarComponent {
 
   ngOnInit(): void {
     this.accountService.getAccountDetails().subscribe((response) => {
-      this.userName = response.username ? response.username : "User";
+      this.userName = response.username ? response.username : "Usuario";
       this.userPhoto = response.avatar.tmdb.avatar_path
       ? `https://image.tmdb.org/t/p/original${response.avatar.tmdb.avatar_path}`
       : 'https://cdn3.iconfinder.com/data/icons/basic-ui-element-s94-3/64/Basic_UI_Icon_Pack_-_Glyph_user-512.png';
     })
-
 }
 
   createRequestToken() {
@@ -58,7 +57,11 @@ export class NavbarComponent {
   toggleFavorites(): void {
     this.isFavoritesCollapsed = !this.isFavoritesCollapsed;
   }
-
+  
+  cambiarIdioma(idioma: string): void {
+    localStorage.setItem('idioma', idioma);
+    window.location.reload();
+  }
   //---------------------------------------------------------------------------------
 
   private offcanvasService = inject(NgbOffcanvas);
@@ -104,4 +107,3 @@ export class NavbarComponent {
 	}
 
 }
-

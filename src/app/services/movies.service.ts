@@ -25,11 +25,12 @@ export class MoviesService {
   constructor(private http:HttpClient) {}
 
   public obtenerPeliculasPopulares(page: number):Observable<ListaPeliculasResponse>{
-    return this.http.get<ListaPeliculasResponse>(`${environment.apiBaseUrl}/movie/popular?&language=es-ES&page=${page}`, HEADERS);
+    const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<ListaPeliculasResponse>(`${environment.apiBaseUrl}/movie/popular?&language=${IDIOMA}&page=${page}`, HEADERS);
   }
 
-  public obtenerPeliculasPorFiltros(languageFilter: string, sortBy: string, genres: string, releaseDateMin: string, releaseDateMax: string, runtimeMin: string, runtimeMax: string, rateMin: string, rateMax: string): Observable<ListaPeliculasResponse> {
-    return this.http.get<ListaPeliculasResponse>(`${environment.apiBaseUrl}/discover/movie?&language=${languageFilter}&sort_by=${sortBy}&with_genres=${genres}&primary_release_date.gte=${releaseDateMin}&primary_release_date.lte=${releaseDateMax}&with_runtime.gte=${runtimeMin}&with_runtime.lte=${runtimeMax}&vote_average.gte=${rateMin}&vote_average.lte=${rateMax}`, HEADERS);
+  public obtenerPeliculasPorFiltros(sortBy: string, genres: string, releaseDateMin: string, releaseDateMax: string, runtimeMin: string, runtimeMax: string, rateMin: string, rateMax: string): Observable<ListaPeliculasResponse> {
+    return this.http.get<ListaPeliculasResponse>(`${environment.apiBaseUrl}/discover/movie?sort_by=${sortBy}&with_genres=${genres}&primary_release_date.gte=${releaseDateMin}&primary_release_date.lte=${releaseDateMax}&with_runtime.gte=${runtimeMin}&with_runtime.lte=${runtimeMax}&vote_average.gte=${rateMin}&vote_average.lte=${rateMax}`, HEADERS);
   }
 
   public getImageUrl(posterPath: string): string {
@@ -42,24 +43,28 @@ export class MoviesService {
     return this.http.get<PeliculasVideosResponse>(`${environment.apiBaseUrl}/movie/${idPeli}/videos`,HEADERS)
   }
 
+
   getDetallePeli(idPeli: number): Observable<DetallePelicula> {
-    return this.http.get<DetallePelicula>(`${environment.apiBaseUrl}/movie/${idPeli}?language=es-ES`, HEADERS);
+    const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<DetallePelicula>(`${environment.apiBaseUrl}/movie/${idPeli}?language=${IDIOMA}`, HEADERS);
   }
 
   getCreditosPeli(idMovie: number): Observable<CreditosPeliResponse> {
-    return this.http.get<CreditosPeliResponse>(`${environment.apiBaseUrl}/movie/${idMovie}/credits?&language=es-ES`, HEADERS);
+    const IDIOMA = localStorage.getItem('idioma');
+    return this.http.get<CreditosPeliResponse>(`${environment.apiBaseUrl}/movie/${idMovie}/credits?&language=${IDIOMA}`, HEADERS);
+
   }
 
-  aplicarFiltros(languageFilter: string) {
+  public aplicarFiltros(languageFilter: string) {
     throw new Error('Method not implemented.');
   }
 
-  setRatingPeli(idPeli: number, rating: number): Observable<void> {
+  public setRatingPeli(idPeli: number, rating: number): Observable<void> {
 
     const SESSION_ID = localStorage.getItem('session_id');
     return this.http.post<void>(`${environment.apiBaseUrl}/movie/${idPeli}/rating?api_key=${environment.apiKey}&session_id=${SESSION_ID}`, { value: rating }, HEADERSANDPOST);
   }
-  deleteRatingPeli(idPeli: number): Observable<void> {
+  public deleteRatingPeli(idPeli: number): Observable<void> {
     const SESSION_ID = localStorage.getItem('session_id');
     return this.http.delete<void>(`${environment.apiBaseUrl}/movie/${idPeli}/rating?api_key=${environment.apiKey}&session_id=${SESSION_ID}`, HEADERSANDPOST);
   }
