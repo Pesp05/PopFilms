@@ -57,7 +57,10 @@
             <div class="d-flex">
                 @for (actor of creditoPeli.slice(0,5); track $index) {
                 <div class="card text-center w-25 me-2">
-                    <img class="card-img-top" [src]="getposterPath(actor.profile_path || '')">
+                    <a [href]="'person/' + actor.id ">
+                        <img class="card-img-top" [src]="getposterPath(actor.profile_path || '')">
+                    </a>
+                    
                     <div class="card-body">
                         <h5 class="card-title fw-bold text-start fw-bolder">{{actor.name}}</h5>
                         <h6 class="card-title fw-bold text-start fw-bolder">{{actor.character}}</h6>

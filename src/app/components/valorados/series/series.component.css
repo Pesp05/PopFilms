@@ -1,13 +1,13 @@
 .boton, .botonDisabled:hover{
-   background-color: #FF7F30;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 30px;
-    cursor: pointer;
-}
-.botonDisabled{
-    background-color: transparent;   
-    border: solid 1px #adadad;
-    border-radius: 30px;
-    cursor: pointer;
-}
+    background-color: #FF7F30;
+     border: none;
+     padding: 10px 20px;
+     border-radius: 30px;
+     cursor: pointer;
+ }
+ .botonDisabled{
+     background-color: #ff9f32;   
+     border: solid 1px #f3b165;
+     border-radius: 30px;
+     cursor: pointer;
+ }

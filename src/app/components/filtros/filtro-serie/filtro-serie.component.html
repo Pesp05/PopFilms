@@ -37,22 +37,12 @@
       </div>
     </div>
 
-    <!-- Idioma original -->
-    <div class="filter-group">
-      <label for="original-language">Idioma Original</label>
-      <select id="original-language">
-        <option value="es">Español</option>
-        <option value="en">Inglés</option>
-        <option value="fr">Francés</option>
-      </select>
-    </div>
-
     <!-- Ordenar por -->
     <div class="filter-group">
       <label for="sort-by">Ordenar por</label>
       <select id="sort-by" [(ngModel)]="sortBy" name="sortBy">
         <option value="popularity.desc">Popularidad</option>
-        <option value="primary_release_date.desc">Fecha de Estreno</option>
+        <option value="first_air_date.desc">Fecha de Estreno</option>
         <option value="vote_average.desc">Puntuación</option>
       </select>
     </div>

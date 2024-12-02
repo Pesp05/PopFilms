@@ -70,9 +70,12 @@
             <div class="d-flex">
                 @for (actor of creditoSerie.slice(0,5); track $index) {
                 <div class="card text-center w-25 me-2">
-                    <img class="card-img-top"
+                    <a [href]="'person/' + actor.id ">
+                        <img class="card-img-top"
                         [src]="actor.profile_path ? (actor.profile_path| poster) : 'assets/img/ImagenNoEncontrada.jpg'">
-                    <div class="card-body">
+                    
+                    </a>
+                   <div class="card-body">
                         <h5 class="card-title fw-bold text-start fw-bolder">{{actor.name}}</h5>
                     </div>
 
